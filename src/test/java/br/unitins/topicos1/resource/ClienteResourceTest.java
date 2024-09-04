@@ -143,7 +143,7 @@ public class ClienteResourceTest {
             LocalDate.parse("2003-03-10"),
             "carolas@gmail.com",
             "132", 
-            "21232212",
+            "2123221",
             2, 
             telefoneDTO
         );

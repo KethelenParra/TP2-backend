@@ -54,10 +54,10 @@ public class PedidoResourceTest {
     }
 
     @Test
-    @TestSecurity(user = "teste", roles = "Cliente")
+    @TestSecurity(user = "Joao10", roles = "Cliente")
     public void createTest() {
         ItemPedidoDTO item = new ItemPedidoDTO(1L, 2);
-        PedidoDTO dto = new PedidoDTO(4L, List.of(item));
+        PedidoDTO dto = new PedidoDTO(1L, List.of(item));
 
         PedidoResponseDTO response = pedidoService.create(dto);
 
@@ -74,7 +74,7 @@ public class PedidoResourceTest {
     
 
     @Test
-    @TestSecurity(user = "teste", roles = "Cliente")
+    @TestSecurity(user = "Joao10", roles = "Cliente")
     public void cancelarPedidoTest() {
         PedidoResponseDTO response = pedidoService.create(new PedidoDTO(
             1L,

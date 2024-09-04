@@ -1,5 +1,6 @@
 package br.unitins.topicos1.service.hash.serviceImpl;
 
+import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.util.Base64;
@@ -7,6 +8,8 @@ import java.util.Base64;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 
+import br.unitins.topicos1.dto.EnderecoDTO;
+import br.unitins.topicos1.service.ApiCepService;
 import br.unitins.topicos1.service.hash.HashService;
 import jakarta.enterprise.context.ApplicationScoped;
 
@@ -33,7 +36,7 @@ public class HashServiceImpl implements HashService {
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException, InterruptedException{
         HashService hash = new HashServiceImpl();
         System.out.println(hash.getHashSenha("123"));
         System.out.println(hash.getHashSenha("123"));
