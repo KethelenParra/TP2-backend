@@ -20,7 +20,6 @@ public class Genero extends DefaultEntity{
     @ManyToMany(mappedBy = "listaGenero")
     private List<Livro> listaLivros;
 
-
     public String getDescricao() {
         return descricao;
     }
