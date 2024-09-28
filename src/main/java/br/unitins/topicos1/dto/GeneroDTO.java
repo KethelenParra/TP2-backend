@@ -5,5 +5,5 @@ import jakarta.validation.constraints.NotEmpty;
 public record GeneroDTO(
     String nome, 
 	@NotEmpty(message = "A descrição deve ser informada.")
-    String Descricao
+    String descricao
 ) {}

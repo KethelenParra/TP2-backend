@@ -26,7 +26,7 @@ public class GeneroServiceImpl implements GeneroService{
 
         Genero genero = new Genero();
         genero.setNome(dto.nome());
-        genero.setDescricao(dto.Descricao());
+        genero.setDescricao(dto.descricao());
       
 
         generoRepository.persist(genero);
@@ -45,7 +45,7 @@ public class GeneroServiceImpl implements GeneroService{
         Genero generoBanco = generoRepository.findById(id);
 
         generoBanco.setNome(dto.nome());
-        generoBanco.setDescricao(dto.Descricao());
+        generoBanco.setDescricao(dto.descricao());
     }
 
     @Override
