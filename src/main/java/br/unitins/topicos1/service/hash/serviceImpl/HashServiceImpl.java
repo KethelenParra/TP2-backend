@@ -8,8 +8,6 @@ import java.util.Base64;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 
-import br.unitins.topicos1.dto.EnderecoDTO;
-import br.unitins.topicos1.service.ApiCepService;
 import br.unitins.topicos1.service.hash.HashService;
 import jakarta.enterprise.context.ApplicationScoped;
 

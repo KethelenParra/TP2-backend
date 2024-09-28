@@ -59,10 +59,6 @@ public class ClienteServiceImpl implements ClienteService {
         usuarioRepository.persist(usuario);
 
         Cliente cliente = new Cliente();
-        cliente.setEndereco(dto.endereco());
-        cliente.setCep(dto.cep());
-        cliente.setCidade(dto.cidade());
-        cliente.setEstado(dto.estado());
         cliente.setUsuario(usuario);
 
         clienteRepository.persist(cliente);
@@ -78,12 +74,7 @@ public class ClienteServiceImpl implements ClienteService {
         if (clienteBanco == null) {
             throw new ValidationException("Update cliente","Cliente não encontrado - Executando ClienteServiceImpl_update");
         }
-        
-        clienteBanco.setEndereco(dto.endereco());
-        clienteBanco.setCep(dto.cep());
-        clienteBanco.setCidade(dto.cidade());
-        clienteBanco.setEstado(dto.estado());
-        
+                
         Usuario usuario = clienteBanco.getUsuario();
         usuario.setNome(dto.nome());
         usuario.setUsername(dto.username());
