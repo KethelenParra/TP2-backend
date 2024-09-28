@@ -24,15 +24,6 @@ public class Fornecedor extends DefaultEntity {
     @Email(message= "E-mail inválido.")
     private String email;
 
-    @Column(length = 60, nullable = false)
-    private String endereco;
-
-    @Column(length = 10, nullable = false)
-    private String cep;
-
-    private String estado;
-    private String cidade;
-
     private Integer quantLivrosFornecido;
 
     @OneToOne(cascade = CascadeType.PERSIST)
@@ -63,30 +54,7 @@ public class Fornecedor extends DefaultEntity {
     public void setEmail(String email) {
         this.email = email;
     }
-    public String getEndereco() {
-        return endereco;
-    }
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
-    }
-    public String getCep() {
-        return cep;
-    }
-    public void setCep(String cep) {
-        this.cep = cep;
-    }
-    public String getEstado() {
-        return estado;
-    }
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
-    public String getCidade() {
-        return cidade;
-    }
-    public void setCidade(String cidade) {
-        this.cidade = cidade;
-    }
+    
     public Integer getQuantLivrosFornecido() {
         return quantLivrosFornecido;
     }

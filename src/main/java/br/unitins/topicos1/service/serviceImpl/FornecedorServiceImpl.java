@@ -32,10 +32,6 @@ public class FornecedorServiceImpl implements FornecedorService {
         fornecedor.setCnpj(dto.cnpj());
         fornecedor.setInscricaoEstadual(dto.inscricaoEstadual());
         fornecedor.setEmail(dto.email());
-        fornecedor.setEndereco(dto.endereco());
-        fornecedor.setCep(dto.cep());
-        fornecedor.setEstado(dto.estado());
-        fornecedor.setCidade(dto.cidade());
         fornecedor.setQuantLivrosFornecido(dto.quantLivrosFornecido());
         fornecedor.setTelefone(TelefoneDTO.convertToTelefone(dto.telefone()));
 
@@ -63,10 +59,6 @@ public class FornecedorServiceImpl implements FornecedorService {
         fornecedorBanco.setCnpj(dto.cnpj());
         fornecedorBanco.setInscricaoEstadual(dto.inscricaoEstadual());
         fornecedorBanco.setEmail(dto.email());
-        fornecedorBanco.setEndereco(dto.endereco());
-        fornecedorBanco.setCep(dto.cep());
-        fornecedorBanco.setEstado(dto.estado());
-        fornecedorBanco.setCidade(dto.cidade());
         fornecedorBanco.setQuantLivrosFornecido(dto.quantLivrosFornecido());
 
         Telefone telefone = fornecedorBanco.getTelefone();
@@ -95,15 +87,6 @@ public class FornecedorServiceImpl implements FornecedorService {
         return fornecedorRepository.findByNome(nome).stream().map(fornecedores -> FornecedorResponseDTO.valueOf(fornecedores)).toList();
     }
 
-    @Override
-    public List<FornecedorResponseDTO> findByCidade(String cidade) {
-        return fornecedorRepository.findByCidade(cidade).stream().map(fornecedores -> FornecedorResponseDTO.valueOf(fornecedores)).toList();
-    }
-
-    @Override
-    public List<FornecedorResponseDTO> findByEstado(String estado) {
-        return fornecedorRepository.findByEstado(estado).stream().map(fornecedores -> FornecedorResponseDTO.valueOf(fornecedores)).toList();
-    }
     @Override
     public List<FornecedorResponseDTO> findByCnpj(String cnpj) {
         return fornecedorRepository.findByCnpj(cnpj).stream().map(fornecedores -> FornecedorResponseDTO.valueOf(fornecedores)).toList();

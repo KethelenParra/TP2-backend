@@ -6,8 +6,6 @@ public record EditoraResponseDTO(
     Long id,  
     String nome, 
     String email, 
-    String endereco, 
-    String estado, 
     TelefoneResponseDTO telefone
 ) {
     public static EditoraResponseDTO valueOf(Editora editora){
@@ -15,8 +13,6 @@ public record EditoraResponseDTO(
             editora.getId(),
             editora.getNome(),
             editora.getEmail(),
-            editora.getEndereco(),
-            editora.getEstado(),
             TelefoneResponseDTO.valueOf(editora.getTelefone())
         );
     }

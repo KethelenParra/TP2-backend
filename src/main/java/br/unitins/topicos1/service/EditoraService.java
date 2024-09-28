@@ -14,5 +14,4 @@ public interface EditoraService {
    public EditoraResponseDTO findById(Long id);
    public List<EditoraResponseDTO> findAll();
    public List<EditoraResponseDTO> findByNome(String nome);
-   public List<EditoraResponseDTO> findByEstado(String estado);
 }

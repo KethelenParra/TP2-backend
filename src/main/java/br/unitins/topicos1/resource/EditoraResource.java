@@ -51,13 +51,6 @@ public class EditoraResource {
         return Response.ok(editoraService.findByNome(nome)).build();
     }
 
-    @GET
-    @Path("/search/estado/{estado}")
-    @RolesAllowed({"Funcionario"})
-    public Response findByEstado(@PathParam("estado") String estado){
-        LOG.info("Buscando todas as editora por estado: - Executando EditoraResource_FindByEstado" + estado);
-        return Response.ok(editoraService.findByEstado(estado)).build();
-    }
 
     @POST
     @RolesAllowed({"Funcionario"})

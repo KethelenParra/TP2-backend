@@ -24,9 +24,6 @@ public class Editora extends DefaultEntity{
     @JoinColumn(name = "id_telefone", unique = true)
     private Telefone telefone;
     
-    private String endereco;
-    private String estado;
-    
     public String getNome() {
         return nome;
     }
@@ -41,22 +38,6 @@ public class Editora extends DefaultEntity{
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
-    }
-
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
     }
 
     public Telefone getTelefone() {

@@ -13,14 +13,6 @@ public class FornecedorRepository implements PanacheRepository<Fornecedor>{
         return find("UPPER(nome) LIKE ?1", "%" + nome.toUpperCase() + "%").list();
     }
 
-    public List<Fornecedor> findByCidade(String cidade){
-        return find("UPPER(cidade) LIKE ?1", "%" + cidade.toUpperCase() + "%").list();
-    }
-
-    public List<Fornecedor> findByEstado(String estado){
-        return find("UPPER(estado) LIKE ?1", "%" + estado.toUpperCase() + "%").list();
-    }
-
     public List<Fornecedor> findByCnpj(String cnpj){
         return find("cnpj LIKE ?1", "%" + cnpj + "%").list();
     }
