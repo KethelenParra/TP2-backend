@@ -13,6 +13,7 @@
 // import static io.restassured.RestAssured.given;
 // import static org.hamcrest.CoreMatchers.is;
 
+// import java.util.Arrays;
 // import java.util.List;
 
 // @QuarkusTest
@@ -53,10 +54,10 @@
 //     }
 
 //     @Test
-//     @TestSecurity(user = "Maria20", roles = "Cliente")
+//     @TestSecurity(user = "Joao10", roles = "Cliente")
 //     public void createTest() {
-//         ItemPedidoDTO item = new ItemPedidoDTO(3L, 2);
-//         PedidoDTO dto = new PedidoDTO(2L, List.of(item));
+//         ItemPedidoDTO item = new ItemPedidoDTO(1L, 2);
+//         PedidoDTO dto = new PedidoDTO(1L, List.of(item));
 
 //         PedidoResponseDTO response = pedidoService.create(dto);
 
@@ -68,13 +69,17 @@
 //             .post("/pedidos")
 //             .then()
 //             .statusCode(201)
-//             .body("cliente.id", is(2L));
-//     }    
+//             .body("cliente.id", is(4L));
+//     }
+    
 
 //     @Test
-//     @TestSecurity(user = "Maria20", roles = "Cliente")
+//     @TestSecurity(user = "Joao10", roles = "Cliente")
 //     public void cancelarPedidoTest() {
-//         PedidoResponseDTO response = pedidoService.cancelarPedido(2L);
+//         PedidoResponseDTO response = pedidoService.create(new PedidoDTO(
+//             1L,
+//             Arrays.asList(new ItemPedidoDTO(3L, 4))
+//         ));
         
 //         given()
 //             .when()

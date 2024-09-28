@@ -20,10 +20,6 @@ public class ClienteRepository implements PanacheRepository<Cliente>{
         return find("UPPER(usuario.nome) LIKE ?1", "%" + nome.toUpperCase() + "%").list();
     }
 
-    public Cliente findByEstadoCliente(String estado){
-        return find("UPPER(estado) LIKE ?1", "%" + estado.toUpperCase() ).firstResult();
-    }
-
     public Cliente findByUsernameAndSenha(String username, String senha) {
         if(username == null || senha == null){
             return null;

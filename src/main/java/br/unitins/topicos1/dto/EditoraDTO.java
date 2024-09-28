@@ -8,7 +8,5 @@ public record EditoraDTO(
     @Email(message= "E-mail inválido.")
 	@NotEmpty(message = "O E-mail deve ser informado.")
     String email, 
-    String endereco, 
-    String estado, 
     TelefoneDTO telefone
 ) {}

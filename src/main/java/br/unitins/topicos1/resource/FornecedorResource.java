@@ -54,22 +54,6 @@ public class FornecedorResource {
     }
 
     @GET
-    @Path("/search/estado/{estado}")
-    @RolesAllowed({"Funcionario"})
-    public Response findByEstado(@PathParam("estado") String estado){
-        LOG.info("Buscando todos os fornecedores por estado: - Executando FornecedorResource_FindByEstado" + estado);
-        return Response.ok(fornecedorService.findByEstado(estado)).build();
-    }
-
-    @GET
-    @Path("/search/cidade/{cidade}")
-    @RolesAllowed({"Funcionario"})
-    public Response findByCidade(@PathParam("cidade") String cidade){
-        LOG.info("Buscando todos os fornecedores por cidade: - Executando FornecedorResource_FindByCidade" + cidade);
-        return Response.ok(fornecedorService.findByCidade(cidade)).build();
-    }
-
-    @GET
     @Path("/search/cnpj/{cnpj}")
     @RolesAllowed({"Funcionario"})
     public Response findByCnpj(@PathParam("cnpj") String cnpj){

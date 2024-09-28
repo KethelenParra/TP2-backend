@@ -8,10 +8,6 @@ public record FornecedorResponseDTO(
     String cnpj, 
     String inscricaoEstadual, 
     String email, 
-    String endereco, 
-    String cep, 
-    String estado, 
-    String cidade, 
     Integer quantLivrosFornecido,
     TelefoneResponseDTO telefone
 ) {
@@ -22,10 +18,6 @@ public record FornecedorResponseDTO(
             fornecedor.getCnpj(),
             fornecedor.getInscricaoEstadual(),
             fornecedor.getEmail(),
-            fornecedor.getEndereco(),
-            fornecedor.getCep(),
-            fornecedor.getEstado(),
-            fornecedor.getCidade(),
             fornecedor.getQuantLivrosFornecido(),
             TelefoneResponseDTO.valueOf(fornecedor.getTelefone())
         );

@@ -13,10 +13,6 @@
 
   class Cliente{
     - id: Long
-    - cep: String
-    - endereco: String
-    - estado: String
-    - cidade: String
   }
 
   class Funcionario {
@@ -58,11 +54,16 @@
     - cnpj: String
     - inscricaoEstadual: String
     - email: String
-    - endereco: String
-    - cep: String
-    - cidade: String
-    - estado: String
     - quantLivrosFornecido : Integer
+  }
+
+  class Endereco {
+    - cep: String
+    - logradouro: String
+    - complemento: String
+    - bairro: String
+    - localidade: String
+    - uf: String
   }
 
   enum Classificacao{
@@ -77,8 +78,6 @@
   class Editora {
     - id: Long
     - nome: String
-    - endereco: String
-    - estado: String
     - email: String
   }
 
@@ -182,5 +181,9 @@
   Avaliacao "*" --> "1" Estrela
   Avaliacao "*" o--> "1" Usuario
   Avaliacao "*" --> "1" Livro
+
+  Endereco "1" --> "1" Usuario
+  Endereco "1" --> "1" Fornecedor
+  Endereco "1" --> "1" Editora
 
   @enduml

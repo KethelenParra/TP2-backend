@@ -29,8 +29,6 @@ public class EditoraServiceImpl implements EditoraService {
         Editora editora = new Editora();
         editora.setNome(dto.nome());
         editora.setEmail(dto.email());
-        editora.setEndereco(dto.endereco());
-        editora.setEstado(dto.estado());
         editora.setTelefone(TelefoneDTO.convertToTelefone(dto.telefone()));
  
         editoraRepository.persist(editora);
@@ -51,8 +49,6 @@ public class EditoraServiceImpl implements EditoraService {
         if(editoraBanco != null ){
             editoraBanco.setNome(dto.nome());
             editoraBanco.setEmail(dto.email());
-            editoraBanco.setEndereco(dto.endereco());
-            editoraBanco.setEstado(dto.estado());
 
             Telefone telefone = editoraBanco.getTelefone();
             telefone.setCodigoArea(dto.telefone().codigoArea());
@@ -84,11 +80,6 @@ public class EditoraServiceImpl implements EditoraService {
     @Override
     public List<EditoraResponseDTO> findByNome(String nome) {
         return editoraRepository.findByNome(nome).stream().map(editoras -> EditoraResponseDTO.valueOf(editoras)).toList();
-    }
-
-    @Override
-    public List<EditoraResponseDTO> findByEstado(String estado) {
-        return editoraRepository.findByEstado(estado).stream().map(editoraes -> EditoraResponseDTO.valueOf(editoraes)).toList();
     }
 
 }
