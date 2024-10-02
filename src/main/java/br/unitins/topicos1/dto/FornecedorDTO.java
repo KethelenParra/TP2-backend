@@ -10,8 +10,6 @@ public record FornecedorDTO(
     @Email(message= "E-mail inválido.")
 	@NotEmpty(message = "O E-mail deve ser informado.")
     String email, 
-    String endereco, 
-    String cep, 
     String estado, 
     String cidade, 
     TelefoneDTO telefone, 

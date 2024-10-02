@@ -30,7 +30,7 @@ public class GeneroResource {
 
     @GET
     @Path("/{id}")
-    @RolesAllowed({"Funcionario"})
+    //@RolesAllowed({"Funcionario"})
     public Response findById(@PathParam("id") Long id){
         LOG.info("Executando o findById - Executando GeneroResource_FindById");
         LOG.infof("Executando o método findById. Id: %s", id.toString());
@@ -38,7 +38,7 @@ public class GeneroResource {
     }
 
     @GET
-    @RolesAllowed({"Funcionario"})
+    //@RolesAllowed({"Funcionario"})
     public Response findAll(){
         LOG.info("Buscando todos os generos - Executando GeneroResource_FindAll");
         return Response.ok(generoService.findAll()).build();
@@ -46,7 +46,7 @@ public class GeneroResource {
 
     @GET
     @Path("/search/nome/{nome}")
-    @RolesAllowed({"Funcionario"})
+    //@RolesAllowed({"Funcionario"})
     public Response findByNome(@PathParam("nome") String nome){
         LOG.info("Buscando os generos pelo nome - Executando GeneroResource_FindByNome");
         return Response.ok(generoService.findByNome(nome)).build();
@@ -54,14 +54,14 @@ public class GeneroResource {
 
     @GET
     @Path("/search/descricao/{descricao}")
-    @RolesAllowed({"Funcionario"})
+    //@RolesAllowed({"Funcionario"})
     public Response findByDescricao(@PathParam("descricao") String descricao){
         LOG.info("Buscando os generos pela descricao - Executando GeneroResource_FindByDescricao");
         return Response.ok(generoService.findByDescricao(descricao)).build();
     }
 
     @POST
-    @RolesAllowed({"Funcionario"})
+    //@RolesAllowed({"Funcionario"})
     public Response create (GeneroDTO dto){
         try {
             LOG.info("Criando um novo genero - Executando GeneroResource_create");
@@ -74,7 +74,7 @@ public class GeneroResource {
 
     @PUT
     @Path("/{id}")
-    @RolesAllowed({"Funcionario"})
+    //@RolesAllowed({"Funcionario"})
     public Response update(@PathParam("id") Long id, GeneroDTO dto){
         try {
             LOG.info("Atualizando um genero - Executando GeneroResource_update");
@@ -88,7 +88,7 @@ public class GeneroResource {
 
     @DELETE
     @Path("/{id}")
-    @RolesAllowed({"Funcionario"})
+    //@RolesAllowed({"Funcionario"})
     public Response delete(@PathParam("id") Long id){
         try {
             LOG.info("Deletando um genero - Executando GeneroResource_delete");

@@ -30,14 +30,14 @@ public class EditoraResource {
 
     @GET
     @Path("/{id}")
-    @RolesAllowed({"Funcionario"})
+    //@RolesAllowed({"Funcionario"})
     public Response findById(@PathParam("id") Long id){
         LOG.info("Buscando editora por id: - Executando EditoraResource_FindById" + id);
         return Response.ok(editoraService.findById(id)).build();
     }
 
     @GET
-    @RolesAllowed({"Funcionario"})
+    //@RolesAllowed({"Funcionario"})
     public Response findAll(){
         LOG.info("Buscando todas as editoras - Executando EditoraResource_Findall");
         return Response.ok(editoraService.findAll()).build();
@@ -45,7 +45,7 @@ public class EditoraResource {
 
     @GET
     @Path("/search/nome/{nome}")
-    @RolesAllowed({"Funcionario"})
+    //@RolesAllowed({"Funcionario"})
     public Response findByNome(@PathParam("nome") String nome){
         LOG.info("Buscando editora por nome: - Executando EditoraResource_FindByNome" + nome);
         return Response.ok(editoraService.findByNome(nome)).build();
@@ -53,7 +53,7 @@ public class EditoraResource {
 
 
     @POST
-    @RolesAllowed({"Funcionario"})
+    //@RolesAllowed({"Funcionario"})
     public Response create (EditoraDTO dto){
         try {
             LOG.info("Editora criado com sucesso - Executando EditoraResource_create");
@@ -66,7 +66,7 @@ public class EditoraResource {
 
     @PUT
     @Path("/{id}")
-    @RolesAllowed({"Funcionario"})
+    //@RolesAllowed({"Funcionario"})
     public Response update(@PathParam("id") Long id, EditoraDTO dto){
         try {
             LOG.info("Editora atualizado com sucesso - Executando EditoraResource_update");
@@ -80,7 +80,7 @@ public class EditoraResource {
 
     @DELETE
     @Path("/{id}")
-    @RolesAllowed({"Funcionario"})
+    //@RolesAllowed({"Funcionario"})
     public Response delete(@PathParam("id") Long id){
         try {
             LOG.info("Editora deletado com sucesso - Executando EditoraResource_delete");

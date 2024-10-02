@@ -11,5 +11,11 @@ public record ClienteDTO(
     String senha,
     String cpf,
     Integer idSexo,
-    TelefoneDTO telefone
+    TelefoneDTO telefone,
+    String cep,
+    String logradouro,
+    String complemento,
+    String bairro,
+    String localidade,
+    String uf
 ) { }

@@ -39,14 +39,14 @@ public class AutorResource {
 
     @GET
     @Path("/{id}")
-    @RolesAllowed({"Funcionario"})
+    //@RolesAllowed({"Funcionario"})
     public Response findById(@PathParam("id") Long id) {
         LOG.infof("Executando o método findById. Id: %s", id.toString());
         return Response.ok(autorService.findById(id)).build();
     }
 
     @GET
-    @RolesAllowed({"Funcionario", "Cliente"})
+    //@RolesAllowed({"Funcionario", "Cliente"})
     public Response findAll() {
         LOG.info("Buscando todos os autores - Executando AutorResource_FindAll");
         return Response.ok(autorService.findAll()).build();
@@ -54,7 +54,7 @@ public class AutorResource {
 
     @GET
     @Path("/search/nome/{nome}")
-    @RolesAllowed({"Funcionario", "Cliente"})
+    //@RolesAllowed({"Funcionario", "Cliente"})
     public Response findByNome(@PathParam("nome") String nome) {
         LOG.info("Buscando autores por nome - Executando AutorResource_FindByNome");
         return Response.ok(autorService.findByNome(nome)).build();
@@ -62,14 +62,14 @@ public class AutorResource {
 
     @GET
     @Path("/search/biografia/{biografia}")
-    @RolesAllowed({"Funcionario", "Cliente"}) 
+    //@RolesAllowed({"Funcionario", "Cliente"}) 
     public Response findByBiografia(@PathParam("biografia") String biografia) {
         LOG.info("Buscando autores por biografia - - Executando AutorResource_FindByBiografia");
         return Response.ok(autorService.findByBiografia(biografia)).build();
     }
 
     @POST
-    @RolesAllowed({"Funcionario"}) 
+    //@RolesAllowed({"Funcionario"}) 
     public Response create(@Valid AutorDTO dto) {
         try {
             LOG.info("Criando novo autor: - Executando AutorResource_create");
@@ -82,7 +82,7 @@ public class AutorResource {
 
     @PUT
     @Path("/{id}")
-    @RolesAllowed({"Funcionario"}) 
+    //@RolesAllowed({"Funcionario"}) 
     public Response update(@PathParam("id") Long id, AutorDTO dto) {
         try {
             LOG.info("Atualizando autor: - Executando AutorResource_update" + id);
@@ -96,7 +96,7 @@ public class AutorResource {
 
     @DELETE
     @Path("/{id}")
-    @RolesAllowed({"Funcionario"}) 
+    //@RolesAllowed({"Funcionario"}) 
     public Response delete(@PathParam("id") Long id) {
         try {
             LOG.info("Removendo autor: - Executando AutorResource_delete" + id);
@@ -110,7 +110,7 @@ public class AutorResource {
 
     @PATCH
     @Path("/{id}/image/upload")
-    @RolesAllowed({"Funcionario"})
+    //@RolesAllowed({"Funcionario"})
     @Consumes(MediaType.MULTIPART_FORM_DATA)
     public Response upload(@PathParam("id") Long id, @MultipartForm ImageForm form) {
         try {
@@ -125,7 +125,7 @@ public class AutorResource {
 
     @GET
     @Path("/image/download/{nomeImagem}")
-    @RolesAllowed({"Funcionario"})
+    //@RolesAllowed({"Funcionario"})
     @Produces(MediaType.APPLICATION_OCTET_STREAM)
     public Response download(@PathParam("nomeImagem") String nomeImagem) {
         try {

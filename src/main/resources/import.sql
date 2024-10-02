@@ -23,12 +23,12 @@ VALUES
 ('Isabela Santos', 'Belinha60', '1997-04-30', 'isabela.santos@gmail.com', 'TRwn0XU29Gwl2sagG00bvjrNJvLuYo+dbOBJ7R3xFpU4m/FAUc5q8OoGbVNwPF7F5713RaYkN4qyufNCDHm/mA==', 10, 2, '25874196385');
 
 
-INSERT INTO cliente (endereco, cep, cidade, estado, id_usuario) 
-VALUES ('Av. Paulista, 1000', '01310-100', 'São Paulo', 'SP', 1),
-       ('Rua da Lapa, 200', '20021-180', 'Rio de Janeiro', 'RJ', 2),
-       ('Rua Augusta, 300', '01305-001', 'São Paulo', 'SP', 3),
-       ('Rua das Flores, 400', '78010-000', 'Cuiabá', 'MT', 4),
-       ('Av. Tocantins, 500', '77015-002', 'Palmas', 'TO', 5);
+INSERT INTO cliente (cep, logradouro, complemento, bairro, localidade, uf, id_usuario) 
+VALUES ('01310-100', 'Av. Paulista, 1000','Em frente ao shopping', 'Tabocão', 'São Paulo', 'SP', 1),
+       ('20021-180', 'Rua da Lapa, 200', 'atrás do shopping', 'Madureira' , 'Rio de Janeiro', 'RJ', 2),
+       ('01305-001', 'Rua Augusta, 300', 'Ao lado do mercado bom jesus', 'Buraco do padre', 'São Paulo', 'SP', 3),
+       ('78010-000', 'Rua das Flores, 400', 'Em frente ao supermercado dois irmãos','Bairro abençoado' ,'Cuiabá', 'MT', 4),
+       ('77015-002', 'Av. Tocantins, 500', 'Atrás do Big', 'Vila união', 'Palmas', 'TO', 5);
 
 INSERT INTO funcionario (cargo, salario, id_usuario) 
 VALUES ('Analista de Sistemas', 6000.00, 6), 
@@ -56,18 +56,18 @@ INSERT INTO genero (nome, descricao) VALUES ('Mistério', 'Gênero literário qu
 INSERT INTO genero (nome, descricao) VALUES ('Aventura', 'Gênero literário que narra histórias emocionantes e cheias de ação, muitas vezes envolvendo viagens, descobertas e desafios perigosos.');
 
 -- Inserir fornecedores
-INSERT INTO fornecedor (nome, cnpj, inscricaoEstadual, email, endereco, cep, estado, cidade, quantLivrosFornecido, id_telefone) VALUES ('Loja Moderna Ltda', '11.222.333/0001-99', '123456789', 'moderna@gmail.com', 'Av. Paulista, 1000 - Bela Vista', '01311-000', 'São Paulo', 'São Paulo', 300, 12);
-INSERT INTO fornecedor (nome, cnpj, inscricaoEstadual, email, endereco, cep, estado, cidade, quantLivrosFornecido, id_telefone) VALUES ('Companhia das Letras Ltda', '55.444.666/0001-88', '987654321', 'letras@gmail.com', 'Rua Major Maragliano, 466 - Vila Mariana', '04015-001', 'São Paulo', 'São Paulo', 400, 13);
-INSERT INTO fornecedor (nome, cnpj, inscricaoEstadual, email, endereco, cep, estado, cidade, quantLivrosFornecido, id_telefone) VALUES ('Sextante Ltda', '99.777.333/0001-55', '123654987', 'sextante@gmail.com', 'Rua Voluntários da Pátria, 41 - Botafogo', '22270-000', 'Rio de Janeiro', 'Rio de Janeiro', 350, 14);
-INSERT INTO fornecedor (nome, cnpj, inscricaoEstadual, email, endereco, cep, estado, cidade, quantLivrosFornecido, id_telefone) VALUES ('Livraria Cultura Ltda', '88.999.777/0001-66', '456123789', 'cultura@gmail.com', 'Av. Paulista, 2300 - Bela Vista', '01310-300', 'São Paulo', 'São Paulo', 500, 15);
-INSERT INTO fornecedor (nome, cnpj, inscricaoEstadual, email, endereco, cep, estado, cidade, quantLivrosFornecido, id_telefone) VALUES ('Saraiva S.A.', '77.666.555/0001-44', '789456123', 'saraiva@gmail.com', 'Rua Henrique Schaumann, 270 - Pinheiros', '05413-000', 'São Paulo', 'São Paulo', 450, 16);
-INSERT INTO fornecedor (nome, cnpj, inscricaoEstadual, email, endereco, cep, estado, cidade, quantLivrosFornecido, id_telefone) VALUES ('Editora Abril Ltda', '66.555.444/0001-33', '654987321', 'abril@gmail.com', 'Av. das Nações Unidas, 7221 - Pinheiros', '05425-070', 'São Paulo', 'São Paulo', 550, 17);
+INSERT INTO fornecedor (nome, cnpj, inscricaoEstadual, email, estado, cidade, quantLivrosFornecido, id_telefone) VALUES ('Loja Moderna Ltda', '11.222.333/0001-99', '123456789', 'moderna@gmail.com', 'São Paulo', 'São Paulo', 300, 12);
+INSERT INTO fornecedor (nome, cnpj, inscricaoEstadual, email, estado, cidade, quantLivrosFornecido, id_telefone) VALUES ('Companhia das Letras Ltda', '55.444.666/0001-88', '987654321', 'letras@gmail.com', 'São Paulo', 'São Paulo', 400, 13);
+INSERT INTO fornecedor (nome, cnpj, inscricaoEstadual, email, estado, cidade, quantLivrosFornecido, id_telefone) VALUES ('Sextante Ltda', '99.777.333/0001-55', '123654987', 'sextante@gmail.com', 'Rio de Janeiro', 'Rio de Janeiro', 350, 14);
+INSERT INTO fornecedor (nome, cnpj, inscricaoEstadual, email, estado, cidade, quantLivrosFornecido, id_telefone) VALUES ('Livraria Cultura Ltda', '88.999.777/0001-66', '456123789', 'cultura@gmail.com', 'São Paulo', 'São Paulo', 500, 15);
+INSERT INTO fornecedor (nome, cnpj, inscricaoEstadual, email, estado, cidade, quantLivrosFornecido, id_telefone) VALUES ('Saraiva S.A.', '77.666.555/0001-44', '789456123', 'saraiva@gmail.com', 'São Paulo', 'São Paulo', 450, 16);
+INSERT INTO fornecedor (nome, cnpj, inscricaoEstadual, email, estado, cidade, quantLivrosFornecido, id_telefone) VALUES ('Editora Abril Ltda', '66.555.444/0001-33', '654987321', 'abril@gmail.com', 'São Paulo', 'São Paulo', 550, 17);
 
 -- Inserir editora
-INSERT INTO editora (nome, email, endereco, estado, id_telefone) VALUES ('Atria Books', 'atriabooks@gmail.com', 'rua 10', 'nova york', 18);
-INSERT INTO editora (nome, email, endereco, estado, id_telefone) VALUES ('Globo Livros', 'globolivros@gmail.com', 'Av. Sete de Setembro, 550 - Centro', 'Rio de Janeiro', 19);
-INSERT INTO editora (nome, email, endereco, estado, id_telefone) VALUES ('Intrínseca', 'intrinseca@gmail.com', 'Rua Marquês de São Vicente, 99 - Gávea', 'Rio de Janeiro', 20);
-INSERT INTO editora (nome, email, endereco, estado, id_telefone) VALUES ('Editora Rocco', 'rocco@gmail.com', 'Rua Argentina, 171 - São Cristóvão', 'Rio de Janeiro', 21);
+INSERT INTO editora (nome, email, estado, cidade, id_telefone) VALUES ('Atria Books', 'atriabooks@gmail.com', 'nova york', 'nova york', 18);
+INSERT INTO editora (nome, email, estado, cidade, id_telefone) VALUES ('Globo Livros', 'globolivros@gmail.com', 'Rio de Janeiro', 'Rio de Janeiro', 19);
+INSERT INTO editora (nome, email, estado, cidade, id_telefone) VALUES ('Intrínseca', 'intrinseca@gmail.com', 'Rio de Janeiro', 'Rio de Janeiro', 20);
+INSERT INTO editora (nome, email, estado, cidade, id_telefone) VALUES ('Editora Rocco', 'rocco@gmail.com', 'Rio de Janeiro', 'Rio de Janeiro', 21);
 
 -- Inserir livro
 INSERT INTO livro (titulo, preco, quantidadeEstoque, isbn, dataLancamento, descricao, classificacao, id_fornecedor, id_editora) 

@@ -31,7 +31,7 @@ public class FornecedorResource {
 
     @GET
     @Path("/{id}")
-    @RolesAllowed({"Funcionario"})
+    //@RolesAllowed({"Funcionario"})
     public Response findById(@PathParam("id") Long id){
         LOG.info("Executando o findById - Executando FornecedorResource_FindById");
         LOG.infof("Executando o método findById. Id: %s", id.toString());
@@ -39,7 +39,7 @@ public class FornecedorResource {
     }
 
     @GET
-    @RolesAllowed({"Funcionario"})
+    //@RolesAllowed({"Funcionario"})
     public Response findAll(){
         LOG.info("Buscando todos os fornecedores - Executando FornecedorResource_FindAll");
         return Response.ok(fornecedorService.findAll()).build();
@@ -47,7 +47,7 @@ public class FornecedorResource {
 
     @GET
     @Path("/search/nome/{nome}")
-    @RolesAllowed({"Funcionario"})
+    //@RolesAllowed({"Funcionario"})
     public Response findByNome(@PathParam("nome") String nome){
         LOG.info("Buscando fornecedor por nome: - Executando FornecedorResource_FindByNome " + nome);
         return Response.ok(fornecedorService.findByNome(nome)).build();
@@ -55,14 +55,14 @@ public class FornecedorResource {
 
     @GET
     @Path("/search/cnpj/{cnpj}")
-    @RolesAllowed({"Funcionario"})
+    //@RolesAllowed({"Funcionario"})
     public Response findByCnpj(@PathParam("cnpj") String cnpj){
         LOG.info("Buscando fornecedor por cnpj: - Executando FornecedorResource_FindByCnpj" + cnpj);
         return Response.ok(fornecedorService.findByCnpj(cnpj)).build();
     }
 
     @POST
-    @RolesAllowed({"Funcionario"})
+    //@RolesAllowed({"Funcionario"})
     public Response create(@Valid FornecedorDTO dto){
         try {
             LOG.info("Criando novo fornecedor: - Executando FornecedorResource_create");
@@ -75,7 +75,7 @@ public class FornecedorResource {
 
     @PUT
     @Path("/{id}")
-    @RolesAllowed({"Funcionario"})
+    //@RolesAllowed({"Funcionario"})
     public Response update(@PathParam("id") Long id, FornecedorDTO dto){
         try {
             LOG.info("Fornecedor atualizado com sucesso - Executando FornecedorResource_update");
@@ -89,7 +89,7 @@ public class FornecedorResource {
 
     @DELETE
     @Path("/{id}")
-    @RolesAllowed({"Funcionario"})
+    //@RolesAllowed({"Funcionario"})
     public Response delete(@PathParam("id") Long id){
         try {
             LOG.info("Fornecedor deletado com sucesso - Executando FornecedorResource_delete");

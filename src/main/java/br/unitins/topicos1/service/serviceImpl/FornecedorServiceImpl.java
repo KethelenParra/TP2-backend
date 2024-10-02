@@ -32,6 +32,8 @@ public class FornecedorServiceImpl implements FornecedorService {
         fornecedor.setCnpj(dto.cnpj());
         fornecedor.setInscricaoEstadual(dto.inscricaoEstadual());
         fornecedor.setEmail(dto.email());
+        fornecedor.setEstado(dto.estado());
+        fornecedor.setCidade(dto.cidade());
         fornecedor.setQuantLivrosFornecido(dto.quantLivrosFornecido());
         fornecedor.setTelefone(TelefoneDTO.convertToTelefone(dto.telefone()));
 
@@ -59,6 +61,8 @@ public class FornecedorServiceImpl implements FornecedorService {
         fornecedorBanco.setCnpj(dto.cnpj());
         fornecedorBanco.setInscricaoEstadual(dto.inscricaoEstadual());
         fornecedorBanco.setEmail(dto.email());
+        fornecedorBanco.setEstado(dto.estado());
+        fornecedorBanco.setCidade(dto.cidade());
         fornecedorBanco.setQuantLivrosFornecido(dto.quantLivrosFornecido());
 
         Telefone telefone = fornecedorBanco.getTelefone();

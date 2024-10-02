@@ -29,6 +29,8 @@ public class EditoraServiceImpl implements EditoraService {
         Editora editora = new Editora();
         editora.setNome(dto.nome());
         editora.setEmail(dto.email());
+        editora.setEstado(dto.estado());
+        editora.setCidade(dto.cidade());
         editora.setTelefone(TelefoneDTO.convertToTelefone(dto.telefone()));
  
         editoraRepository.persist(editora);
@@ -49,6 +51,8 @@ public class EditoraServiceImpl implements EditoraService {
         if(editoraBanco != null ){
             editoraBanco.setNome(dto.nome());
             editoraBanco.setEmail(dto.email());
+            editoraBanco.setEstado(dto.estado());
+            editoraBanco.setCidade(dto.cidade());
 
             Telefone telefone = editoraBanco.getTelefone();
             telefone.setCodigoArea(dto.telefone().codigoArea());

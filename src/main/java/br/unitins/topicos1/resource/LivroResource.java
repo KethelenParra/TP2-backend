@@ -38,7 +38,7 @@ public class LivroResource {
 
     @GET
     @Path("/{id}")
-    @RolesAllowed({"Funcionario"})
+    //@RolesAllowed({"Funcionario"})
     public Response findById(@PathParam("id") Long id){
         LOG.info("Executando o findById");
         LOG.infof("Executando o método findById. Id: %s", id.toString());
@@ -46,7 +46,7 @@ public class LivroResource {
     }
 
     @GET
-    @RolesAllowed({"Funcionario", "Cliente"})
+    //@RolesAllowed({"Funcionario", "Cliente"})
     public Response findAll(){
         LOG.info("Buscando todos os livros - Executando LivroResource_FindAll");
         return Response.ok(livroService.findAll()).build();
@@ -54,7 +54,7 @@ public class LivroResource {
 
     @GET
     @Path("/search/titulo/{titulo}")
-    @RolesAllowed({"Funcionario", "Cliente"})
+    //@RolesAllowed({"Funcionario", "Cliente"})
     public Response findByTitulo(@PathParam("titulo") String titulo){
         LOG.info("Buscando livros por título - Executando LivroResource_FindByTitulo");
         return Response.ok(livroService.findByTitulo(titulo)).build();
@@ -62,7 +62,7 @@ public class LivroResource {
 
     @GET
     @Path("/search/isbn/{isbn}")
-    @RolesAllowed({"Funcionario","Cliente"})
+    //@RolesAllowed({"Funcionario","Cliente"})
     public Response findByIsbn(@PathParam("isbn") String isbn){
         LOG.info("Buscando livros por ISBN - Executando LivroResource_findByIsbn");
         return Response.ok(livroService.findByIsbn(isbn)).build();
@@ -70,14 +70,14 @@ public class LivroResource {
 
     @GET
     @Path("/search/descricao/{descricao}")
-    @RolesAllowed({"Funcionario", "Cliente"})
+    //@RolesAllowed({"Funcionario", "Cliente"})
     public Response findByDescricao(@PathParam("descricao") String descricao){
         LOG.info("Buscando livros por descrição - Executando LivroResource_findByDescricao");
         return Response.ok(livroService.findByDescricao(descricao)).build();
     }
 
     @POST
-    @RolesAllowed({"Funcionario"})
+    //@RolesAllowed({"Funcionario"})
     public Response create (LivroDTO dto){
         try {
             LOG.info("Criando um novo livro - Executando LivroResource_create");
@@ -90,7 +90,7 @@ public class LivroResource {
 
     @PUT
     @Path("/{id}")
-    @RolesAllowed({"Funcionario"})
+    //@RolesAllowed({"Funcionario"})
     public Response update(@PathParam("id") Long id, LivroDTO dto){
         try {
             LOG.info("Atualizando um livro- Executando LivroResource_update");
@@ -104,7 +104,7 @@ public class LivroResource {
 
     @DELETE
     @Path("/{id}")
-    @RolesAllowed({"Funcionario"})
+    //@RolesAllowed({"Funcionario"})
     public Response delete(@PathParam("id") Long id){
         try {
             LOG.info("Deletando um livro - Executando LivroResource_delete");
@@ -118,7 +118,7 @@ public class LivroResource {
     
     @PATCH
     @Path("/{id}/image/upload")
-    @RolesAllowed({"Funcionario"})
+    //@RolesAllowed({"Funcionario"})
     @Consumes(MediaType.MULTIPART_FORM_DATA)
     public Response upload(@PathParam("id") Long id, @MultipartForm ImageForm form) {
         try {
@@ -133,7 +133,7 @@ public class LivroResource {
 
     @GET
     @Path("/image/download/{nomeImagem}")
-    @RolesAllowed({"Funcionario"})
+    //@RolesAllowed({"Funcionario"})
     @Produces(MediaType.APPLICATION_OCTET_STREAM)
     public Response download(@PathParam("nomeImagem") String nomeImagem) {
         try {
