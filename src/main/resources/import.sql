@@ -82,6 +82,8 @@ INSERT INTO livro (titulo, preco, quantidadeEstoque, isbn, dataLancamento, descr
 VALUES ('1984', 35.00, 80, '9788532530803', '1949-06-08', '1984 é um romance distópico escrito por George Orwell em 1948 e publicado em 1949. A obra é um dos maiores clássicos da literatura mundial e uma das mais influentes e importantes do século XX.', 4, 6, 3);
 INSERT INTO livro (titulo, preco, quantidadeEstoque, isbn, dataLancamento, descricao, classificacao, id_fornecedor, id_editora) 
 VALUES ('O Diário da Nossa Paixão', 29.90, 70, '9788532511666', '1996-10-01', 'O Diário da Nossa Paixão é um romance do escritor norte-americano Nicholas Sparks, que relata a história de amor entre Noah Calhoun e Allie Nelson, que se conhecem e se apaixonam durante um verão.', 3, 5, 2);
+INSERT INTO livro (titulo, preco, quantidadeEstoque, isbn, dataLancamento, descricao, classificacao, id_fornecedor, id_editora) 
+VALUES ('Harry Potter e as Relíquias da morte', 65.00, 20, '9788532522610', '2007-07-21', 'Encontro inevitável com Lord Voldemort não pode mais ser adiado. Harry, no entanto, precisa ganhar tempo para encontrar as Horcruxes que ainda estão faltando. E, pelo caminho, descobrir o que são afinal as Relíquias da Morte e como ele pode usá-las contra o Lorde das Trevas', 5, 5, 2);
 
 -- Inserir relacionamento entre livro e autor
 INSERT INTO livro_autor (idlivro, idautor) VALUES (1, 1);
@@ -129,3 +131,6 @@ INSERT INTO itemPedido (desconto, quantidade, subtotal, id_livro) VALUES (1.25, 
 INSERT INTO itemPedido (desconto, quantidade, subtotal, id_livro) VALUES (0.90, 3, 52.60, 1);
 INSERT INTO itemPedido (desconto, quantidade, subtotal, id_livro) VALUES (0.0, 2, 511, 3);
 INSERT INTO itemPedido (desconto, quantidade, subtotal, id_livro) VALUES (0.0, 1, 140.25, 2);
+
+-- Box
+INSERT INTO box (nome, descricaobox, quantidadeestoque, id_fornecedor) VALUES ('Harry Potter', 'Harry Potter é uma série sobre um jovem bruxo que descobre seu destino em um mundo mágico. Ao longo dos sete livros, ele enfrenta desafios, faz amigos e luta contra Voldemort, o bruxo responsável pela morte de seus pais. A história mistura magia, amizade e coragem, tornando-se um dos maiores fenômenos da literatura mundial.', 50, 3);
