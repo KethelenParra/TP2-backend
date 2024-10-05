@@ -119,4 +119,9 @@ public class LivroServiceImpl implements LivroService{
         .map(e -> LivroResponseDTO.valueOf(e)).toList();
     }
 
+    @Override
+    public List<LivroResponseDTO> findByAutor(String autor) {
+        return livroRepository.findByAutor(autor).stream().map(e -> LivroResponseDTO.valueOf(e)).toList();
+    }
+
 }

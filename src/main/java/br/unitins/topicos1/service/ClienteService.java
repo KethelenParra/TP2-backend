@@ -25,5 +25,7 @@ public interface ClienteService {
     public void alterarEmail(AlterarEmailDTO dto);
 
     public ClienteResponseDTO findMeuPerfil();
+    public void adicionarLivroDesejo(Long idLivro);
+    public void removerLivroDesejo(Long idLivro);
 
 }

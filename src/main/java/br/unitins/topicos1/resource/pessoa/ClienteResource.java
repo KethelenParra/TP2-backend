@@ -7,6 +7,7 @@ import br.unitins.topicos1.dto.AlterarSenhaDTO;
 import br.unitins.topicos1.dto.AlterarUsernameDTO;
 import br.unitins.topicos1.dto.ClienteDTO;
 import br.unitins.topicos1.service.ClienteService;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.validation.Valid;
 import jakarta.ws.rs.Consumes;
@@ -147,7 +148,7 @@ public class ClienteResource {
     }
 
     @GET
-    //@RolesAllowed({"Cliente"})
+    @RolesAllowed({"Cliente"})
     @Path("/search/meu-perfil")
     public Response meuPerfil() {
         try {
@@ -156,6 +157,34 @@ public class ClienteResource {
         } catch (Exception e) {
             LOG.error("Erro ao buscar perfil do cliente.", e);
             return Response.status(Status.NOT_FOUND).entity("Erro ao buscar perfil do cliente.").build();
+        }
+    }
+
+    @PATCH
+    @RolesAllowed({"Cliente"})
+    @Path("/search/incluir-livro-desejo/{id-livro}")
+    public Response adicionarLivroDesejo(@PathParam("id-livro") Long idLivro){
+        try {
+            LOG.infof("Inserindo item na lista de desejo");
+            clienteService.adicionarLivroDesejo(idLivro);
+            return Response.status(Status.NO_CONTENT).build();
+        } catch (Exception e) {
+            LOG.error("Erro ao adicionar livro na lista de desejo.", e);
+            return Response.status(Status.NOT_FOUND).entity("Erro ao adicionar livro na lista de desejo.").build();
+        }
+    }
+
+    @PATCH
+    @RolesAllowed({"Cliente"})
+    @Path("/search/remover-livro-desejo/{id-livro}")
+    public Response removendoLivroDesejo(@PathParam("id-livro") Long idLivro){
+        try {
+            LOG.infof("Inserindo item na lista de desejo");
+            clienteService.removerLivroDesejo(idLivro);
+            return Response.status(Status.NO_CONTENT).build();
+        } catch (Exception e) {
+            LOG.error("Erro ao remover livro da lista de desejo.", e);
+            return Response.status(Status.NOT_FOUND).entity("Erro ao remover livro da lista de desejo.").build();
         }
     }
 }

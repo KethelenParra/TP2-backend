@@ -1,12 +1,8 @@
 package br.unitins.topicos1.model.autor;
 
-import java.util.List;
-
 import br.unitins.topicos1.model.defaultEntity.DefaultEntity;
-import br.unitins.topicos1.model.livro.Livro;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToMany;
 
 @Entity
 public class Autor extends DefaultEntity{
@@ -16,9 +12,6 @@ public class Autor extends DefaultEntity{
 
     @Column(length = 10000, nullable = false)
     private String biografia;
-
-    @ManyToMany(mappedBy = "listaAutor")
-    private List<Livro> listaLivros;
 
     private String nomeImagem;
 
@@ -46,11 +39,4 @@ public class Autor extends DefaultEntity{
         this.biografia = biografia;
     }
 
-    public List<Livro> getListaLivros() {
-        return listaLivros;
-    }
-
-    public void setListaLivros(List<Livro> listaLivros) {
-        this.listaLivros = listaLivros;
-    }
 }

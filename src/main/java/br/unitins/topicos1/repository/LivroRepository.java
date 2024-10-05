@@ -22,7 +22,12 @@ public class LivroRepository implements PanacheRepository<Livro>{
     }
 
     public Livro findByTituloLivro(String nome) {
-        return find("UPPER(nome) = ?1",  nome.toUpperCase() ).firstResult();
+        return find("UPPER(nome) = ?1",  "%" + nome.toUpperCase()  + "%").firstResult();
     }
+
+    public List<Livro> findByAutor(String autor){
+        return find("SELECT livro FROM Livro livro JOIN livro.listaAutor autor WHERE UPPER(autor.nome) LIKE ?1", autor.toUpperCase() + "%").list();
+    }
+
 
 }

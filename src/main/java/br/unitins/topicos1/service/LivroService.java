@@ -16,5 +16,6 @@ public interface LivroService {
     public List<LivroResponseDTO> findByTitulo(String titulo);
     public List<LivroResponseDTO> findByIsbn(String isbn);
     public List<LivroResponseDTO> findByDescricao(String descricao);
+    public List<LivroResponseDTO> findByAutor(String autor);
 
 }

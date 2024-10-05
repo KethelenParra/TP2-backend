@@ -75,6 +75,14 @@ public class LivroResource {
         return Response.ok(livroService.findByDescricao(descricao)).build();
     }
 
+    @GET
+    @Path("/search/autor/{autor}")
+    //@RolesAllowed({"Funcionario", "Cliente"})
+    public Response findByAutor(@PathParam("autor") String autor){
+        LOG.info("Buscando livros por autor - Executando LivroResource_findByAutor");
+        return Response.ok(livroService.findByAutor(autor)).build();
+    }
+
     @POST
     //@RolesAllowed({"Funcionario"})
     public Response create (LivroDTO dto){
