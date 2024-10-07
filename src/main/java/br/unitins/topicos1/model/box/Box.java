@@ -22,7 +22,7 @@ public class Box extends DefaultEntity{
     @Column(nullable = false)
     private String nome;
 
-    @Column(length = 500, nullable = false)
+    @Column(length = 20000, nullable = false)
     private String descricaoBox;
 
     @Column(nullable = false)
