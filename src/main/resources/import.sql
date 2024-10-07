@@ -169,7 +169,7 @@ VALUES
        (0.0, 1, 140.25, 2);
 
 -- Box
-INSERT INTO box (nome, descricaoBox, quantidadeEstoque, preco, classificacao, fornecedor_id, id_editora) 
+INSERT INTO box (nome, descricaoBox, quantidadeEstoque, preco, classificacao, id_fornecedor, id_editora) 
 VALUES 
        ('Harry Potter Box Set', 
        'Harry Potter é uma série sobre um jovem bruxo que descobre seu destino em um mundo mágico. Ao longo dos sete livros, ele enfrenta desafios, faz amigos e luta contra Voldemort, o bruxo responsável pela morte de seus pais. A história mistura magia, amizade e coragem, tornando-se um dos maiores fenômenos da literatura mundial. 
