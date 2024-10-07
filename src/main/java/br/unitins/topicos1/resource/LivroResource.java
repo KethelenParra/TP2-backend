@@ -100,7 +100,7 @@ public class LivroResource {
     //@RolesAllowed({"Funcionario"})
     public Response update(@PathParam("id") Long id, LivroDTO dto){
         try {
-            LOG.info("Atualizando um livro- Executando LivroResource_update");
+            LOG.info("Atualizando um livro - Executando LivroResource_update");
             livroService.update(id, dto);
             return Response.status(Status.NO_CONTENT).build();
         } catch (Exception e) {

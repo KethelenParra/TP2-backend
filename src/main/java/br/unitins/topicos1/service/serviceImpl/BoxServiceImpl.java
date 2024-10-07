@@ -4,10 +4,14 @@ import java.util.List;
 
 import br.unitins.topicos1.dto.BoxDTO;
 import br.unitins.topicos1.dto.Response.BoxResponseDTO;
+import br.unitins.topicos1.model.Enum.Classificacao;
 import br.unitins.topicos1.model.box.Box;
 import br.unitins.topicos1.repository.LivroRepository;
+import br.unitins.topicos1.repository.AutorRepository;
 import br.unitins.topicos1.repository.BoxRepository;
+import br.unitins.topicos1.repository.EditoraRepository;
 import br.unitins.topicos1.repository.FornecedorRepository;
+import br.unitins.topicos1.repository.GeneroRepository;
 import br.unitins.topicos1.service.BoxService;
 import br.unitins.topicos1.validation.ValidationException;
 import jakarta.enterprise.context.ApplicationScoped;
@@ -27,18 +31,38 @@ public class BoxServiceImpl implements BoxService {
     @Inject
     public FornecedorRepository fornecedorRepository;
 
+    @Inject
+    public AutorRepository autorRepository;
+
+    @Inject
+    public EditoraRepository editoraRepository;
+
+    @Inject
+    public GeneroRepository generoRepository;
+
     @Override
     @Transactional
     public BoxResponseDTO create(@Valid BoxDTO dto) {
         Box box = new Box();
         box.setNome(dto.nome());
-        box.setDescricaoBox(dto.descricao());
+        box.setDescricaoBox(dto.descricaoBox());
         box.setFornecedor(fornecedorRepository.findById(dto.fornecedor()));
-        box.setQuantidadeEstoque(dto.estoque());
-        
+        box.setQuantidadeEstoque(dto.quantidadeEstoque());
+        box.setClassificacao(Classificacao.valueOf(dto.id_classificacao()));
+        box.setPreco(dto.preco());
+        box.setEditora(editoraRepository.findById(dto.editora()));
+        box.setListaAutor((dto.autores()).stream().map(a -> autorRepository.findById(a)).toList());
+        box.setListaGenero(dto.generos().stream().map(g -> generoRepository.findById(g)).toList());
+                
         boxRepository.persist(box);
         
-        return BoxResponseDTO.valueof(box);
+        return BoxResponseDTO.valueOf(box);
+    }
+
+    public void validarNomeBox(String nome) {
+        Box box = boxRepository.findByNomeBox(nome);
+        if (box != null)
+            throw  new ValidationException("nome", "O nome '"+nome+"' já existe.");
     }
 
     @Override
@@ -50,9 +74,14 @@ public class BoxServiceImpl implements BoxService {
             throw new ValidationException("id", "Box não encontrada.");
             
         boxBanco.setNome(dto.nome());
-        boxBanco.setDescricaoBox(dto.descricao());
+        boxBanco.setDescricaoBox(dto.descricaoBox());
         boxBanco.setFornecedor(fornecedorRepository.findById(dto.fornecedor()));
-        boxBanco.setQuantidadeEstoque(dto.estoque());
+        boxBanco.setQuantidadeEstoque(dto.quantidadeEstoque());
+        boxBanco.setClassificacao(Classificacao.valueOf(dto.id_classificacao()));
+        boxBanco.setPreco(dto.preco());
+        boxBanco.setEditora(editoraRepository.findById(dto.editora()));
+        boxBanco.setListaAutor((dto.autores()).stream().map(a -> autorRepository.findById(a)).toList());
+        boxBanco.setListaGenero(dto.generos().stream().map(g -> generoRepository.findById(g)).toList());    
         
         boxRepository.persist(boxBanco);
     }
@@ -67,17 +96,22 @@ public class BoxServiceImpl implements BoxService {
 
     @Override
     public BoxResponseDTO findById(Long id) {
-        return BoxResponseDTO.valueof(boxRepository.findById(id));
+        return BoxResponseDTO.valueOf(boxRepository.findById(id));
     }
 
     @Override
     public List<BoxResponseDTO> findAll() {
-        return boxRepository.listAll().stream().map(a -> BoxResponseDTO.valueof(a)).toList();
+        return boxRepository.listAll().stream().map(a -> BoxResponseDTO.valueOf(a)).toList();
     }
 
     @Override
     public List<BoxResponseDTO> findByNome(String nome) {
         return boxRepository.findByBox(nome).stream()
-            .map(a -> BoxResponseDTO.valueof(a)).toList();
+            .map(a -> BoxResponseDTO.valueOf(a)).toList();
+    }
+
+    @Override
+    public List<BoxResponseDTO> findByAutor(String autor) {
+        return boxRepository.findByAutor(autor).stream().map(e -> BoxResponseDTO.valueOf(e)).toList();
     }
 }

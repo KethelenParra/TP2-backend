@@ -22,14 +22,14 @@ public record LivroResponseDTO(
         String nomeImagem
 ) {
     public static LivroResponseDTO valueOf(Livro livro) {
-                                                List<AutorResponseDTO> listaAutor = livro.getListaAutor()
-                                                                        .stream()
-                                                                        .map(AutorResponseDTO::valueOf)
-                                                                        .toList();
-                                                List<GeneroResponseDTO> listaGenero = livro.getListaGenero()
-                                                                        .stream()
-                                                                        .map(GeneroResponseDTO::valueOf)
-                                                                        .toList();
+                        List<AutorResponseDTO> listaAutor = livro.getListaAutor()
+                                                .stream()
+                                                .map(AutorResponseDTO::valueOf)
+                                                .toList();
+                        List<GeneroResponseDTO> listaGenero = livro.getListaGenero()
+                                                .stream()
+                                                .map(GeneroResponseDTO::valueOf)
+                                                .toList();
         return new LivroResponseDTO(
                 livro.getId(),
                 livro.getTitulo(),
