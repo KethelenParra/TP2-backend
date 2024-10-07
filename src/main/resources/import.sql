@@ -133,4 +133,54 @@ INSERT INTO itemPedido (desconto, quantidade, subtotal, id_livro) VALUES (0.0, 2
 INSERT INTO itemPedido (desconto, quantidade, subtotal, id_livro) VALUES (0.0, 1, 140.25, 2);
 
 -- Box
-INSERT INTO box (nome, descricaobox, quantidadeestoque, id_fornecedor) VALUES ('Harry Potter', 'Harry Potter é uma série sobre um jovem bruxo que descobre seu destino em um mundo mágico. Ao longo dos sete livros, ele enfrenta desafios, faz amigos e luta contra Voldemort, o bruxo responsável pela morte de seus pais. A história mistura magia, amizade e coragem, tornando-se um dos maiores fenômenos da literatura mundial.', 50, 3);
+INSERT INTO boxx (nome, descricaoBox, quantidadeEstoque, preco, classificacao, id_fornecedor, id_editora) 
+VALUES ('Harry Potter Box Set', 'Harry Potter é uma série sobre um jovem bruxo que descobre seu destino em um mundo mágico. Ao longo dos sete livros, ele enfrenta desafios, faz amigos e luta contra Voldemort, o bruxo responsável pela morte de seus pais. A história mistura magia, amizade e coragem, tornando-se um dos maiores fenômenos da literatura mundial. \
+1. Harry Potter e a Pedra Filosofal (223 páginas) - Harry descobre que é um bruxo e começa a estudar em Hogwarts. \
+2. Harry Potter e a Câmara Secreta (251 páginas) - Um mistério sobre uma câmara escondida ameaça Hogwarts. \
+3. Harry Potter e o Prisioneiro de Azkaban (317 páginas) - Harry descobre mais sobre seu passado enquanto lida com Sirius Black. \
+4. Harry Potter e o Cálice de Fogo (636 páginas) - Harry participa de um torneio perigoso. \
+5. Harry Potter e a Ordem da Fênix (766 páginas) - A resistência contra Voldemort cresce enquanto Harry descobre mais sobre sua conexão com o vilão. \
+6. Harry Potter e o Enigma do Príncipe (607 páginas) - Harry se aproxima de Dumbledore para entender o passado de Voldemort. \
+7. Harry Potter e as Relíquias da Morte (607 páginas) - A batalha final contra Voldemort se aproxima.', 50, 299.99, 2, 3, 2);
+INSERT INTO boxx (nome, descricaoBox, quantidadeEstoque, preco, classificacao, id_fornecedor, id_editora) 
+VALUES ('The Lord of the Rings Trilogy','A épica jornada de Frodo e seus amigos para destruir o Um Anel. Escrito por J.R.R. Tolkien, esta trilogia é um dos maiores marcos da literatura fantástica.\
+1. A Sociedade do Anel (423 páginas) - Frodo inicia sua jornada para destruir o Um Anel. \
+2. As Duas Torres (352 páginas) - A Irmandade se separa, e Frodo segue com Sam em direção a Mordor. \
+3. O Retorno do Rei (416 páginas) - A batalha final entre as forças de Sauron e a Terra Média acontece enquanto Frodo tenta destruir o anel.', 30, 349.90, 4, 1, 4);
+INSERT INTO boxx (nome, descricaoBox, quantidadeEstoque, preco, classificacao, id_fornecedor, id_editora) 
+VALUES ('The Chronicles of Narnia', 'O clássico de C.S. Lewis, Nárnia é um mundo mágico cheio de criaturas fantásticas e grandes aventuras, onde quatro irmãos são chamados a proteger a terra do mal. \
+1. O Leão, a Feiticeira e o Guarda-Roupa (206 páginas) - Quatro crianças descobrem o mundo de Nárnia e enfrentam a Feiticeira Branca. \
+2. Príncipe Caspian (240 páginas) - As crianças voltam a Nárnia para ajudar o príncipe a reclamar seu trono. \
+3. A Viagem do Peregrino da Alvorada (272 páginas) - Lúcia e Edmundo viajam com Caspian em busca de sete lordes perdidos. \
+4. A Cadeira de Prata (257 páginas) - Uma nova geração tenta resgatar o filho desaparecido do rei Caspian. \
+5. O Cavalo e Seu Menino (240 páginas) - Uma aventura no deserto enquanto um garoto e um cavalo fogem em busca de liberdade. \
+6. O Sobrinho do Mago (240 páginas) - A origem de Nárnia e a criação de seu mundo mágico. \
+7. A Última Batalha (228 páginas) - A conclusão épica da saga, onde Nárnia enfrenta sua batalha final.', 40, 259.99, 2, 4, 3);
+INSERT INTO boxx (nome, descricaoBox, quantidadeEstoque, preco, classificacao, id_fornecedor, id_editora) 
+VALUES ('Sherlock Holmes Collection', 'Uma coleção completa das aventuras do detetive mais famoso do mundo, Sherlock Holmes, criado por Sir Arthur Conan Doyle. \
+1. Um Estudo em Vermelho (188 páginas) - A primeira aparição de Sherlock Holmes e Dr. Watson, resolvendo um mistério de assassinato. \
+2. O Signo dos Quatro (283 páginas) - Uma aventura envolvendo um tesouro desaparecido e segredos do passado. \
+3. O Cão dos Baskervilles (256 páginas) - Sherlock investiga a lenda de um cão monstruoso em Dartmoor. \
+4. O Vale do Medo (320 páginas) - Um assassinato misterioso leva Sherlock a desvendar uma trama complexa.', 20, 199.90, 2, 5, 1);
+INSERT INTO boxx (nome, descricaoBox, quantidadeEstoque, preco, classificacao, id_fornecedor, id_editora) 
+VALUES ('Percy Jackson Box Set', 'A série Percy Jackson segue um jovem que descobre ser filho de um deus grego, enfrentando aventuras e desafios no mundo moderno. \
+1. O Ladrão de Raios (400 páginas) - Percy descobre que é filho de Poseidon e precisa encontrar o raio de Zeus. \
+2. O Mar de Monstros (304 páginas) - Percy enfrenta novos desafios para salvar seu amigo Grover. \
+3. A Maldição do Titã (336 páginas) - Percy e seus amigos tentam salvar a deusa Ártemis e uma amiga sequestrada. \
+4. A Batalha do Labirinto (368 páginas) - Percy precisa navegar no Labirinto para impedir a invasão de Luke. \
+5. O Último Olimpiano (400 páginas) - A batalha final entre os deuses e os titãs ameaça o Olimpo.', 35, 229.90, 1, 3, 2);
+
+-- Inserir relacionamento entre box e autor
+INSERT INTO box_autor (idboxx, idautor) VALUES (1, 1);
+INSERT INTO box_autor (idboxx, idautor) VALUES (2, 2);
+INSERT INTO box_autor (idboxx, idautor) VALUES (3, 3);
+INSERT INTO box_autor (idboxx, idautor) VALUES (4, 4);
+INSERT INTO box_autor (idboxx, idautor) VALUES (5, 5);
+
+-- Inserir relacionamento entre box e gênero
+INSERT INTO box_genero (idboxx, idgenero) VALUES (1, 1);
+INSERT INTO box_genero (idboxx, idgenero) VALUES (2, 1);
+INSERT INTO box_genero (idboxx, idgenero) VALUES (3, 2);
+INSERT INTO box_genero (idboxx, idgenero) VALUES (4, 4);
+INSERT INTO box_genero (idboxx, idgenero) VALUES (5, 2);
+
