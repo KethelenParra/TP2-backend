@@ -46,7 +46,7 @@ public class LivroServiceImpl implements LivroService{
         livro.setDescricao(dto.descricao());
         livro.setDatalancamento(dto.datalancamento());
         livro.setPreco(dto.preco());
-        livro.setClassificacao(Classificacao.valueOf(dto.id_classificacao()));
+        livro.setClassificacao(Classificacao.valueOf(dto.classificacao()));
         livro.setFornecedor(fornecedorRepository.findById(dto.fornecedor()));
         livro.setListaAutor((dto.autores()).stream().map(a -> autorRepository.findById(a)).toList());
         livro.setListaGenero(dto.generos().stream().map(g -> generoRepository.findById(g)).toList());
@@ -76,7 +76,7 @@ public class LivroServiceImpl implements LivroService{
         livroBanco.setDescricao(dto.descricao());
         livroBanco.setDatalancamento(dto.datalancamento());
         livroBanco.setFornecedor(fornecedorRepository.findById(dto.fornecedor()));
-        livroBanco.setClassificacao(Classificacao.valueOf(dto.id_classificacao()));
+        livroBanco.setClassificacao(Classificacao.valueOf(dto.classificacao()));
         livroBanco.setPreco(dto.preco());
         livroBanco.setListaAutor((dto.autores()).stream().map(a -> autorRepository.findById(a)).toList());
         livroBanco.setListaGenero(dto.generos().stream().map(g -> generoRepository.findById(g)).toList());

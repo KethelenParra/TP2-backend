@@ -148,7 +148,7 @@ public class ClienteResource {
     }
 
     @GET
-    @RolesAllowed({"Cliente"})
+    //@RolesAllowed({"Cliente"})
     @Path("/search/meu-perfil")
     public Response meuPerfil() {
         try {
@@ -161,7 +161,7 @@ public class ClienteResource {
     }
 
     @PATCH
-    @RolesAllowed({"Cliente"})
+    //@RolesAllowed({"Cliente"})
     @Path("/search/incluir-livro-desejo/{id-livro}")
     public Response adicionarLivroDesejo(@PathParam("id-livro") Long idLivro){
         try {
@@ -175,7 +175,7 @@ public class ClienteResource {
     }
 
     @PATCH
-    @RolesAllowed({"Cliente"})
+    //@RolesAllowed({"Cliente"})
     @Path("/search/remover-livro-desejo/{id-livro}")
     public Response removendoLivroDesejo(@PathParam("id-livro") Long idLivro){
         try {

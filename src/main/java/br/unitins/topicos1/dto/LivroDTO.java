@@ -12,7 +12,7 @@ public record LivroDTO(
         Integer quantidadeEstoque,
         String isbn,
         LocalDate datalancamento,
-        Integer id_classificacao,
+        String classificacao,
         String descricao,
         Long fornecedor
 ) { }
