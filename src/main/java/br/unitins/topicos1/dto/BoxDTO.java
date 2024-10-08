@@ -11,6 +11,6 @@ public record BoxDTO(
     List<Long> generos,
     Double preco,
     Integer quantidadeEstoque,
-    Integer id_classificacao
+    String classificacao
  
 ) {}

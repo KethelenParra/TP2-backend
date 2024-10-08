@@ -48,7 +48,7 @@ public class BoxServiceImpl implements BoxService {
         box.setDescricaoBox(dto.descricaoBox());
         box.setFornecedor(fornecedorRepository.findById(dto.fornecedor()));
         box.setQuantidadeEstoque(dto.quantidadeEstoque());
-        box.setClassificacao(Classificacao.valueOf(dto.id_classificacao()));
+        box.setClassificacao(Classificacao.valueOf(dto.classificacao()));
         box.setPreco(dto.preco());
         box.setEditora(editoraRepository.findById(dto.editora()));
         box.setListaAutor((dto.autores()).stream().map(a -> autorRepository.findById(a)).toList());
@@ -77,7 +77,7 @@ public class BoxServiceImpl implements BoxService {
         boxBanco.setDescricaoBox(dto.descricaoBox());
         boxBanco.setFornecedor(fornecedorRepository.findById(dto.fornecedor()));
         boxBanco.setQuantidadeEstoque(dto.quantidadeEstoque());
-        boxBanco.setClassificacao(Classificacao.valueOf(dto.id_classificacao()));
+        boxBanco.setClassificacao(Classificacao.valueOf(dto.classificacao()));
         boxBanco.setPreco(dto.preco());
         boxBanco.setEditora(editoraRepository.findById(dto.editora()));
         boxBanco.setListaAutor((dto.autores()).stream().map(a -> autorRepository.findById(a)).toList());

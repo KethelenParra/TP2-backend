@@ -13,9 +13,9 @@ public record BoxResponseDTO(
     List<AutorResponseDTO> autores,
     EditoraResponseDTO editora,
     List<GeneroResponseDTO> generos,
-    String preco,
+    Double preco,
     String quantidadeEstoque, // Aqui você passa o status do estoque como string
-    Classificacao classificacao, // Renomeei para ficar consistente
+    String classificacao, // Renomeei para ficar consistente
     String nomeImagem
 ) {
     public static BoxResponseDTO valueOf(Box box){
@@ -42,9 +42,9 @@ public record BoxResponseDTO(
             listaAutor,  // Lista de autores
             EditoraResponseDTO.valueOf(box.getEditora()),  // Relacionamento com editora
             listaGenero,  // Lista de gêneros
-            "R$" + String.format("%.2f", box.getPreco()),  // Formatação de preço
+            box.getPreco(),  // Formatação de preço
             statusEstoque,  // Status de estoque calculado
-            box.getClassificacao(),  // Classificação
+            box.getClassificacao().getDescricao(),  // Classificação
             box.getNomeImagem()  // Nome da imagem
         );
     }
