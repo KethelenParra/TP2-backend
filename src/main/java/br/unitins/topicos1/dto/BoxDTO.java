@@ -2,15 +2,23 @@ package br.unitins.topicos1.dto;
 
 import java.util.List;
 
+import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.NotNull;
+
 public record BoxDTO(
     String nome,
     String descricaoBox,
-    Long fornecedor,
-    List<Long> autores,
-    Long editora,
-    List<Long> generos,
-    Double preco,
     Integer quantidadeEstoque,
-    String classificacao
+    Long fornecedor,
+    Long editora,
+
+    @NotNull(message = "O campo preço não pode estar nulo")
+    @DecimalMin(value = "0")
+    Double preco,
+
+    Integer classificacao,
+    @NotNull(message = "O campo genero não pode estar vazio")
+    List<Long> generos
+    // List<Long> autores,
  
 ) {}

@@ -59,13 +59,13 @@ public class BoxResource {
         return Response.ok(boxService.findByNome(nome)).build();
     }
 
-    @GET
-    @Path("/search/autor/{autor}")
-    //@RolesAllowed({"Funcionario", "Cliente"})
-    public Response findByAutor(@PathParam("autor") String autor){
-        LOG.info("Buscando Box por autor - Executando LivroResource_findByAutor");
-        return Response.ok(boxService.findByAutor(autor)).build();
-    }
+    // @GET
+    // @Path("/search/autor/{autor}")
+    // //@RolesAllowed({"Funcionario", "Cliente"})
+    // public Response findByAutor(@PathParam("autor") String autor){
+    //     LOG.info("Buscando Box por autor - Executando LivroResource_findByAutor");
+    //     return Response.ok(boxService.findByAutor(autor)).build();
+    // }
 
     @POST
     //@RolesAllowed({"Funcionario"})

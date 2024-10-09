@@ -13,5 +13,5 @@ public interface BoxService {
     public BoxResponseDTO findById(Long id);
     public List<BoxResponseDTO> findAll();
     public List<BoxResponseDTO> findByNome(String nome);
-    public List<BoxResponseDTO> findByAutor(String autor);
+   // public List<BoxResponseDTO> findByAutor(String autor);
 }
