@@ -17,6 +17,7 @@ public record BoxDTO(
     Double preco,
 
     Integer classificacao,
+    
     @NotNull(message = "O campo genero não pode estar vazio")
     List<Long> generos
     // List<Long> autores,

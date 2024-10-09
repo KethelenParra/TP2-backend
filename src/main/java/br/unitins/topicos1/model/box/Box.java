@@ -61,16 +61,6 @@ public class Box extends DefaultEntity{
     // )
     // private List<Autor> listaAutor;
 
-    public void plusGeneros(Genero genero) {
-        
-        if (listaGeneros == null) {
-
-            listaGeneros = new ArrayList<>();
-        }
-        
-        this.listaGeneros.add(genero);
-    }
-
      public String getNome() {
         return nome;
     }

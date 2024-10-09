@@ -169,7 +169,7 @@ VALUES
        (0.0, 1, 140.25, 2);
 
 -- Box
-INSERT INTO box (nome, descricaoBox, quantidadeEstoque, id_fornecedor, id_editora, preco) 
+INSERT INTO box (nome, descricaoBox, quantidadeEstoque, id_fornecedor, id_editora, preco, classificacao) 
 VALUES 
        ('Harry Potter Box Set', 
        'Harry Potter é uma série sobre um jovem bruxo que descobre seu destino em um mundo mágico. Ao longo dos sete livros, ele enfrenta desafios, faz amigos e luta contra Voldemort, o bruxo responsável pela morte de seus pais. A história mistura magia, amizade e coragem, tornando-se um dos maiores fenômenos da literatura mundial. 
@@ -180,14 +180,14 @@ VALUES
        5. Harry Potter e a Ordem da Fênix (766 páginas) - A resistência contra Voldemort cresce enquanto Harry descobre mais sobre sua conexão com o vilão. 
        6. Harry Potter e o Enigma do Príncipe (607 páginas) - Harry se aproxima de Dumbledore para entender o passado de Voldemort. 
        7. Harry Potter e as Relíquias da Morte (607 páginas) - A batalha final contra Voldemort se aproxima.', 
-       50, 1, 2, 299.99),
+       50, 1, 2, 299.99, 1),
 
        ('The Lord of the Rings Trilogy', 
        'A épica jornada de Frodo e seus amigos para destruir o Um Anel. Escrito por J.R.R. Tolkien, esta trilogia é um dos maiores marcos da literatura fantástica. 
        1. A Sociedade do Anel (423 páginas) - Frodo inicia sua jornada para destruir o Um Anel. 
        2. As Duas Torres (352 páginas) - A Irmandade se separa, e Frodo segue com Sam em direção a Mordor. 
        3. O Retorno do Rei (416 páginas) - A batalha final entre as forças de Sauron e a Terra Média acontece enquanto Frodo tenta destruir o anel.', 
-       30, 2, 1, 349.90),
+       30, 2, 1, 349.90, 2),
 
        ('The Chronicles of Narnia', 
        'O clássico de C.S. Lewis, Nárnia é um mundo mágico cheio de criaturas fantásticas e grandes aventuras, onde quatro irmãos são chamados a proteger a terra do mal. 
@@ -198,7 +198,7 @@ VALUES
        5. O Cavalo e Seu Menino (240 páginas) - Uma aventura no deserto enquanto um garoto e um cavalo fogem em busca de liberdade. 
        6. O Sobrinho do Mago (240 páginas) - A origem de Nárnia e a criação de seu mundo mágico. 
        7. A Última Batalha (228 páginas) - A conclusão épica da saga, onde Nárnia enfrenta sua batalha final.', 
-       40, 1, 2, 259.99),
+       40, 1, 2, 259.99, 3),
 
        ('Sherlock Holmes Collection', 
        'Uma coleção completa das aventuras do detetive mais famoso do mundo, Sherlock Holmes, criado por Sir Arthur Conan Doyle. 
@@ -206,7 +206,7 @@ VALUES
        2. O Signo dos Quatro (283 páginas) - Uma aventura envolvendo um tesouro desaparecido e segredos do passado. 
        3. O Cão dos Baskervilles (256 páginas) - Sherlock investiga a lenda de um cão monstruoso em Dartmoor. 
        4. O Vale do Medo (320 páginas) - Um assassinato misterioso leva Sherlock a desvendar uma trama complexa.', 
-       20, 3, 4, 199.90),
+       20, 3, 4, 199.90, 4),
 
        ('Percy Jackson Box Set', 
        'A série Percy Jackson segue um jovem que descobre ser filho de um deus grego, enfrentando aventuras e desafios no mundo moderno. 
@@ -215,7 +215,7 @@ VALUES
        3. A Maldição do Titã (336 páginas) - Percy e seus amigos tentam salvar a deusa Ártemis e uma amiga sequestrada. 
        4. A Batalha do Labirinto (368 páginas) - Percy precisa navegar no Labirinto para impedir a invasão de Luke. 
        5. O Último Olimpiano (400 páginas) - A batalha final entre os deuses e os titãs ameaça o Olimpo.', 
-       35, 4, 2, 229.90);
+       35, 4, 2, 229.90, 1);
 
 -- Inserir relacionamento entre box e autor
 -- INSERT INTO box_autor (idbox, idautor) VALUES (1, 1);
