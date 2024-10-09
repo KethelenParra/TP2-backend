@@ -114,5 +114,5 @@ public class BoxServiceImpl implements BoxService {
     // @Override
     // public List<BoxResponseDTO> findByAutor(String autor) {
     //     return boxRepository.findByAutor(autor).stream().map(e -> BoxResponseDTO.valueOf(e)).toList();
-    // }
+    // }
 }

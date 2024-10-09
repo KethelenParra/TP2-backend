@@ -1,7 +1,6 @@
 package br.unitins.topicos1.dto.Response;
 
 import java.util.List;
-
 import br.unitins.topicos1.model.Enum.Classificacao;
 import br.unitins.topicos1.model.box.Box;
 
@@ -29,7 +28,6 @@ public record BoxResponseDTO(
         //                                         .stream()
         //                                         .map(AutorResponseDTO::valueOf)
         //                                         .toList();     
-
         return new BoxResponseDTO(
             box.getId(),
             box.getNome(),

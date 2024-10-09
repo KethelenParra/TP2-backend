@@ -4,14 +4,12 @@ import java.util.List;
 import java.util.ArrayList;
 
 import br.unitins.topicos1.model.Enum.Classificacao;
-import br.unitins.topicos1.model.autor.Autor;
 import br.unitins.topicos1.model.defaultEntity.DefaultEntity;
 import br.unitins.topicos1.model.editora.Editora;
 import br.unitins.topicos1.model.fornecedor.Fornecedor;
 import br.unitins.topicos1.model.genero.Genero;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
@@ -29,9 +27,11 @@ public class Box extends DefaultEntity{
     @Column(nullable = false)
     private Integer quantidadeEstoque;
 
-    
-    // // private String nomeImagem;
-    // @Column
+    @Column(nullable = false)
+    private Double preco;
+
+    // private String nomeImagem;
+
     private Classificacao classificacao;
     
     @ManyToOne // Relacionamento com fornecedor
@@ -41,9 +41,6 @@ public class Box extends DefaultEntity{
     @ManyToOne
     @JoinColumn(name = "id_editora", nullable = false)
     private Editora Editora;
-
-    @Column(nullable = false)
-    private Double preco;
 
     @ManyToMany
     @JoinTable(

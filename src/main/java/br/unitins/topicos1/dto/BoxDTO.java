@@ -20,6 +20,6 @@ public record BoxDTO(
     
     @NotNull(message = "O campo genero não pode estar vazio")
     List<Long> generos
+
     // List<Long> autores,
- 
 ) {}
