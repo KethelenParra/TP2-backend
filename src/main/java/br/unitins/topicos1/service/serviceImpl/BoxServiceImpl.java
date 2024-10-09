@@ -49,13 +49,18 @@ public class BoxServiceImpl implements BoxService {
     @Override
     @Transactional
     public BoxResponseDTO create(@Valid BoxDTO dto) {
+<<<<<<< HEAD
         
         Classificacao classificacaoEnum = Classificacao.getById(dto.classificacao());
 
+=======
+        validarNomeBox(dto.nome());
+>>>>>>> f7c0d7cebfcef18ed6a4c6b8e714d9866bcd9698
         Box box = new Box();
         box.setNome(dto.nome());
         box.setDescricaoBox(dto.descricaoBox());
         box.setQuantidadeEstoque(dto.quantidadeEstoque());
+<<<<<<< HEAD
         box.setPreco(dto.preco());
 
         Fornecedor fornecedor = fornecedorRepository.findById(dto.fornecedor().getId());
@@ -82,6 +87,15 @@ public class BoxServiceImpl implements BoxService {
 
         box.setClassificacao(classificacaoEnum);
 
+=======
+        box.setFornecedor(fornecedorRepository.findById(dto.fornecedor()));
+        box.setEditora(editoraRepository.findById(dto.editora()));
+        box.setPreco(dto.preco());
+        box.setClassificacao(Classificacao.valueOf(dto.classificacao()));
+        box.setListaGeneros(dto.generos().stream().map(g -> generoRepository.findById(g)).toList());
+        //box.setListaAutor((dto.autores()).stream().map(a -> autorRepository.findById(a)).toList());
+                
+>>>>>>> f7c0d7cebfcef18ed6a4c6b8e714d9866bcd9698
         boxRepository.persist(box);
         
         return BoxResponseDTO.valueOf(box);
@@ -108,6 +122,7 @@ public class BoxServiceImpl implements BoxService {
         boxBanco.setNome(dto.nome());
         boxBanco.setDescricaoBox(dto.descricaoBox());
         boxBanco.setQuantidadeEstoque(dto.quantidadeEstoque());
+<<<<<<< HEAD
         boxBanco.setPreco(dto.preco());
 
         Fornecedor fornecedor = fornecedorRepository.findById(dto.fornecedor().getId());
@@ -134,6 +149,16 @@ public class BoxServiceImpl implements BoxService {
         boxBanco.setClassificacao(classificacao);
 
         boxRepository.persist(boxBanco);
+=======
+        boxBanco.setFornecedor(fornecedorRepository.findById(dto.fornecedor()));
+        boxBanco.setEditora(editoraRepository.findById(dto.editora()));
+        boxBanco.setPreco(dto.preco());
+        boxBanco.setClassificacao(Classificacao.valueOf(dto.classificacao()));
+        boxBanco.setListaGeneros(dto.generos().stream().map(g -> generoRepository.findById(g)).toList());    
+        // boxBanco.setListaAutor((dto.autores()).stream().map(a -> autorRepository.findById(a)).toList());
+        
+        //boxRepository.persist(boxBanco);
+>>>>>>> f7c0d7cebfcef18ed6a4c6b8e714d9866bcd9698
     }
 
     @Override
@@ -160,8 +185,8 @@ public class BoxServiceImpl implements BoxService {
             .map(a -> BoxResponseDTO.valueOf(a)).toList();
     }
 
-    @Override
-    public List<BoxResponseDTO> findByAutor(String autor) {
-        return boxRepository.findByAutor(autor).stream().map(e -> BoxResponseDTO.valueOf(e)).toList();
-    }
+    // @Override
+    // public List<BoxResponseDTO> findByAutor(String autor) {
+    //     return boxRepository.findByAutor(autor).stream().map(e -> BoxResponseDTO.valueOf(e)).toList();
+    // }
 }

@@ -1,16 +1,15 @@
 package br.unitins.topicos1.model.box;
 
 import java.util.List;
+import java.util.ArrayList;
 
 import br.unitins.topicos1.model.Enum.Classificacao;
-import br.unitins.topicos1.model.autor.Autor;
 import br.unitins.topicos1.model.defaultEntity.DefaultEntity;
 import br.unitins.topicos1.model.editora.Editora;
 import br.unitins.topicos1.model.fornecedor.Fornecedor;
 import br.unitins.topicos1.model.genero.Genero;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
@@ -34,30 +33,40 @@ public class Box extends DefaultEntity{
     // private String nomeImagem;
 
     private Classificacao classificacao;
-
+    
     @ManyToOne // Relacionamento com fornecedor
     @JoinColumn(name = "id_fornecedor", nullable = false)
     private Fornecedor fornecedor;
-
+    
     @ManyToOne
     @JoinColumn(name = "id_editora", nullable = false)
     private Editora Editora;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(
-        name = "box_autor",
-        joinColumns = @JoinColumn(name = "idbox"),
-        inverseJoinColumns = @JoinColumn(name = "idautor")
-    )
-    private List<Autor> listaAutor;
-
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany
     @JoinTable(
         name = "box_genero",
         joinColumns = @JoinColumn(name = "idbox"),
         inverseJoinColumns = @JoinColumn(name = "idgenero")
     )
-    private List<Genero> listaGenero;
+    private List<Genero> listaGeneros;
+
+    // @ManyToMany(fetch = FetchType.EAGER)
+    // @JoinTable(
+    //     name = "box_autor",
+    //     joinColumns = @JoinColumn(name = "idbox"),
+    //     inverseJoinColumns = @JoinColumn(name = "idautor")
+    // )
+    // private List<Autor> listaAutor;
+
+    public void plusGeneros(Genero genero) {
+        
+        if (listaGeneros == null) {
+
+            listaGeneros = new ArrayList<>();
+        }
+        
+        this.listaGeneros.add(genero);
+    }
 
      public String getNome() {
         return nome;
@@ -91,13 +100,13 @@ public class Box extends DefaultEntity{
         this.preco = preco;
     }
 
-    // public String getNomeImagem() {
-    //     return nomeImagem;
-    // }
+    // // public String getNomeImagem() {
+    // //     return nomeImagem;
+    // // }
 
-    // public void setNomeImagem(String nomeImagem) {
-    //     this.nomeImagem = nomeImagem;
-    // }
+    // // public void setNomeImagem(String nomeImagem) {
+    // //     this.nomeImagem = nomeImagem;
+    // // }
 
     public Classificacao getClassificacao() {
         return classificacao;
@@ -123,20 +132,21 @@ public class Box extends DefaultEntity{
         Editora = editora;
     }
 
-    public List<Autor> getListaAutor() {
-        return listaAutor;
+    public List<Genero> getListaGeneros() {
+        return listaGeneros;
     }
 
-    public void setListaAutor(List<Autor> listaAutor) {
-        this.listaAutor = listaAutor;
+    public void setListaGeneros(List<Genero> listaGeneros) {
+        this.listaGeneros = listaGeneros;
     }
 
-    public List<Genero> getListaGenero() {
-        return listaGenero;
-    }
+    // public List<Autor> getListaAutor() {
+    //     return listaAutor;
+    // }
 
-    public void setListaGenero(List<Genero> listaGenero) {
-        this.listaGenero = listaGenero;
-    }
+    // public void setListaAutor(List<Autor> listaAutor) {
+    //     this.listaAutor = listaAutor;
+    // }
+
 
 }
