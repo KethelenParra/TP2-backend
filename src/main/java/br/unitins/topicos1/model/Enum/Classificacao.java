@@ -33,6 +33,19 @@ public enum Classificacao {
         this.descricao = descricao;
     }
 
+    public static Classificacao getById(int id) {
+        for (Classificacao classificacao : values()) {
+            if (classificacao.getId() == id) {
+                return classificacao;
+            }
+        }
+        throw new IllegalArgumentException("ID de classificação inválido: " + id);
+    }
+
+    public static String getDescricaoById(int id) {
+        return getById(id).getDescricao();
+    }
+
     public static Classificacao valueOf(Integer id) throws IllegalArgumentException{
         for (Classificacao classificacao : Classificacao.values()){
             if (classificacao.id == id)

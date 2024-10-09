@@ -14,7 +14,7 @@ public record LivroResponseDTO(
         String quantidadeEstoque,
         String isbn,
         String datalancamento,
-        String classificacao,
+        // String classificacao,
         String descricao,
         FornecedorResponseDTO fornecedor, 
         String nomeImagem
@@ -39,7 +39,7 @@ public record LivroResponseDTO(
                 livro.getQuantidadeEstoque() > 0 ? "Disponível" : "Estoque esgotado",
                 livro.getIsbn(),
                 livro.getDatalancamento().format(formatter),
-                livro.getClassificacao().getDescricao(),
+                // livro.getClassificacao().getDescricao(),
                 livro.getDescricao(),
                 FornecedorResponseDTO.valueOf(livro.getFornecedor()),
                 livro.getNomeImagem());

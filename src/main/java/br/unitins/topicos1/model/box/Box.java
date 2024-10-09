@@ -31,7 +31,7 @@ public class Box extends DefaultEntity{
     @Column(nullable = false)
     private Double preco;
 
-    private String nomeImagem;
+    // private String nomeImagem;
 
     private Classificacao classificacao;
 
@@ -91,13 +91,13 @@ public class Box extends DefaultEntity{
         this.preco = preco;
     }
 
-    public String getNomeImagem() {
-        return nomeImagem;
-    }
+    // public String getNomeImagem() {
+    //     return nomeImagem;
+    // }
 
-    public void setNomeImagem(String nomeImagem) {
-        this.nomeImagem = nomeImagem;
-    }
+    // public void setNomeImagem(String nomeImagem) {
+    //     this.nomeImagem = nomeImagem;
+    // }
 
     public Classificacao getClassificacao() {
         return classificacao;

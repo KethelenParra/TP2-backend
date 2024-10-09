@@ -5,7 +5,11 @@ import java.util.List;
 import br.unitins.topicos1.dto.BoxDTO;
 import br.unitins.topicos1.dto.Response.BoxResponseDTO;
 import br.unitins.topicos1.model.Enum.Classificacao;
+import br.unitins.topicos1.model.autor.Autor;
 import br.unitins.topicos1.model.box.Box;
+import br.unitins.topicos1.model.editora.Editora;
+import br.unitins.topicos1.model.fornecedor.Fornecedor;
+import br.unitins.topicos1.model.genero.Genero;
 import br.unitins.topicos1.repository.LivroRepository;
 import br.unitins.topicos1.repository.AutorRepository;
 import br.unitins.topicos1.repository.BoxRepository;
@@ -40,23 +44,51 @@ public class BoxServiceImpl implements BoxService {
     @Inject
     public GeneroRepository generoRepository;
 
+    private int classificacaoId;
+
     @Override
     @Transactional
     public BoxResponseDTO create(@Valid BoxDTO dto) {
+        
+        Classificacao classificacaoEnum = Classificacao.getById(dto.classificacao());
+
         Box box = new Box();
         box.setNome(dto.nome());
         box.setDescricaoBox(dto.descricaoBox());
-        box.setFornecedor(fornecedorRepository.findById(dto.fornecedor()));
         box.setQuantidadeEstoque(dto.quantidadeEstoque());
-        box.setClassificacao(Classificacao.valueOf(dto.classificacao()));
         box.setPreco(dto.preco());
-        box.setEditora(editoraRepository.findById(dto.editora()));
-        box.setListaAutor((dto.autores()).stream().map(a -> autorRepository.findById(a)).toList());
-        box.setListaGenero(dto.generos().stream().map(g -> generoRepository.findById(g)).toList());
-                
+
+        Fornecedor fornecedor = fornecedorRepository.findById(dto.fornecedor().getId());
+        if (fornecedor == null) {
+            throw new ValidationException("fornecedor", "Fornecedor não encontrado.");
+        }
+        box.setFornecedor(fornecedor);
+        
+        Editora editora = editoraRepository.findById(dto.editora().getId());
+        if (editora == null) {
+            throw new ValidationException("editora", "Editora não encontrada.");
+        }
+        box.setEditora(editora);
+
+        List<Autor> autores = dto.autores().stream()
+            .map(autorRepository::findById)
+            .toList();
+        box.setListaAutor(autores);
+
+        List<Genero> generos = dto.generos().stream()
+            .map(generoRepository::findById)
+            .toList();
+        box.setListaGenero(generos);
+
+        box.setClassificacao(classificacaoEnum);
+
         boxRepository.persist(box);
         
         return BoxResponseDTO.valueOf(box);
+    }
+
+    public String getClassificacaoDescricao() {
+        return Classificacao.getById(classificacaoId).name();  // Retorna a descrição baseada no ID
     }
 
     public void validarNomeBox(String nome) {
@@ -75,14 +107,32 @@ public class BoxServiceImpl implements BoxService {
             
         boxBanco.setNome(dto.nome());
         boxBanco.setDescricaoBox(dto.descricaoBox());
-        boxBanco.setFornecedor(fornecedorRepository.findById(dto.fornecedor()));
         boxBanco.setQuantidadeEstoque(dto.quantidadeEstoque());
-        boxBanco.setClassificacao(Classificacao.valueOf(dto.classificacao()));
         boxBanco.setPreco(dto.preco());
-        boxBanco.setEditora(editoraRepository.findById(dto.editora()));
-        boxBanco.setListaAutor((dto.autores()).stream().map(a -> autorRepository.findById(a)).toList());
-        boxBanco.setListaGenero(dto.generos().stream().map(g -> generoRepository.findById(g)).toList());    
-        
+
+        Fornecedor fornecedor = fornecedorRepository.findById(dto.fornecedor().getId());
+        if(fornecedor == null){
+            throw new ValidationException("fornecedor", "Fornecedor não encontrado");
+        }
+
+        Editora editora = editoraRepository.findById(dto.editora().getId());
+        if (editora == null) {
+            throw new ValidationException("editora", "Editora não encontrada");
+        }
+
+        List<Genero> generos = dto.generos().stream()
+            .map(generoRepository::findById)
+            .toList();
+        boxBanco.setListaGenero(generos);
+
+        List<Autor> autores = dto.autores().stream()
+            .map(autorRepository::findById)
+            .toList();
+        boxBanco.setListaAutor(autores);
+
+        Classificacao classificacao = Classificacao.getById(dto.classificacao());
+        boxBanco.setClassificacao(classificacao);
+
         boxRepository.persist(boxBanco);
     }
 
@@ -90,7 +140,7 @@ public class BoxServiceImpl implements BoxService {
     @Transactional
     public void delete(Long id) {
         if (id == null)
-           throw new ValidationException("id", "Id não pode ser nulo.");
+           throw new ValidationException(   "id", "Id não pode ser nulo.");
         boxRepository.deleteById(id);
     }
 
