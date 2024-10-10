@@ -1,7 +1,6 @@
 package br.unitins.topicos1.model.box;
 
 import java.util.List;
-import java.util.ArrayList;
 
 import br.unitins.topicos1.model.Enum.Classificacao;
 import br.unitins.topicos1.model.defaultEntity.DefaultEntity;
