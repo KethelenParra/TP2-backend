@@ -4,7 +4,7 @@ import org.jboss.logging.Logger;
 
 import br.unitins.topicos1.dto.BoxDTO;
 import br.unitins.topicos1.service.BoxService;
-import br.unitins.topicos1.service.file.LivroFileServiceImpl;
+//import br.unitins.topicos1.service.file.LivroFileServiceImpl;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
@@ -26,8 +26,8 @@ public class BoxResource {
     @Inject
     private BoxService boxService;
 
-    @Inject
-    public LivroFileServiceImpl fileService;
+    // @Inject
+    // public LivroFileServiceImpl fileService;
 
     private static final Logger LOG = Logger.getLogger(BoxResource.class);
 

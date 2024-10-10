@@ -42,13 +42,13 @@ public class Box extends DefaultEntity{
     @JoinColumn(name = "id_editora", nullable = false)
     private Editora Editora;
 
-    @ManyToMany
-    @JoinTable(
-        name = "box_genero",
-        joinColumns = @JoinColumn(name = "idbox"),
-        inverseJoinColumns = @JoinColumn(name = "idgenero")
-    )
-    private List<Genero> listaGeneros;
+    // @ManyToMany
+    // @JoinTable(
+    //     name = "box_genero",
+    //     joinColumns = @JoinColumn(name = "idbox"),
+    //     inverseJoinColumns = @JoinColumn(name = "idgenero")
+    // )
+    // private List<Genero> listaGeneros;
 
     // @ManyToMany(fetch = FetchType.EAGER)
     // @JoinTable(
@@ -122,13 +122,13 @@ public class Box extends DefaultEntity{
         Editora = editora;
     }
 
-    public List<Genero> getListaGeneros() {
-        return listaGeneros;
-    }
+    // public List<Genero> getListaGeneros() {
+    //     return listaGeneros;
+    // }
 
-    public void setListaGeneros(List<Genero> listaGeneros) {
-        this.listaGeneros = listaGeneros;
-    }
+    // public void setListaGeneros(List<Genero> listaGeneros) {
+    //     this.listaGeneros = listaGeneros;
+    // }
 
     // public List<Autor> getListaAutor() {
     //     return listaAutor;

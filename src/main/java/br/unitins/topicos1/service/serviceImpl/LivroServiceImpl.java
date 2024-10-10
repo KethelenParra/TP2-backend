@@ -39,27 +39,28 @@ public class LivroServiceImpl implements LivroService{
     @Override
     @Transactional
     public LivroResponseDTO create(@Valid LivroDTO dto){
+        validarTituloLivro(dto.titulo());
         Livro livro = new Livro();
         livro.setTitulo(dto.titulo());
         livro.setQuantidadeEstoque(dto.quantidadeEstoque());
+        livro.setPreco(dto.preco());
         livro.setIsbn(dto.isbn());
         livro.setDescricao(dto.descricao());
-        livro.setDatalancamento(dto.datalancamento());
-        livro.setPreco(dto.preco());
         livro.setClassificacao(Classificacao.valueOf(dto.classificacao()));
-        livro.setFornecedor(fornecedorRepository.findById(dto.fornecedor()));
-        livro.setListaAutor((dto.autores()).stream().map(a -> autorRepository.findById(a)).toList());
-        livro.setListaGenero(dto.generos().stream().map(g -> generoRepository.findById(g)).toList());
         livro.setEditora(editoraRepository.findById(dto.editora()));
+        livro.setFornecedor(fornecedorRepository.findById(dto.fornecedor()));
+        // livro.setDatalancamento(dto.datalancamento());
+        // livro.setListaAutor((dto.autores()).stream().map(a -> autorRepository.findById(a)).toList());
+        // livro.setListaGenero(dto.generos().stream().map(g -> generoRepository.findById(g)).toList());
 
         livroRepository.persist(livro);
         return LivroResponseDTO.valueOf(livro);
     }
     
-    public void validarTituloLivro(String nome) {
-        Livro livro = livroRepository.findByTituloLivro(nome);
+    public void validarTituloLivro(String titulo) {
+        Livro livro = livroRepository.findByTituloLivro(titulo);
         if (livro != null)
-            throw  new ValidationException("nome", "O nome '"+nome+"' já existe.");
+            throw  new ValidationException("titulo", "O titulo '"+titulo+"' já existe.");
     }
 
     @Override
@@ -72,15 +73,15 @@ public class LivroServiceImpl implements LivroService{
 
         livroBanco.setTitulo(dto.titulo());
         livroBanco.setQuantidadeEstoque(dto.quantidadeEstoque());
+        livroBanco.setPreco(dto.preco());
         livroBanco.setIsbn(dto.isbn());
         livroBanco.setDescricao(dto.descricao());
-        livroBanco.setDatalancamento(dto.datalancamento());
-        livroBanco.setFornecedor(fornecedorRepository.findById(dto.fornecedor()));
         livroBanco.setClassificacao(Classificacao.valueOf(dto.classificacao()));
-        livroBanco.setPreco(dto.preco());
-        livroBanco.setListaAutor((dto.autores()).stream().map(a -> autorRepository.findById(a)).toList());
-        livroBanco.setListaGenero(dto.generos().stream().map(g -> generoRepository.findById(g)).toList());
         livroBanco.setEditora(editoraRepository.findById(dto.editora()));
+        livroBanco.setFornecedor(fornecedorRepository.findById(dto.fornecedor()));
+        // livroBanco.setDatalancamento(dto.datalancamento());
+        // livroBanco.setListaAutor((dto.autores()).stream().map(a -> autorRepository.findById(a)).toList());
+        // livroBanco.setListaGenero(dto.generos().stream().map(g -> generoRepository.findById(g)).toList());
     }
 
     @Override
@@ -119,9 +120,9 @@ public class LivroServiceImpl implements LivroService{
         .map(e -> LivroResponseDTO.valueOf(e)).toList();
     }
 
-    @Override
-    public List<LivroResponseDTO> findByAutor(String autor) {
-        return livroRepository.findByAutor(autor).stream().map(e -> LivroResponseDTO.valueOf(e)).toList();
-    }
+    // @Override
+    // public List<LivroResponseDTO> findByAutor(String autor) {
+    //     return livroRepository.findByAutor(autor).stream().map(e -> LivroResponseDTO.valueOf(e)).toList();
+    // }
 
 }
