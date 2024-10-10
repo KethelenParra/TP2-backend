@@ -13,24 +13,24 @@ public record LivroResponseDTO(
         Double preco,
         String isbn,
         String descricao,
+        String datalancamento,
         Classificacao classificacao,
         EditoraResponseDTO editora,
-        FornecedorResponseDTO fornecedor 
-        //String datalancamento,
-        // List<AutorResponseDTO> autores,
-        // List<GeneroResponseDTO> generos,
+        FornecedorResponseDTO fornecedor, 
+        List<AutorResponseDTO> autores,
+        List<GeneroResponseDTO> generos
         //String nomeImagem
 ) {
-    //private static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    private static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     public static LivroResponseDTO valueOf(Livro livro) {
-                        // List<AutorResponseDTO> listaAutor = livro.getListaAutor()
-                        //                         .stream()
-                        //                         .map(AutorResponseDTO::valueOf)
-                        //                         .toList();
-                        // List<GeneroResponseDTO> listaGenero = livro.getListaGenero()
-                        //                         .stream()
-                        //                         .map(GeneroResponseDTO::valueOf)
-                        //                         .toList();
+                List<AutorResponseDTO> listaAutor = livro.getListaAutor()
+                                        .stream()
+                                        .map(AutorResponseDTO::valueOf)
+                                        .toList();
+                List<GeneroResponseDTO> listaGenero = livro.getListaGenero()
+                                        .stream()
+                                        .map(GeneroResponseDTO::valueOf)
+                                        .toList();
         return new LivroResponseDTO(
                 livro.getId(),
                 livro.getTitulo(),
@@ -38,12 +38,12 @@ public record LivroResponseDTO(
                 livro.getPreco(),
                 livro.getIsbn(),
                 livro.getDescricao(),
+                livro.getDatalancamento().format(formatter),
                 livro.getClassificacao(),
                 EditoraResponseDTO.valueOf(livro.getEditora()),
-                FornecedorResponseDTO.valueOf(livro.getFornecedor())
-                //listaAutor,
-                //listaGenero,
-                //livro.getDatalancamento().format(formatter),
+                FornecedorResponseDTO.valueOf(livro.getFornecedor()),
+                listaAutor,
+                listaGenero
                 //livro.getNomeImagem()
         );
     }

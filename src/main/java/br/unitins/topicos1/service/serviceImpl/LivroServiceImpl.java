@@ -46,12 +46,12 @@ public class LivroServiceImpl implements LivroService{
         livro.setPreco(dto.preco());
         livro.setIsbn(dto.isbn());
         livro.setDescricao(dto.descricao());
+        livro.setDatalancamento(dto.datalancamento());
         livro.setClassificacao(Classificacao.valueOf(dto.classificacao()));
         livro.setEditora(editoraRepository.findById(dto.editora()));
         livro.setFornecedor(fornecedorRepository.findById(dto.fornecedor()));
-        // livro.setDatalancamento(dto.datalancamento());
-        // livro.setListaAutor((dto.autores()).stream().map(a -> autorRepository.findById(a)).toList());
-        // livro.setListaGenero(dto.generos().stream().map(g -> generoRepository.findById(g)).toList());
+        livro.setListaAutor((dto.autores()).stream().map(a -> autorRepository.findById(a)).toList());
+        livro.setListaGenero(dto.generos().stream().map(g -> generoRepository.findById(g)).toList());
 
         livroRepository.persist(livro);
         return LivroResponseDTO.valueOf(livro);
@@ -76,12 +76,12 @@ public class LivroServiceImpl implements LivroService{
         livroBanco.setPreco(dto.preco());
         livroBanco.setIsbn(dto.isbn());
         livroBanco.setDescricao(dto.descricao());
+        livroBanco.setDatalancamento(dto.datalancamento());
         livroBanco.setClassificacao(Classificacao.valueOf(dto.classificacao()));
         livroBanco.setEditora(editoraRepository.findById(dto.editora()));
         livroBanco.setFornecedor(fornecedorRepository.findById(dto.fornecedor()));
-        // livroBanco.setDatalancamento(dto.datalancamento());
-        // livroBanco.setListaAutor((dto.autores()).stream().map(a -> autorRepository.findById(a)).toList());
-        // livroBanco.setListaGenero(dto.generos().stream().map(g -> generoRepository.findById(g)).toList());
+        livroBanco.setListaAutor((dto.autores()).stream().map(a -> autorRepository.findById(a)).toList());
+        livroBanco.setListaGenero(dto.generos().stream().map(g -> generoRepository.findById(g)).toList());
     }
 
     @Override
@@ -120,9 +120,9 @@ public class LivroServiceImpl implements LivroService{
         .map(e -> LivroResponseDTO.valueOf(e)).toList();
     }
 
-    // @Override
-    // public List<LivroResponseDTO> findByAutor(String autor) {
-    //     return livroRepository.findByAutor(autor).stream().map(e -> LivroResponseDTO.valueOf(e)).toList();
-    // }
+    @Override
+    public List<LivroResponseDTO> findByAutor(String autor) {
+        return livroRepository.findByAutor(autor).stream().map(e -> LivroResponseDTO.valueOf(e)).toList();
+    }
 
 }

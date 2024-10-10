@@ -31,11 +31,11 @@ public class Livro extends DefaultEntity{
     @Column(nullable = false)
     private Integer quantidadeEstoque;
 
+    @Column(length = 13)
     private String isbn;
 
-    // @Column(nullable = false)
-    // @Temporal(TemporalType.DATE)
-    // private LocalDate datalancamento;
+    @Column(nullable = false)
+    private LocalDate datalancamento;
 
     @Column(length = 20000, nullable = false)
     private String descricao;
@@ -50,23 +50,23 @@ public class Livro extends DefaultEntity{
     @JoinColumn(name = "id_editora", nullable = false)
     private Editora Editora;
 
-    // @ManyToMany
-    // @JoinTable(
-    //     name = "livro_autor",
-    //     joinColumns = @JoinColumn(name = "idlivro"),
-    //     inverseJoinColumns = @JoinColumn(name = "idautor")
-    // )
-    // private List<Autor> listaAutor;
+    @ManyToMany
+    @JoinTable(
+        name = "livro_autor",
+        joinColumns = @JoinColumn(name = "idlivro"),
+        inverseJoinColumns = @JoinColumn(name = "idautor")
+    )
+    private List<Autor> listaAutor;
 
-    // private String nomeImagem;
+    private String nomeImagem;
 
-    // @ManyToMany
-    // @JoinTable(
-    //     name = "livro_genero",
-    //     joinColumns = @JoinColumn(name = "idlivro"),
-    //     inverseJoinColumns = @JoinColumn(name = "idgenero")
-    // )
-    // private List<Genero> listaGenero;
+    @ManyToMany
+    @JoinTable(
+        name = "livro_genero",
+        joinColumns = @JoinColumn(name = "idlivro"),
+        inverseJoinColumns = @JoinColumn(name = "idgenero")
+    )
+    private List<Genero> listaGenero;
 
     public void diminuindoEstoque(Integer quantidadeEstoque) {
         this.quantidadeEstoque -= quantidadeEstoque;
@@ -110,14 +110,14 @@ public class Livro extends DefaultEntity{
     }
 
 
-    // public LocalDate getDatalancamento() {
-    //     return datalancamento;
-    // }
+    public LocalDate getDatalancamento() {
+        return datalancamento;
+    }
 
 
-    // public void setDatalancamento(LocalDate datalancamento) {
-    //     this.datalancamento = datalancamento;
-    // }
+    public void setDatalancamento(LocalDate datalancamento) {
+        this.datalancamento = datalancamento;
+    }
 
 
     public String getDescricao() {
@@ -140,23 +140,23 @@ public class Livro extends DefaultEntity{
     }
 
 
-    // public List<Autor> getListaAutor() {
-    //     return listaAutor;
-    // }
+    public List<Autor> getListaAutor() {
+        return listaAutor;
+    }
 
 
-    // public void setListaAutor(List<Autor> listaAutor) {
-    //     this.listaAutor = listaAutor;
-    // }
+    public void setListaAutor(List<Autor> listaAutor) {
+        this.listaAutor = listaAutor;
+    }
 
 
-    // public List<Genero> getListaGenero() {
-    //     return listaGenero;
-    // }
+    public List<Genero> getListaGenero() {
+        return listaGenero;
+    }
 
-    // public void setListaGenero(List<Genero> listaGenero) {
-    //     this.listaGenero = listaGenero;
-    // }
+    public void setListaGenero(List<Genero> listaGenero) {
+        this.listaGenero = listaGenero;
+    }
 
     public Editora getEditora() {
         return Editora;
