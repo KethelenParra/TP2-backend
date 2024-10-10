@@ -12,16 +12,16 @@ public record BoxResponseDTO(
     FornecedorResponseDTO fornecedor,
     EditoraResponseDTO editora,
     Double preco,
-    Classificacao classificacao, // Renomeei para ficar consistente
-    List<GeneroResponseDTO> generos
+    Classificacao classificacao // Renomeei para ficar consistente
+   // List<GeneroResponseDTO> generos
     // List<AutorResponseDTO> autores
    //String nomeImagem
 ) {
     public static BoxResponseDTO valueOf(Box box){
-        List<GeneroResponseDTO> listaGenero = box.getListaGeneros()
-                                                .stream()
-                                                .map(GeneroResponseDTO::valueOf)
-                                                .toList();
+        // List<GeneroResponseDTO> listaGenero = box.getListaGeneros()
+        //                                         .stream()
+        //                                         .map(GeneroResponseDTO::valueOf)
+        //                                         .toList();
 
         // Transformar listas de autores e gêneros em suas respectivas DTOs
         // List<AutorResponseDTO> listaAutor = box.getListaAutor()
@@ -33,13 +33,13 @@ public record BoxResponseDTO(
             box.getNome(),
             box.getDescricaoBox(),
             box.getQuantidadeEstoque(),
-            FornecedorResponseDTO.valueOf(box.getFornecedor()),  // Relacionamento com fornecedor
-            EditoraResponseDTO.valueOf(box.getEditora()),  // Relacionamento com editora
-            box.getPreco(), // Formatação de preço
-            box.getClassificacao(),  // Classificação
-            listaGenero  // Lista de gêneros
-            // listaAutor,  // Lista de autores
-            //box.getNomeImagem()  // Nome da imagem
+            FornecedorResponseDTO.valueOf(box.getFornecedor()),
+            EditoraResponseDTO.valueOf(box.getEditora()),  
+            box.getPreco(), 
+            box.getClassificacao() 
+            //listaGenero  
+            // listaAutor,  
+            //box.getNomeImagem()  
         );
     }
 }
