@@ -1,17 +1,12 @@
 package br.unitins.topicos1.model.box;
 
-import java.util.List;
-
 import br.unitins.topicos1.model.Enum.Classificacao;
 import br.unitins.topicos1.model.defaultEntity.DefaultEntity;
 import br.unitins.topicos1.model.editora.Editora;
 import br.unitins.topicos1.model.fornecedor.Fornecedor;
-import br.unitins.topicos1.model.genero.Genero;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 
 @Entity

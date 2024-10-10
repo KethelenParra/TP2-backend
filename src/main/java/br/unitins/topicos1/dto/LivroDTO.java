@@ -1,8 +1,5 @@
 package br.unitins.topicos1.dto;
 
-import java.time.LocalDate;
-import java.util.List;
-
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotNull;
 
