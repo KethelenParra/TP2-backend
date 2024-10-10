@@ -1,9 +1,9 @@
 package br.unitins.topicos1.model.box;
 
 import java.util.List;
-import java.util.ArrayList;
 
 import br.unitins.topicos1.model.Enum.Classificacao;
+import br.unitins.topicos1.model.autor.Autor;
 import br.unitins.topicos1.model.defaultEntity.DefaultEntity;
 import br.unitins.topicos1.model.editora.Editora;
 import br.unitins.topicos1.model.fornecedor.Fornecedor;
@@ -34,7 +34,7 @@ public class Box extends DefaultEntity{
 
     private Classificacao classificacao;
     
-    @ManyToOne // Relacionamento com fornecedor
+    @ManyToOne 
     @JoinColumn(name = "id_fornecedor", nullable = false)
     private Fornecedor fornecedor;
     
@@ -42,21 +42,21 @@ public class Box extends DefaultEntity{
     @JoinColumn(name = "id_editora", nullable = false)
     private Editora Editora;
 
-    // @ManyToMany
-    // @JoinTable(
-    //     name = "box_genero",
-    //     joinColumns = @JoinColumn(name = "idbox"),
-    //     inverseJoinColumns = @JoinColumn(name = "idgenero")
-    // )
-    // private List<Genero> listaGeneros;
+    @ManyToMany
+    @JoinTable(
+        name = "box_genero",
+        joinColumns = @JoinColumn(name = "idbox"),
+        inverseJoinColumns = @JoinColumn(name = "idgenero")
+    )
+    private List<Genero> listaGeneros;
 
-    // @ManyToMany(fetch = FetchType.EAGER)
-    // @JoinTable(
-    //     name = "box_autor",
-    //     joinColumns = @JoinColumn(name = "idbox"),
-    //     inverseJoinColumns = @JoinColumn(name = "idautor")
-    // )
-    // private List<Autor> listaAutor;
+    @ManyToMany
+    @JoinTable(
+        name = "box_autor",
+        joinColumns = @JoinColumn(name = "idbox"),
+        inverseJoinColumns = @JoinColumn(name = "idautor")
+    )
+    private List<Autor> listaAutor;
 
      public String getNome() {
         return nome;
@@ -122,21 +122,19 @@ public class Box extends DefaultEntity{
         Editora = editora;
     }
 
-    // public List<Genero> getListaGeneros() {
-    //     return listaGeneros;
-    // }
+    public List<Genero> getListaGeneros() {
+        return listaGeneros;
+    }
 
-    // public void setListaGeneros(List<Genero> listaGeneros) {
-    //     this.listaGeneros = listaGeneros;
-    // }
+    public void setListaGeneros(List<Genero> listaGeneros) {
+        this.listaGeneros = listaGeneros;
+    }
 
-    // public List<Autor> getListaAutor() {
-    //     return listaAutor;
-    // }
+    public List<Autor> getListaAutor() {
+        return listaAutor;
+    }
 
-    // public void setListaAutor(List<Autor> listaAutor) {
-    //     this.listaAutor = listaAutor;
-    // }
-
-
+    public void setListaAutor(List<Autor> listaAutor) {
+        this.listaAutor = listaAutor;
+    }
 }

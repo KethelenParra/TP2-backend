@@ -16,10 +16,10 @@ public record BoxDTO(
     @DecimalMin(value = "0")
     Double preco,
 
-    Integer classificacao
+    Integer classificacao,
     
-    // @NotNull(message = "O campo genero não pode estar vazio")
-    // List<Long> generos
-
-    // List<Long> autores,
+    @NotNull(message = "O campo genero não pode estar vazio")
+    List<Long> generos,
+    @NotNull(message = "O campo autor não pode estar vazio")
+    List<Long> autores
 ) {}
