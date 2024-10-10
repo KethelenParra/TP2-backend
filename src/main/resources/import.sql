@@ -97,21 +97,21 @@ VALUES
        ('Editora Rocco', 'rocco@gmail.com', 'Rio de Janeiro', 'Rio de Janeiro', 21);
 
 -- Inserir livro
-INSERT INTO livro (titulo, preco, quantidadeEstoque, isbn, descricao, id_fornecedor, id_editora, classificacao) 
+INSERT INTO livro (titulo, preco, quantidadeEstoque, isbn, descricao, datalancamento, id_fornecedor, id_editora, classificacao) 
 VALUES 
-       ('Confess', 39.90, 50, '9781501176838', 'Confess é um romance contemporâneo escrito por Colleen Hoover. O livro foi publicado em 2015 e é centrado em Auburn Reed e Owen Gentry. Auburn tem um passado difícil e encontra Owen, um artista misterioso, enquanto trabalha em uma galeria de arte. Juntos, eles embarcam em uma jornada emocional, desvendando segredos e enfrentando desafios que testam seu amor.', 3, 3, 3),
+       ('Confess', 39.90, 50, '9781501176838', 'Confess é um romance contemporâneo escrito por Colleen Hoover. O livro foi publicado em 2015 e é centrado em Auburn Reed e Owen Gentry. Auburn tem um passado difícil e encontra Owen, um artista misterioso, enquanto trabalha em uma galeria de arte. Juntos, eles embarcam em uma jornada emocional, desvendando segredos e enfrentando desafios que testam seu amor.','12/09/2020', 3, 3, 3),
 
-       ('A Hipotese do Amor', 29.99, 100, '9780593336823', 'The Love Hypothesis é um romance contemporâneo escrito por Ali Hazelwood. O livro narra a história de Olive Smith, uma estudante de pós-graduação determinada a provar uma teoria científica sobre o amor. Com a ajuda de seu charmoso professor, eles embarcam em uma jornada de descoberta científica e pessoal.', 1, 1, 1),
+       ('A Hipotese do Amor', 29.99, 100, '9780593336823', 'The Love Hypothesis é um romance contemporâneo escrito por Ali Hazelwood. O livro narra a história de Olive Smith, uma estudante de pós-graduação determinada a provar uma teoria científica sobre o amor. Com a ajuda de seu charmoso professor, eles embarcam em uma jornada de descoberta científica e pessoal.','12/08/2020', 1, 1, 1),
        
-       ('O Vendedor de Sonhos', 34.90, 80, '9788575429039',  'O Vendedor de Sonhos é um romance psicológico escrito por Augusto Cury. O livro conta a história de um homem misterioso que salva a vida de um suicida e o convence a acompanhar em uma jornada para mudar a sociedade através de sonhos e reflexões profundas sobre a vida.', 2, 2, 2),
+       ('O Vendedor de Sonhos', 34.90, 80, '9788575429039',  'O Vendedor de Sonhos é um romance psicológico escrito por Augusto Cury. O livro conta a história de um homem misterioso que salva a vida de um suicida e o convence a acompanhar em uma jornada para mudar a sociedade através de sonhos e reflexões profundas sobre a vida.','12/06/2008', 2, 2, 2),
        
-       ('Harry Potter e a Pedra Filosofal', 49.90, 100, '9788532530802', 'Harry Potter é uma série de sete romances de fantasia escrita pela autora britânica J.K. Rowling. Os livros narram as aventuras de um jovem bruxo, Harry Potter, e seus amigos Hermione Granger e Ron Weasley, todos estudantes na Escola de Magia e Bruxaria de Hogwarts.', 4, 4, 4),
+       ('Harry Potter e a Pedra Filosofal', 49.90, 100, '9788532530802', 'Harry Potter é uma série de sete romances de fantasia escrita pela autora britânica J.K. Rowling. Os livros narram as aventuras de um jovem bruxo, Harry Potter, e seus amigos Hermione Granger e Ron Weasley, todos estudantes na Escola de Magia e Bruxaria de Hogwarts.', '08/08/2011', 4, 4, 4),
        
-       ('1984', 35.00, 80, '9788532530803', '1984 é um romance distópico escrito por George Orwell em 1948 e publicado em 1949. A obra é um dos maiores clássicos da literatura mundial e uma das mais influentes e importantes do século XX.', 4, 3, 4),
+       ('1984', 35.00, 80, '9788532530803', '1984 é um romance distópico escrito por George Orwell em 1948 e publicado em 1949. A obra é um dos maiores clássicos da literatura mundial e uma das mais influentes e importantes do século XX.', '14/09/1987', 4, 3, 4),
        
-       ('O Diário da Nossa Paixão', 29.90, 70, '9788532511666', 'O Diário da Nossa Paixão é um romance do escritor norte-americano Nicholas Sparks, que relata a história de amor entre Noah Calhoun e Allie Nelson, que se conhecem e se apaixonam durante um verão.', 1, 2, 4),
+       ('O Diário da Nossa Paixão', 29.90, 70, '9788532511666', 'O Diário da Nossa Paixão é um romance do escritor norte-americano Nicholas Sparks, que relata a história de amor entre Noah Calhoun e Allie Nelson, que se conhecem e se apaixonam durante um verão.', '12/02/1978', 1, 2, 4),
        
-       ('Harry Potter e as Relíquias da morte', 65.00, 20, '9788532522610', 'Encontro inevitável com Lord Voldemort não pode mais ser adiado. Harry, no entanto, precisa ganhar tempo para encontrar as Horcruxes que ainda estão faltando. E, pelo caminho, descobrir o que são afinal as Relíquias da Morte e como ele pode usá-las contra o Lorde das Trevas', 4, 3, 1);
+       ('Harry Potter e as Relíquias da morte', 65.00, 20, '9788532522610', 'Encontro inevitável com Lord Voldemort não pode mais ser adiado. Harry, no entanto, precisa ganhar tempo para encontrar as Horcruxes que ainda estão faltando. E, pelo caminho, descobrir o que são afinal as Relíquias da Morte e como ele pode usá-las contra o Lorde das Trevas','12/09/1998', 4, 3, 1);
 
 -- INSERT INTO livro (titulo, preco, quantidadeEstoque, isbn, descricao, classificacao, id_fornecedor, id_editora) 
 -- VALUES 
@@ -132,20 +132,20 @@ VALUES
 
 
 -- Inserir relacionamento entre livro e autor
--- INSERT INTO livro_autor (idlivro, idautor) VALUES (1, 1);
--- INSERT INTO livro_autor (idlivro, idautor) VALUES (2, 2);
--- INSERT INTO livro_autor (idlivro, idautor) VALUES (3, 3);
--- INSERT INTO livro_autor (idlivro, idautor) VALUES (4, 4);
--- INSERT INTO livro_autor (idlivro, idautor) VALUES (5, 5);
--- INSERT INTO livro_autor (idlivro, idautor) VALUES (6, 6);
+INSERT INTO livro_autor (idlivro, idautor) VALUES (1, 1);
+INSERT INTO livro_autor (idlivro, idautor) VALUES (2, 2);
+INSERT INTO livro_autor (idlivro, idautor) VALUES (3, 3);
+INSERT INTO livro_autor (idlivro, idautor) VALUES (4, 4);
+INSERT INTO livro_autor (idlivro, idautor) VALUES (5, 5);
+INSERT INTO livro_autor (idlivro, idautor) VALUES (6, 6);
 
 -- Inserir relacionamento entre livro e gênero
--- INSERT INTO livro_genero (idlivro, idgenero) VALUES (1, 1);
--- INSERT INTO livro_genero (idlivro, idgenero) VALUES (2, 1);
--- INSERT INTO livro_genero (idlivro, idgenero) VALUES (3, 2);
--- INSERT INTO livro_genero (idlivro, idgenero) VALUES (4, 4);
--- INSERT INTO livro_genero (idlivro, idgenero) VALUES (5, 2);
--- INSERT INTO livro_genero (idlivro, idgenero) VALUES (6, 1);
+INSERT INTO livro_genero (idlivro, idgenero) VALUES (1, 1);
+INSERT INTO livro_genero (idlivro, idgenero) VALUES (2, 1);
+INSERT INTO livro_genero (idlivro, idgenero) VALUES (3, 2);
+INSERT INTO livro_genero (idlivro, idgenero) VALUES (4, 4);
+INSERT INTO livro_genero (idlivro, idgenero) VALUES (5, 2);
+INSERT INTO livro_genero (idlivro, idgenero) VALUES (6, 1);
 
 -- Avaliacao
 INSERT INTO avaliacao (dataAvaliacao, estrela, id_livro, id_cliente) 
@@ -236,15 +236,15 @@ VALUES
        35, 4, 2, 229.90, 1);
 
 -- Inserir relacionamento entre box e autor
--- INSERT INTO box_autor (idbox, idautor) VALUES (1, 1);
--- INSERT INTO box_autor (idbox, idautor) VALUES (2, 2);
--- INSERT INTO box_autor (idbox, idautor) VALUES (3, 3);
--- INSERT INTO box_autor (idbox, idautor) VALUES (4, 4);
--- INSERT INTO box_autor (idbox, idautor) VALUES (5, 5);
+INSERT INTO box_autor (idbox, idautor) VALUES (1, 1);
+INSERT INTO box_autor (idbox, idautor) VALUES (2, 2);
+INSERT INTO box_autor (idbox, idautor) VALUES (3, 3);
+INSERT INTO box_autor (idbox, idautor) VALUES (4, 4);
+INSERT INTO box_autor (idbox, idautor) VALUES (5, 5);
 
--- Inserir relacionamento entre box e gênero
--- INSERT INTO box_genero (idbox, idgenero) VALUES (1, 1);
--- INSERT INTO box_genero (idbox, idgenero) VALUES (2, 1);
--- INSERT INTO box_genero (idbox, idgenero) VALUES (3, 2);
--- INSERT INTO box_genero (idbox, idgenero) VALUES (4, 4);
--- INSERT INTO box_genero (idbox, idgenero) VALUES (5, 2);
+--Inserir relacionamento entre box e gênero
+INSERT INTO box_genero (idbox, idgenero) VALUES (1, 1);
+INSERT INTO box_genero (idbox, idgenero) VALUES (2, 1);
+INSERT INTO box_genero (idbox, idgenero) VALUES (3, 2);
+INSERT INTO box_genero (idbox, idgenero) VALUES (4, 4);
+INSERT INTO box_genero (idbox, idgenero) VALUES (5, 2);

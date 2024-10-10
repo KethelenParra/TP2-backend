@@ -3,9 +3,9 @@ package br.unitins.topicos1.service;
 import java.util.List;
 
 import br.unitins.topicos1.dto.AlterarEmailDTO;
-import br.unitins.topicos1.dto.AlterarSenhaDTO;
 import br.unitins.topicos1.dto.AlterarUsernameDTO;
 import br.unitins.topicos1.dto.ClienteDTO;
+import br.unitins.topicos1.dto.Response.AlterarSenhaDTO;
 import br.unitins.topicos1.dto.Response.ClienteResponseDTO;
 import br.unitins.topicos1.dto.Response.UsuarioResponseDTO;
 import jakarta.validation.Valid;
