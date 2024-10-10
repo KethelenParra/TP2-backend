@@ -1,17 +1,14 @@
 package br.unitins.topicos1.resource;
 
-import org.jboss.resteasy.annotations.providers.multipart.MultipartForm;
 import org.jboss.logging.Logger;
 
 import br.unitins.topicos1.dto.LivroDTO;
-import br.unitins.topicos1.form.ImageForm;
 import br.unitins.topicos1.service.LivroService;
 // import br.unitins.topicos1.service.file.LivroFileServiceImpl;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
-import jakarta.ws.rs.PATCH;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.Path;
@@ -19,7 +16,6 @@ import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
-import jakarta.ws.rs.core.Response.ResponseBuilder;
 import jakarta.ws.rs.core.Response.Status;
 
 @Produces(MediaType.APPLICATION_JSON)

@@ -1,7 +1,6 @@
 package br.unitins.topicos1.dto;
 
 import java.util.List;
-
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotNull;
 

@@ -4,20 +4,17 @@ import java.time.LocalDate;
 import java.util.List;
 
 import br.unitins.topicos1.model.Enum.Classificacao;
-import br.unitins.topicos1.model.autor.Autor;
 import br.unitins.topicos1.model.defaultEntity.DefaultEntity;
 import br.unitins.topicos1.model.fornecedor.Fornecedor;
 import br.unitins.topicos1.model.genero.Genero;
 import br.unitins.topicos1.model.editora.Editora;
+import br.unitins.topicos1.model.autor.Autor;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
 
 @Entity
 public class Livro extends DefaultEntity{

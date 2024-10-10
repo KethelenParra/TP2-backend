@@ -1,5 +1,4 @@
 package br.unitins.topicos1.model.box;
-
 import java.util.List;
 
 import br.unitins.topicos1.model.Enum.Classificacao;
