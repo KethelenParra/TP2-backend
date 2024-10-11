@@ -1,4 +1,4 @@
-package br.unitins.topicos1.dto;
+package br.unitins.topicos1.dto.Response;
 
 import jakarta.validation.constraints.NotBlank;
 

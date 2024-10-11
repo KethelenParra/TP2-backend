@@ -16,7 +16,7 @@ public class BoxRepository implements PanacheRepository<Box> {
         return find("UPPER(nome) = ?1",  "%" + nome.toUpperCase()  + "%").firstResult();
     }
 
-    // public List<Box> findByAutor(String autor){
-    //     return find("SELECT box FROM Box box JOIN box.listaAutor autor WHERE UPPER(autor.nome) LIKE ?1", autor.toUpperCase() + "%").list();
-    // }
+    public List<Box> findByAutor(String autor){
+        return find("SELECT box FROM Box box JOIN box.listaAutor autor WHERE UPPER(autor.nome) LIKE ?1", autor.toUpperCase() + "%").list();
+    }
 }

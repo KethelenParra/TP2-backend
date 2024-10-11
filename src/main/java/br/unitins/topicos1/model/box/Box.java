@@ -1,12 +1,17 @@
 package br.unitins.topicos1.model.box;
+import java.util.List;
 
 import br.unitins.topicos1.model.Enum.Classificacao;
+import br.unitins.topicos1.model.autor.Autor;
 import br.unitins.topicos1.model.defaultEntity.DefaultEntity;
 import br.unitins.topicos1.model.editora.Editora;
 import br.unitins.topicos1.model.fornecedor.Fornecedor;
+import br.unitins.topicos1.model.genero.Genero;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 
 @Entity
@@ -28,7 +33,7 @@ public class Box extends DefaultEntity{
 
     private Classificacao classificacao;
     
-    @ManyToOne // Relacionamento com fornecedor
+    @ManyToOne 
     @JoinColumn(name = "id_fornecedor", nullable = false)
     private Fornecedor fornecedor;
     
@@ -36,21 +41,21 @@ public class Box extends DefaultEntity{
     @JoinColumn(name = "id_editora", nullable = false)
     private Editora Editora;
 
-    // @ManyToMany
-    // @JoinTable(
-    //     name = "box_genero",
-    //     joinColumns = @JoinColumn(name = "idbox"),
-    //     inverseJoinColumns = @JoinColumn(name = "idgenero")
-    // )
-    // private List<Genero> listaGeneros;
+    @ManyToMany
+    @JoinTable(
+        name = "box_genero",
+        joinColumns = @JoinColumn(name = "idbox"),
+        inverseJoinColumns = @JoinColumn(name = "idgenero")
+    )
+    private List<Genero> listaGeneros;
 
-    // @ManyToMany(fetch = FetchType.EAGER)
-    // @JoinTable(
-    //     name = "box_autor",
-    //     joinColumns = @JoinColumn(name = "idbox"),
-    //     inverseJoinColumns = @JoinColumn(name = "idautor")
-    // )
-    // private List<Autor> listaAutor;
+    @ManyToMany
+    @JoinTable(
+        name = "box_autor",
+        joinColumns = @JoinColumn(name = "idbox"),
+        inverseJoinColumns = @JoinColumn(name = "idautor")
+    )
+    private List<Autor> listaAutor;
 
      public String getNome() {
         return nome;
@@ -116,21 +121,19 @@ public class Box extends DefaultEntity{
         Editora = editora;
     }
 
-    // public List<Genero> getListaGeneros() {
-    //     return listaGeneros;
-    // }
+    public List<Genero> getListaGeneros() {
+        return listaGeneros;
+    }
 
-    // public void setListaGeneros(List<Genero> listaGeneros) {
-    //     this.listaGeneros = listaGeneros;
-    // }
+    public void setListaGeneros(List<Genero> listaGeneros) {
+        this.listaGeneros = listaGeneros;
+    }
 
-    // public List<Autor> getListaAutor() {
-    //     return listaAutor;
-    // }
+    public List<Autor> getListaAutor() {
+        return listaAutor;
+    }
 
-    // public void setListaAutor(List<Autor> listaAutor) {
-    //     this.listaAutor = listaAutor;
-    // }
-
-
+    public void setListaAutor(List<Autor> listaAutor) {
+        this.listaAutor = listaAutor;
+    }
 }

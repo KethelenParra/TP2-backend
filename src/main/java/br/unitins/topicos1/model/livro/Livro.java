@@ -11,13 +11,10 @@ import br.unitins.topicos1.model.genero.Genero;
 import br.unitins.topicos1.model.editora.Editora;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
 
 @Entity
 public class Livro extends DefaultEntity{
@@ -31,11 +28,10 @@ public class Livro extends DefaultEntity{
     @Column(nullable = false)
     private Integer quantidadeEstoque;
 
-    @Column(length = 20, nullable = false)
+    @Column(length = 13)
     private String isbn;
 
     @Column(nullable = false)
-    @Temporal(TemporalType.DATE)
     private LocalDate datalancamento;
 
     @Column(length = 5000, nullable = false)
@@ -51,7 +47,7 @@ public class Livro extends DefaultEntity{
     @JoinColumn(name = "id_editora", nullable = false)
     private Editora Editora;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany
     @JoinTable(
         name = "livro_autor",
         joinColumns = @JoinColumn(name = "idlivro"),
@@ -61,7 +57,7 @@ public class Livro extends DefaultEntity{
 
     private String nomeImagem;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany
     @JoinTable(
         name = "livro_genero",
         joinColumns = @JoinColumn(name = "idlivro"),

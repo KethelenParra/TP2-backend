@@ -3,9 +3,9 @@ package br.unitins.topicos1.resource.pessoa;
 import org.jboss.logging.Logger;
 
 import br.unitins.topicos1.dto.AlterarEmailDTO;
-import br.unitins.topicos1.dto.AlterarSenhaDTO;
 import br.unitins.topicos1.dto.AlterarUsernameDTO;
 import br.unitins.topicos1.dto.FuncionarioDTO;
+import br.unitins.topicos1.dto.Response.AlterarSenhaDTO;
 import br.unitins.topicos1.service.FuncionarioService;
 import jakarta.inject.Inject;
 import jakarta.validation.Valid;

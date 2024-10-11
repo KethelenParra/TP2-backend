@@ -52,8 +52,8 @@ public class BoxServiceImpl implements BoxService {
         box.setEditora(editoraRepository.findById(dto.editora()));
         box.setPreco(dto.preco());
         box.setClassificacao(Classificacao.valueOf(dto.classificacao()));
-        // box.setListaGeneros(dto.generos().stream().map(g -> generoRepository.findById(g)).toList());
-        //box.setListaAutor((dto.autores()).stream().map(a -> autorRepository.findById(a)).toList());
+        box.setListaGeneros(dto.generos().stream().map(g -> generoRepository.findById(g)).toList());
+        box.setListaAutor((dto.autores()).stream().map(a -> autorRepository.findById(a)).toList());
                 
         boxRepository.persist(box);
         
@@ -81,10 +81,9 @@ public class BoxServiceImpl implements BoxService {
         boxBanco.setEditora(editoraRepository.findById(dto.editora()));
         boxBanco.setPreco(dto.preco());
         boxBanco.setClassificacao(Classificacao.valueOf(dto.classificacao()));
-        // boxBanco.setListaGeneros(dto.generos().stream().map(g -> generoRepository.findById(g)).toList());    
-        // boxBanco.setListaAutor((dto.autores()).stream().map(a -> autorRepository.findById(a)).toList());
+        boxBanco.setListaGeneros(dto.generos().stream().map(g -> generoRepository.findById(g)).toList());    
+        boxBanco.setListaAutor((dto.autores()).stream().map(a -> autorRepository.findById(a)).toList());
         
-        //boxRepository.persist(boxBanco);
     }
 
     @Override
@@ -111,8 +110,8 @@ public class BoxServiceImpl implements BoxService {
             .map(a -> BoxResponseDTO.valueOf(a)).toList();
     }
 
-    // @Override
-    // public List<BoxResponseDTO> findByAutor(String autor) {
-    //     return boxRepository.findByAutor(autor).stream().map(e -> BoxResponseDTO.valueOf(e)).toList();
-    // }
+    @Override
+    public List<BoxResponseDTO> findByAutor(String autor) {
+        return boxRepository.findByAutor(autor).stream().map(e -> BoxResponseDTO.valueOf(e)).toList();
+    }
 }

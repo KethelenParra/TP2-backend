@@ -15,10 +15,10 @@ public record LivroDTO(
         Double preco,
         String isbn,
         String descricao,
+        LocalDate datalancamento,
         Integer classificacao,
         Long editora,
-        Long fornecedor
-        // LocalDate datalancamento,
-        // List<Long> generos,
-        // List<Long> autores,
+        Long fornecedor,
+        List<Long> generos,
+        List<Long> autores
 ) { }

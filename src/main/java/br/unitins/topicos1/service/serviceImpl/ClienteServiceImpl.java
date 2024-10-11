@@ -6,10 +6,10 @@ import java.util.List;
 import org.eclipse.microprofile.jwt.JsonWebToken;
 
 import br.unitins.topicos1.dto.AlterarEmailDTO;
-import br.unitins.topicos1.dto.AlterarSenhaDTO;
 import br.unitins.topicos1.dto.AlterarUsernameDTO;
 import br.unitins.topicos1.dto.ClienteDTO;
 import br.unitins.topicos1.dto.TelefoneDTO;
+import br.unitins.topicos1.dto.Response.AlterarSenhaDTO;
 import br.unitins.topicos1.dto.Response.ClienteResponseDTO;
 import br.unitins.topicos1.dto.Response.UsuarioResponseDTO;
 import br.unitins.topicos1.model.Enum.Sexo;
