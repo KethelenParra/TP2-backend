@@ -55,7 +55,7 @@ public class Livro extends DefaultEntity{
     )
     private List<Autor> listaAutor;
 
-    private String nomeImagem;
+    // private String nomeImagem;
 
     @ManyToMany
     @JoinTable(
