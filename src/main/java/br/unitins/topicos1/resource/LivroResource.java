@@ -41,6 +41,13 @@ public class LivroResource {
         LOG.infof("Executando o método findById. Id: %s", id.toString());
         return Response.ok(livroService.findById(id)).build();
     }
+    
+    @GET
+    @Path("/search")
+    public Response search(){
+        LOG.info("Buscando todos os livros - Executando LivroResource_search");
+        return Response.ok(livroService.findAll()).build();
+    }
 
     @GET
     //@RolesAllowed({"Funcionario", "Cliente"})
@@ -105,6 +112,7 @@ public class LivroResource {
     public long count(){
         return livroService.count();
     }
+
 
     @POST
     //@RolesAllowed({"Funcionario"})

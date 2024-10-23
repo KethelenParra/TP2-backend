@@ -98,6 +98,17 @@ public class LivroServiceImpl implements LivroService{
     }
 
     @Override
+    public List<LivroResponseDTO> findAll(){
+
+        List<Livro> listLivro = livroRepository
+                                .findAll()
+                                .list();
+
+        return listLivro.stream()
+        .map(livro -> LivroResponseDTO.valueOf(livro))
+        .toList();
+    }
+    @Override
     public List<LivroResponseDTO> findAll(int page, int pageSize){
 
         List<Livro> listLivro = livroRepository
