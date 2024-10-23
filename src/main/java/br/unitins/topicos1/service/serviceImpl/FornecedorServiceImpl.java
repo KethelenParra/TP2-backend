@@ -82,17 +82,70 @@ public class FornecedorServiceImpl implements FornecedorService {
     }
 
     @Override
-    public List<FornecedorResponseDTO> findAll() {
-        return fornecedorRepository.listAll().stream().map(fornecedores -> FornecedorResponseDTO.valueOf(fornecedores)).toList();
+    public List<FornecedorResponseDTO> findAll(int page, int pageSize) {
+
+        List<Fornecedor> listFornecedor = fornecedorRepository
+                                            .findAll()
+                                            .page(page, pageSize)
+                                            .list();
+
+        return listFornecedor.stream()
+            .map(fornecedores -> FornecedorResponseDTO.valueOf(fornecedores))
+            .toList();
     }
 
     @Override
     public List<FornecedorResponseDTO> findByNome(String nome) {
-        return fornecedorRepository.findByNome(nome).stream().map(fornecedores -> FornecedorResponseDTO.valueOf(fornecedores)).toList();
+
+        List<Fornecedor> listFornecedor = fornecedorRepository
+                                        .findByNome(nome)
+                                        .list();
+        
+        return listFornecedor.stream()
+            .map(fornecedores -> FornecedorResponseDTO.valueOf(fornecedores))
+            .toList();
     }
 
     @Override
+    public List<FornecedorResponseDTO> findByNome(int page, int pageSize, String nome) {
+
+        List<Fornecedor> listFornecedor = fornecedorRepository
+                                        .findByNome(nome)
+                                        .page(page, pageSize)
+                                        .list();
+
+        return listFornecedor.stream()
+            .map(fornecedores -> FornecedorResponseDTO.valueOf(fornecedores))
+            .toList();
+    }
+
+    @Override
+    public List<FornecedorResponseDTO> findByCnpj(int page, int pageSize, String cnpj) {
+
+        List<Fornecedor> listFornecedor = fornecedorRepository
+                                            .findByCnpj(cnpj)
+                                            .page(page, pageSize)
+                                            .list();
+
+        return listFornecedor.stream()
+            .map(fornecedores -> FornecedorResponseDTO.valueOf(fornecedores))
+            .toList();
+    }
+    
+    @Override
     public List<FornecedorResponseDTO> findByCnpj(String cnpj) {
-        return fornecedorRepository.findByCnpj(cnpj).stream().map(fornecedores -> FornecedorResponseDTO.valueOf(fornecedores)).toList();
+
+        List<Fornecedor> listFornecedor = fornecedorRepository
+                                            .findByCnpj(cnpj)
+                                            .list();
+
+        return listFornecedor.stream()
+            .map(fornecedores -> FornecedorResponseDTO.valueOf(fornecedores))
+            .toList();
+    }
+
+    @Override
+    public long count(){
+        return fornecedorRepository.count();
     }
 }

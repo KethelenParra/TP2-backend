@@ -11,6 +11,7 @@ import jakarta.inject.Inject;
 import jakarta.validation.Valid;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
+import jakarta.ws.rs.DefaultValue;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.PATCH;
 import jakarta.ws.rs.POST;
@@ -18,6 +19,7 @@ import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.Response.ResponseBuilder;
@@ -46,23 +48,35 @@ public class AutorResource {
 
     @GET
     //@RolesAllowed({"Funcionario", "Cliente"})
-    public Response findAll() {
+    public Response findAll(
+        @QueryParam("page") @DefaultValue("0") int page,
+        @QueryParam("pageSize") @DefaultValue("100") int pageSize
+        
+    ) {
         LOG.info("Buscando todos os autores - Executando AutorResource_FindAll");
-        return Response.ok(autorService.findAll()).build();
+        return Response.ok(autorService.findAll(page, pageSize)).build();
     }
 
     @GET
     @Path("/search/nome/{nome}")
     //@RolesAllowed({"Funcionario", "Cliente"})
-    public Response findByNome(@PathParam("nome") String nome) {
+    public Response findByNome(
+        @QueryParam("page") @DefaultValue("0") int page,
+        @QueryParam("pageSize") @DefaultValue("100") int pageSize,
+        @PathParam("nome") String nome
+    ) {
         LOG.info("Buscando autores por nome - Executando AutorResource_FindByNome");
-        return Response.ok(autorService.findByNome(nome)).build();
+        return Response.ok(autorService.findByNome(page, pageSize, nome)).build();
     }
 
     @GET
     @Path("/search/biografia/{biografia}")
     //@RolesAllowed({"Funcionario", "Cliente"}) 
-    public Response findByBiografia(@PathParam("biografia") String biografia) {
+    public Response findByBiografia(
+        @QueryParam("page") @DefaultValue("0") int page,
+        @QueryParam("pageSize") @DefaultValue("100") int pageSize,
+        @PathParam("biografia") String biografia
+    ) {
         LOG.info("Buscando autores por biografia - - Executando AutorResource_FindByBiografia");
         return Response.ok(autorService.findByBiografia(biografia)).build();
     }
@@ -105,6 +119,12 @@ public class AutorResource {
             LOG.error("Erro ao remover autor - Executando AutorResource_FindBydelete", e);
             return Response.status(Status.NOT_FOUND).entity("Erro ao deletar autor - Executando AutorResource_delete").build();
         }
+    }
+
+    @GET
+    @Path("/{count}")
+    public long count(){
+        return autorService.count();
     }
 
     @PATCH

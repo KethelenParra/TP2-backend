@@ -12,7 +12,10 @@ public interface FornecedorService {
    public void update(Long id, FornecedorDTO dto);
    public void delete(Long id);
    public FornecedorResponseDTO findById(Long id);
-   public List<FornecedorResponseDTO> findAll();
+   public List<FornecedorResponseDTO> findAll(int page, int pageSize);
+   public List<FornecedorResponseDTO> findByNome(int page, int pageSize, String nome);
    public List<FornecedorResponseDTO> findByNome(String nome);
+   public List<FornecedorResponseDTO> findByCnpj(int page, int pageSize, String cnpj);
    public List<FornecedorResponseDTO> findByCnpj(String cnpj);
+   public long count();
 }

@@ -8,12 +8,14 @@ import jakarta.inject.Inject;
 import jakarta.validation.Valid;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
+import jakarta.ws.rs.DefaultValue;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.Response.Status;
@@ -39,15 +41,22 @@ public class FornecedorResource {
 
     @GET
     //@RolesAllowed({"Funcionario"})
-    public Response findAll(){
+    public Response findAll(
+        @QueryParam("page") @DefaultValue("0") int page,
+        @QueryParam("pageSize") @DefaultValue("100") int pageSize
+    ){
         LOG.info("Buscando todos os fornecedores - Executando FornecedorResource_FindAll");
-        return Response.ok(fornecedorService.findAll()).build();
+        return Response.ok(fornecedorService.findAll(page, pageSize)).build();
     }
 
     @GET
     @Path("/search/nome/{nome}")
     //@RolesAllowed({"Funcionario"})
-    public Response findByNome(@PathParam("nome") String nome){
+    public Response findByNome(
+        @QueryParam("page") @DefaultValue("0") int page,
+        @QueryParam("pageSize") @DefaultValue("100") int pageSize,
+        @PathParam("nome") String nome
+        ){
         LOG.info("Buscando fornecedor por nome: - Executando FornecedorResource_FindByNome " + nome);
         return Response.ok(fornecedorService.findByNome(nome)).build();
     }
@@ -55,9 +64,19 @@ public class FornecedorResource {
     @GET
     @Path("/search/cnpj/{cnpj}")
     //@RolesAllowed({"Funcionario"})
-    public Response findByCnpj(@PathParam("cnpj") String cnpj){
+    public Response findByCnpj(
+        @QueryParam("page") @DefaultValue("0") int page,
+        @QueryParam("pageSize") @DefaultValue("100") int pageSize,
+        @PathParam("cnpj") String cnpj
+        ){
         LOG.info("Buscando fornecedor por cnpj: - Executando FornecedorResource_FindByCnpj" + cnpj);
         return Response.ok(fornecedorService.findByCnpj(cnpj)).build();
+    }
+
+    @GET
+    @Path("/count")
+    public long count(){
+        return fornecedorService.count();
     }
 
     @POST

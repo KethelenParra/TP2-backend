@@ -77,13 +77,46 @@ public class EditoraServiceImpl implements EditoraService {
     }
 
     @Override
-    public List<EditoraResponseDTO> findAll() {
-        return editoraRepository.listAll().stream().map(editoraes -> EditoraResponseDTO.valueOf(editoraes)).toList();
+    public List<EditoraResponseDTO> findAll(int page, int pageSize) {
+    
+        List<Editora> listEditora = editoraRepository
+                                    .findAll()
+                                    .page(page, pageSize)
+                                    .list();
+
+        return listEditora.stream()
+            .map(editoraes -> EditoraResponseDTO.valueOf(editoraes))
+            .toList();
     }
 
     @Override
     public List<EditoraResponseDTO> findByNome(String nome) {
-        return editoraRepository.findByNome(nome).stream().map(editoras -> EditoraResponseDTO.valueOf(editoras)).toList();
+
+        List<Editora> listEditora = editoraRepository
+                                    .findByNome(nome)
+                                    .list();
+
+        return listEditora.stream()
+            .map(editoras -> EditoraResponseDTO.valueOf(editoras))
+            .toList();
+    }
+
+    @Override
+    public List<EditoraResponseDTO> findByNome(int page, int pageSize, String nome) {
+
+        List<Editora> listEditora = editoraRepository
+                                    .findByNome(nome)
+                                    .page(page, pageSize)
+                                    .list();
+
+        return listEditora.stream()
+            .map(editoras -> EditoraResponseDTO.valueOf(editoras))
+            .toList();
+    }
+
+    @Override
+    public long count(){
+        return editoraRepository.count();
     }
 
 }

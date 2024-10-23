@@ -174,12 +174,12 @@ public class Livro extends DefaultEntity{
         this.fornecedor = fornecedor;
     }
 
-    public String getNomeImagem() {
-        return nomeImagem;
-    }
+    // public String getNomeImagem() {
+    //     return nomeImagem;
+    // }
 
-    public void setNomeImagem(String nomeImagem) {
-        this.nomeImagem = nomeImagem;
-    }
+    // public void setNomeImagem(String nomeImagem) {
+    //     this.nomeImagem = nomeImagem;
+    // }
 
 }

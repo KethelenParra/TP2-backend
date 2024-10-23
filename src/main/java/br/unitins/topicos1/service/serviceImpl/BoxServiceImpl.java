@@ -47,7 +47,7 @@ public class BoxServiceImpl implements BoxService {
         Box box = new Box();
         box.setNome(dto.nome());
         box.setDescricaoBox(dto.descricaoBox());
-        box.setQuantidadeEstoque(dto.quantidadeEstoque());
+        box.setQuantidadeEstoque(dto.quantidadeEstoque());  
         box.setFornecedor(fornecedorRepository.findById(dto.fornecedor()));
         box.setEditora(editoraRepository.findById(dto.editora()));
         box.setPreco(dto.preco());
@@ -100,18 +100,69 @@ public class BoxServiceImpl implements BoxService {
     }
 
     @Override
-    public List<BoxResponseDTO> findAll() {
-        return boxRepository.listAll().stream().map(a -> BoxResponseDTO.valueOf(a)).toList();
+    public List<BoxResponseDTO> findAll(int page, int pageSize) {
+
+        List<Box> listBox = boxRepository
+                            .findAll()
+                            .page(page, pageSize)
+                            .list();
+
+        return listBox.stream()
+                .map(a -> BoxResponseDTO.valueOf(a))
+                .toList();
     }
 
     @Override
     public List<BoxResponseDTO> findByNome(String nome) {
-        return boxRepository.findByBox(nome).stream()
-            .map(a -> BoxResponseDTO.valueOf(a)).toList();
+
+        List<Box> listBox = boxRepository
+                            .findByBox(nome)
+                            .list();
+
+        return listBox.stream()
+            .map(a -> BoxResponseDTO.valueOf(a))
+            .toList();
+    }
+    @Override
+    public List<BoxResponseDTO> findByNome(int page, int pageSize, String nome) {
+
+        List<Box> listBox = boxRepository
+                            .findByBox(nome)
+                            .page(page, pageSize)
+                            .list();
+
+        return listBox.stream()
+            .map(a -> BoxResponseDTO.valueOf(a))
+            .toList();
     }
 
     @Override
     public List<BoxResponseDTO> findByAutor(String autor) {
-        return boxRepository.findByAutor(autor).stream().map(e -> BoxResponseDTO.valueOf(e)).toList();
+
+        List<Box> listBox = boxRepository 
+                            .findByAutor(autor)
+                            .list();
+
+        return listBox.stream()
+                        .map(e -> BoxResponseDTO.valueOf(e))
+                        .toList();
+    }
+    
+    @Override
+    public List<BoxResponseDTO> findByAutor(int page, int pageSize, String autor) {
+
+        List<Box> listBox = boxRepository 
+                            .findByAutor(autor)
+                            .page(page, pageSize)
+                            .list();
+
+        return listBox.stream()
+                        .map(e -> BoxResponseDTO.valueOf(e))
+                        .toList();
+    }
+
+    @Override
+    public long count() {
+        return boxRepository.count();
     }
 }

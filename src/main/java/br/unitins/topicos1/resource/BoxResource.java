@@ -8,12 +8,14 @@ import br.unitins.topicos1.service.BoxService;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
+import jakarta.ws.rs.DefaultValue;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.Response.Status;
@@ -42,26 +44,37 @@ public class BoxResource {
 
     @GET
     //@RolesAllowed({"Funcionario", "Cliente"})
-    public Response findAll(){
+    public Response findAll(
+        @QueryParam("page") @DefaultValue("0") int page,
+        @QueryParam("pageSize") @DefaultValue("100") int pageSize
+    ){
         LOG.info("Buscando todos os boxes - Executando BoxResource_FindAll");
-        return Response.ok(boxService.findAll()).build();
+        return Response.ok(boxService.findAll(page, pageSize)).build();
     }
 
     @GET
     @Path("/search/nome/{nome}")
     //@RolesAllowed({"Funcionario", "Cliente"})
-    public Response findByNome(@PathParam("nome") String nome){
+    public Response findByNome(
+        @QueryParam("page") @DefaultValue("0") int page,
+        @QueryParam("pageSize") @DefaultValue("100") int pageSize,
+        @PathParam("nome") String nome
+    ){
         LOG.info("Buscando box por título - Executando BoxResource_FindByNome");
-        return Response.ok(boxService.findByNome(nome)).build();
+        return Response.ok(boxService.findByNome(page, pageSize, nome)).build();
     }
 
-    // @GET
-    // @Path("/search/autor/{autor}")
-    // //@RolesAllowed({"Funcionario", "Cliente"})
-    // public Response findByAutor(@PathParam("autor") String autor){
-    //     LOG.info("Buscando Box por autor - Executando LivroResource_findByAutor");
-    //     return Response.ok(boxService.findByAutor(autor)).build();
-    // }
+    @GET
+    @Path("/search/autor/{autor}")
+    //@RolesAllowed({"Funcionario", "Cliente"})
+    public Response findByAutor(
+        @QueryParam("page") @DefaultValue("0") int page,
+        @QueryParam("pageSize") @DefaultValue("100") int pageSize,
+        @PathParam("autor") String autor
+        ){
+        LOG.info("Buscando Box por autor - Executando LivroResource_findByAutor");
+        return Response.ok(boxService.findByAutor(page, pageSize, autor)).build();
+    }
 
     @POST
     //@RolesAllowed({"Funcionario"})
@@ -101,7 +114,13 @@ public class BoxResource {
             LOG.error("Erro ao deletar um box - Executando BoxResource_delete", e);
             return Response.status(Status.NOT_FOUND).entity("Erro ao deletar um box - Executando BoxResource_delete").build();
         }
-    }  
+    }
+    
+    @GET
+    @Path("/{count}")
+    public long count(){
+        return boxService.count();
+    }
 
     // @PATCH
     // @Path("/{id}/image/upload")
