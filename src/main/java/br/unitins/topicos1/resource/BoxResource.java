@@ -64,17 +64,17 @@ public class BoxResource {
         return Response.ok(boxService.findByNome(page, pageSize, nome)).build();
     }
 
-    @GET
-    @Path("/search/autor/{autor}")
-    //@RolesAllowed({"Funcionario", "Cliente"})
-    public Response findByAutor(
-        @QueryParam("page") @DefaultValue("0") int page,
-        @QueryParam("pageSize") @DefaultValue("100") int pageSize,
-        @PathParam("autor") String autor
-        ){
-        LOG.info("Buscando Box por autor - Executando LivroResource_findByAutor");
-        return Response.ok(boxService.findByAutor(page, pageSize, autor)).build();
-    }
+    // @GET
+    // @Path("/search/autor/{autor}")
+    // //@RolesAllowed({"Funcionario", "Cliente"})
+    // public Response findByAutor(
+    //     @QueryParam("page") @DefaultValue("0") int page,
+    //     @QueryParam("pageSize") @DefaultValue("100") int pageSize,
+    //     @PathParam("autor") String autor
+    //     ){
+    //     LOG.info("Buscando Box por autor - Executando LivroResource_findByAutor");
+    //     return Response.ok(boxService.findByAutor(page, pageSize, autor)).build();
+    // }
 
     @POST
     //@RolesAllowed({"Funcionario"})
@@ -97,7 +97,7 @@ public class BoxResource {
             boxService.update(id, dto);
             return Response.status(Status.NO_CONTENT).build();
         } catch (Exception e) {
-            LOG.error("Erro ao atualizar um box - Executando BoxResource_update", e);
+            LOG.info("Erro ao executar update", e);
             return Response.status(Status.NOT_FOUND).entity("Erro ao atualizar um box - Executando BoxResource_update").build();
         }
     }

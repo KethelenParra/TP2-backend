@@ -47,7 +47,7 @@ public class BoxServiceImpl implements BoxService {
         Box box = new Box();
         box.setNome(dto.nome());
         box.setDescricaoBox(dto.descricaoBox());
-        box.setQuantidadeEstoque(dto.quantidadeEstoque());  
+        box.setQuantidadeEstoque(dto.quantidadeEstoque());
         box.setFornecedor(fornecedorRepository.findById(dto.fornecedor()));
         box.setEditora(editoraRepository.findById(dto.editora()));
         box.setPreco(dto.preco());
