@@ -1,10 +1,9 @@
 package br.unitins.topicos1.resource;
-
 import org.jboss.logging.Logger;
 
 import br.unitins.topicos1.dto.BoxDTO;
 import br.unitins.topicos1.service.BoxService;
-//import br.unitins.topicos1.service.file.LivroFileServiceImpl;
+//import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
@@ -24,20 +23,19 @@ import jakarta.ws.rs.core.Response.Status;
 @Consumes(MediaType.APPLICATION_JSON)
 @Path("/boxes")
 public class BoxResource {
-    
     @Inject
-    private BoxService boxService;
+    public BoxService boxService;
 
     // @Inject
-    // public LivroFileServiceImpl fileService;
+    // public BoxFileServiceImpl fileService;
 
     private static final Logger LOG = Logger.getLogger(BoxResource.class);
 
     @GET
     @Path("/{id}")
     //@RolesAllowed({"Funcionario"})
-    public Response findById(@PathParam("id") Long id){
-        LOG.info("Executando o findById");
+    public Response findById(@PathParam("id") Long id) {
+        LOG.info("Executando o findById - BoxResource");
         LOG.infof("Executando o método findById. Id: %s", id.toString());
         return Response.ok(boxService.findById(id)).build();
     }
@@ -45,10 +43,9 @@ public class BoxResource {
     @GET
     //@RolesAllowed({"Funcionario", "Cliente"})
     public Response findAll(
-        @QueryParam("page") @DefaultValue("0") int page,
-        @QueryParam("pageSize") @DefaultValue("100") int pageSize
-    ){
-        LOG.info("Buscando todos os boxes - Executando BoxResource_FindAll");
+        @DefaultValue("0") @QueryParam("page") int page,
+        @DefaultValue("100") @QueryParam("pageSize") int pageSize){
+        LOG.info("Buscando todos os box - Executando BoxResource_FindAll");
         return Response.ok(boxService.findAll(page, pageSize)).build();
     }
 
@@ -56,35 +53,50 @@ public class BoxResource {
     @Path("/search/nome/{nome}")
     //@RolesAllowed({"Funcionario", "Cliente"})
     public Response findByNome(
-        @QueryParam("page") @DefaultValue("0") int page,
-        @QueryParam("pageSize") @DefaultValue("100") int pageSize,
-        @PathParam("nome") String nome
-    ){
-        LOG.info("Buscando box por título - Executando BoxResource_FindByNome");
+        @PathParam("nome") String nome,
+        @DefaultValue("0") @QueryParam("page") int page,
+        @DefaultValue("100") @QueryParam("pageSize") int pageSize){
+        LOG.info("Buscando boxes por nonme - Executando BoxResource_findByNome");
         return Response.ok(boxService.findByNome(page, pageSize, nome)).build();
     }
 
-    // @GET
-    // @Path("/search/autor/{autor}")
-    // //@RolesAllowed({"Funcionario", "Cliente"})
-    // public Response findByAutor(
-    //     @QueryParam("page") @DefaultValue("0") int page,
-    //     @QueryParam("pageSize") @DefaultValue("100") int pageSize,
-    //     @PathParam("autor") String autor
-    //     ){
-    //     LOG.info("Buscando Box por autor - Executando LivroResource_findByAutor");
-    //     return Response.ok(boxService.findByAutor(page, pageSize, autor)).build();
-    // }
+    @GET
+    @Path("/search/descricao/{descricao}")
+    //@RolesAllowed({"Funcionario", "Cliente"})
+    public Response findByDescricao(
+        @PathParam("descricao") String descricao,
+        @DefaultValue("0") @QueryParam("page") int page,
+        @DefaultValue("100") @QueryParam("pageSize") int pageSize){
+        LOG.info("Buscando box por descrição - Executando BoxResource_findByDescricao");
+        return Response.ok(boxService.findByDescricao(page, pageSize, descricao)).build();
+    }
+
+    @GET
+    @Path("/search/autor/{autor}")
+    //@RolesAllowed({"Funcionario", "Cliente"})
+    public Response findByAutor(
+        @PathParam("autor") String autor,
+        @DefaultValue("0") @QueryParam("page") int page,
+        @DefaultValue("100") @QueryParam("pageSize") int pageSize){
+        LOG.info("Buscando box por autor - Executando BoxResource_findByAutor");
+        return Response.ok(boxService.findByAutor(page, pageSize, autor)).build();
+    }
+
+    @GET
+    @Path("/count")
+    public Response count() {
+        return Response.ok(boxService.count()).build();
+    }
 
     @POST
     //@RolesAllowed({"Funcionario"})
     public Response create (BoxDTO dto){
         try {
-            LOG.info("Criando um novo box - Executando BoxResource_create");
+            LOG.info("Criando uma nova boxes - Executando BoxResource_create");
             return Response.status(Status.CREATED).entity(boxService.create(dto)).build();
         } catch (Exception e) {
-            LOG.error("Erro ao criar um novo box - Executando BoxResource_create", e);
-            return Response.status(Status.NOT_FOUND).entity("Erro ao criar um novo box - Executando BoxResource_create").build();
+            LOG.error("Erro ao criar uma novo box - Executando BoxResource_create", e);
+            return Response.status(Status.NOT_FOUND).entity("Erro ao criar uma novo box - Executando BoxResource_create").build();
         }
     }
 
@@ -97,7 +109,8 @@ public class BoxResource {
             boxService.update(id, dto);
             return Response.status(Status.NO_CONTENT).build();
         } catch (Exception e) {
-            LOG.info("Erro ao executar update", e);
+
+            LOG.error("Erro ao atualizar uma caixa livro - Executando BoxResource_update", e);
             return Response.status(Status.NOT_FOUND).entity("Erro ao atualizar um box - Executando BoxResource_update").build();
         }
     }
@@ -107,21 +120,15 @@ public class BoxResource {
     //@RolesAllowed({"Funcionario"})
     public Response delete(@PathParam("id") Long id){
         try {
-            LOG.info("Deletando um box - Executando BoxResource_delete");
+            LOG.info("Deletando ua box - Executando BoxResource_delete");
             boxService.delete(id);
             return Response.status(Status.NO_CONTENT).build();
         } catch (Exception e) {
             LOG.error("Erro ao deletar um box - Executando BoxResource_delete", e);
-            return Response.status(Status.NOT_FOUND).entity("Erro ao deletar um box - Executando BoxResource_delete").build();
+            return Response.status(Status.NOT_FOUND).entity("Erro ao deletar um box - Executando boxResource_delete").build();
         }
-    }
+    }  
     
-    @GET
-    @Path("/{count}")
-    public long count(){
-        return boxService.count();
-    }
-
     // @PATCH
     // @Path("/{id}/image/upload")
     // //@RolesAllowed({"Funcionario"})
@@ -129,11 +136,11 @@ public class BoxResource {
     // public Response upload(@PathParam("id") Long id, @MultipartForm ImageForm form) {
     //     try {
     //         fileService.salvar(id, form.getNomeImagem(), form.getImagem());
-    //         LOG.infof("Imagem salva com sucesso - Executando LivroResource_upload");
+    //         LOG.infof("Imagem salva com sucesso - Executando BoxResource_upload");
     //         return Response.noContent().build();
     //     } catch (Exception e) {
-    //         LOG.error("Erro ao salvar imagem do livro - Executando LivroResource_uploar", e);
-    //         return Response.status(Status.CONFLICT).entity("Erro ao salvar imagem do livro - Executando LivroResource_upload").build();
+    //         LOG.error("Erro ao salvar imagem da box - Executando BoxResource_upload", e);
+    //         return Response.status(Status.CONFLICT).entity("Erro ao salvar imagem da box - Executando BoxResource_upload").build();
     //     }
     // }
 
@@ -146,12 +153,13 @@ public class BoxResource {
             
     //         ResponseBuilder response = Response.ok(fileService.download(nomeImagem));
     //         response.header("Content-Disposition", "attachment;filename=" + nomeImagem);
-    //         LOG.infof("Download do arquivo %s concluído com sucesso. - Executando LivroResource_download", nomeImagem);
+    //         LOG.infof("Download do arquivo %s concluído com sucesso. - Executando BoxResource_download", nomeImagem);
     //         return response.build();
     //     } catch (Exception e) {
-    //         LOG.errorf("Erro ao realizar o download do arquivo:- Executando LivroResource_download %s", nomeImagem, e);
+    //         LOG.errorf("Erro ao realizar o download do arquivo:- Executando BoxResource_download %s", nomeImagem, e);
 
     //         return Response.status(Status.INTERNAL_SERVER_ERROR).build();
     //     }
     // }
+
 }

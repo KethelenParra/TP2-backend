@@ -1,5 +1,4 @@
 package br.unitins.topicos1.resource;
-
 import org.jboss.logging.Logger;
 import org.jboss.resteasy.annotations.providers.multipart.MultipartForm;
 
@@ -7,6 +6,7 @@ import br.unitins.topicos1.dto.AutorDTO;
 import br.unitins.topicos1.form.ImageForm;
 import br.unitins.topicos1.service.AutorService;
 import br.unitins.topicos1.service.file.AutorFileServiceImpl;
+//import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.validation.Valid;
 import jakarta.ws.rs.Consumes;
@@ -49,10 +49,8 @@ public class AutorResource {
     @GET
     //@RolesAllowed({"Funcionario", "Cliente"})
     public Response findAll(
-        @QueryParam("page") @DefaultValue("0") int page,
-        @QueryParam("pageSize") @DefaultValue("100") int pageSize
-        
-    ) {
+        @DefaultValue("0") @QueryParam("page") int page,
+        @DefaultValue("100") @QueryParam("pageSize") int pageSize) {
         LOG.info("Buscando todos os autores - Executando AutorResource_FindAll");
         return Response.ok(autorService.findAll(page, pageSize)).build();
     }
@@ -61,10 +59,9 @@ public class AutorResource {
     @Path("/search/nome/{nome}")
     //@RolesAllowed({"Funcionario", "Cliente"})
     public Response findByNome(
-        @QueryParam("page") @DefaultValue("0") int page,
-        @QueryParam("pageSize") @DefaultValue("100") int pageSize,
-        @PathParam("nome") String nome
-    ) {
+        @PathParam("nome") String nome,
+        @DefaultValue("0") @QueryParam("page") int page,
+        @DefaultValue("100") @QueryParam("pageSize") int pageSize) {
         LOG.info("Buscando autores por nome - Executando AutorResource_FindByNome");
         return Response.ok(autorService.findByNome(page, pageSize, nome)).build();
     }
@@ -73,13 +70,19 @@ public class AutorResource {
     @Path("/search/biografia/{biografia}")
     //@RolesAllowed({"Funcionario", "Cliente"}) 
     public Response findByBiografia(
-        @QueryParam("page") @DefaultValue("0") int page,
-        @QueryParam("pageSize") @DefaultValue("100") int pageSize,
-        @PathParam("biografia") String biografia
-    ) {
+        @PathParam("biografia") String biografia,
+        @DefaultValue("0") @QueryParam("page") int page,
+        @DefaultValue("100") @QueryParam("pageSize") int pageSize) {
         LOG.info("Buscando autores por biografia - - Executando AutorResource_FindByBiografia");
-        return Response.ok(autorService.findByBiografia(biografia)).build();
+        return Response.ok(autorService.findByBiografia(page, pageSize, biografia)).build();
     }
+
+    @GET
+    @Path("/count")
+    public Response count() {
+        return Response.ok(autorService.count()).build();
+    }
+
 
     @POST
     //@RolesAllowed({"Funcionario"}) 
@@ -121,12 +124,6 @@ public class AutorResource {
         }
     }
 
-    @GET
-    @Path("/{count}")
-    public long count(){
-        return autorService.count();
-    }
-
     @PATCH
     @Path("/{id}/image/upload")
     //@RolesAllowed({"Funcionario"})
@@ -158,5 +155,5 @@ public class AutorResource {
 
             return Response.status(Status.INTERNAL_SERVER_ERROR).build();
         }
-    }  
+    }
 }

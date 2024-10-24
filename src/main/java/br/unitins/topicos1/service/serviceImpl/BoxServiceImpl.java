@@ -165,4 +165,28 @@ public class BoxServiceImpl implements BoxService {
     public long count() {
         return boxRepository.count();
     }
+
+    @Override
+    public List<BoxResponseDTO> findByDescricao(String descricao) {
+
+        List<Box> listBox = boxRepository
+                            .findByBox(descricao)
+                            .list();
+
+        return listBox.stream()
+            .map(a -> BoxResponseDTO.valueOf(a))
+            .toList();
+    }
+
+    @Override
+    public List<BoxResponseDTO> findByDescricao(int page, int pageSize, String descricao) {
+        List<Box> listBox = boxRepository
+        .findByBox(descricao)
+        .page(page, pageSize)
+        .list();
+
+        return listBox.stream()
+        .map(a -> BoxResponseDTO.valueOf(a))
+        .toList();
+    }
 }
