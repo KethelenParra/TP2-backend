@@ -12,8 +12,10 @@ public interface EditoraService {
    public void update(Long id, EditoraDTO dto);
    public void delete(Long id);
    public EditoraResponseDTO findById(Long id);
-   public List<EditoraResponseDTO> findAll(int page, int pageSize);
    public List<EditoraResponseDTO> findByNome(String nome);
+   
+   public List<EditoraResponseDTO> findAll(int page, int pageSize);
    public List<EditoraResponseDTO> findByNome(int page, int pageSize, String nome);
    public long count();
+   public long countByNome(String nome);
 }

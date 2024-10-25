@@ -189,4 +189,9 @@ public class BoxServiceImpl implements BoxService {
         .map(a -> BoxResponseDTO.valueOf(a))
         .toList();
     }
+
+    @Override
+    public long countByNome(String nome) {
+        return boxRepository.findByBox(nome).count();
+    }
 }

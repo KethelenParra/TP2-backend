@@ -143,4 +143,10 @@ public class AutorServiceImpl implements AutorService{
     public long count(){
         return autorRepository.count();
     }
+
+    @Override
+    public long countByNome(String nome) {
+
+        return autorRepository.findByNome(nome).count();
+    }
 }

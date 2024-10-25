@@ -103,6 +103,15 @@ public class EditoraResource {
     @GET
     @Path("/count")
     public long count(){
+        LOG.infof("Contando todos os editoras");
         return editoraService.count();
+    }
+
+    @GET
+    @Path("/count/search/{nome}")
+    // @RolesAllowed({"Funcionario"})
+    public Long count (@PathParam("nome") String nome) {
+        LOG.infof("Contando todos os editoras");
+        return editoraService.countByNome(nome);
     }
 }

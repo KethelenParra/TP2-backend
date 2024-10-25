@@ -75,7 +75,16 @@ public class GeneroResource {
     @GET
     @Path("/count")
     public long count(){
+        LOG.infof("Contando todos os generos");
         return generoService.count();
+    }
+    
+    @GET
+    @Path("/count/search/{nome}")
+    // @RolesAllowed({"Funcionario"})
+    public Long count (@PathParam("nome") String nome) {
+        LOG.infof("Contando todos os generos");
+        return generoService.countByNome(nome);
     }
 
     @POST

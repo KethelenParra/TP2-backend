@@ -76,7 +76,16 @@ public class FornecedorResource {
     @GET
     @Path("/count")
     public long count(){
+        LOG.infof("Contando todos os fornecedores");
         return fornecedorService.count();
+    }
+
+    @GET
+    @Path("/count/search/{nome}")
+    // @RolesAllowed({"Funcionario"})
+    public Long count (@PathParam("nome") String nome) {
+        LOG.infof("Contando todos os fornecedores");
+        return fornecedorService.countByNome(nome);
     }
 
     @POST
