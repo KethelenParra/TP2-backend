@@ -41,13 +41,6 @@ public class LivroResource {
         LOG.infof("Executando o método findById. Id: %s", id.toString());
         return Response.ok(livroService.findById(id)).build();
     }
-    
-    @GET
-    @Path("/search")
-    public Response search(){
-        LOG.info("Buscando todos os livros - Executando LivroResource_search");
-        return Response.ok(livroService.findAll()).build();
-    }
 
     @GET
     //@RolesAllowed({"Funcionario", "Cliente"})
@@ -59,6 +52,13 @@ public class LivroResource {
         return Response.ok(livroService.findAll(page, pageSize)).build();
     }
 
+    @GET
+    @Path("/search/titulo/{titulo}")
+    //@RolesAllowed({"Funcionario", "Cliente"})
+    public Response findByTitulo(@PathParam("titulo") String titulo){
+        LOG.info("Buscando livros por título - Executando LivroResource_FindByTitulo");
+        return Response.ok(livroService.findByTitulo(titulo)).build();
+    }
     @GET
     @Path("/search/titulo/{titulo}")
     //@RolesAllowed({"Funcionario", "Cliente"})
