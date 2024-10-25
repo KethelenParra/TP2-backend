@@ -8,7 +8,7 @@ import jakarta.enterprise.context.ApplicationScoped;
 @ApplicationScoped
 public class BoxRepository implements PanacheRepository<Box> {
     public PanacheQuery<Box> findByBox(String nome){
-        return find("UPPER(nome) LIKE ?1", nome.toUpperCase() + "%");
+        return find("UPPER(nome) LIKE ?1",  "%" + nome.toUpperCase() + "%");
     }
 
     public PanacheQuery<Box> findByDescricao(String descricaoBox){

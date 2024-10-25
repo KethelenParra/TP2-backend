@@ -85,7 +85,16 @@ public class BoxResource {
     @GET
     @Path("/count")
     public Response count() {
+        LOG.infof("Contando todos os boxes");
         return Response.ok(boxService.count()).build();
+    }
+
+    @GET
+    @Path("/count/search/{nome}")
+    // @RolesAllowed({"Funcionario"})
+    public Long count (@PathParam("nome") String nome) {
+        LOG.infof("Contando todos os boxes");
+        return boxService.countByNome(nome);
     }
 
     @POST

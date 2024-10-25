@@ -110,9 +110,17 @@ public class LivroResource {
     @GET
     @Path("/count")
     public long count(){
+        LOG.infof("Contando todos os livros");
         return livroService.count();
     }
 
+    @GET
+    @Path("/count/search/{nome}")
+    // @RolesAllowed({"Funcionario"})
+    public Long count (@PathParam("nome") String nome) {
+        LOG.infof("Contando todos os livros");
+        return livroService.countByNome(nome);
+    }
 
     @POST
     //@RolesAllowed({"Funcionario"})

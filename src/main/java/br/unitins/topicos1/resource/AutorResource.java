@@ -80,7 +80,16 @@ public class AutorResource {
     @GET
     @Path("/count")
     public Response count() {
+        LOG.infof("Contando todos os autores");
         return Response.ok(autorService.count()).build();
+    }
+
+    @GET
+    @Path("/count/search/{nome}")
+    // @RolesAllowed({"Funcionario"})
+    public Long count (@PathParam("nome") String nome) {
+        LOG.infof("Contando todos os autores");
+        return autorService.countByNome(nome);
     }
 
 
