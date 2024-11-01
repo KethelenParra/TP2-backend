@@ -90,27 +90,21 @@ public class GeneroResource {
     @POST
     //@RolesAllowed({"Funcionario"})
     public Response create (GeneroDTO dto){
-        try {
-            LOG.info("Criando um novo genero - Executando GeneroResource_create");
-            return Response.status(Status.CREATED).entity(generoService.create(dto)).build();
-        } catch (Exception e) {
-            LOG.error("Erro ao criar um novo genero - Executando GeneroResource_create", e);
-            return Response.status(Status.NOT_FOUND).entity("Erro ao criar um novo genero - Executando GeneroResource_create").build();
-        }
+      
+        LOG.info("Criando um novo genero - Executando GeneroResource_create");
+        return Response.status(Status.CREATED).entity(generoService.create(dto)).build();
+        
     }
 
     @PUT
     @Path("/{id}")
     //@RolesAllowed({"Funcionario"})
     public Response update(@PathParam("id") Long id, GeneroDTO dto){
-        try {
-            LOG.info("Atualizando um genero - Executando GeneroResource_update");
-            generoService.update(id, dto);
-            return Response.status(Status.NO_CONTENT).build();
-        } catch (Exception e) {
-            LOG.error("Erro ao atualizar um genero - Executando GeneroResource_update", e);
-            return Response.status(Status.NOT_FOUND).entity("Erro ao atualizar um genero - Executando GeneroResource_update").build();
-        }
+        
+        LOG.info("Atualizando um genero - Executando GeneroResource_update");
+        generoService.update(id, dto);
+        return Response.status(Status.NO_CONTENT).build();
+       
     }
 
     @DELETE

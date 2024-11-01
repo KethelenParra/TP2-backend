@@ -48,6 +48,7 @@ public class EditoraServiceImpl implements EditoraService {
     public void update(Long id, EditoraDTO dto) {
         Editora editoraBanco = editoraRepository.findById(id);
 
+
         if(editoraBanco != null ){
             editoraBanco.setNome(dto.nome());
             editoraBanco.setEmail(dto.email());

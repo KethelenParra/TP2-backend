@@ -100,28 +100,21 @@ public class BoxResource {
     @POST
     //@RolesAllowed({"Funcionario"})
     public Response create (BoxDTO dto){
-        try {
-            LOG.info("Criando uma nova boxes - Executando BoxResource_create");
-            return Response.status(Status.CREATED).entity(boxService.create(dto)).build();
-        } catch (Exception e) {
-            LOG.error("Erro ao criar uma novo box - Executando BoxResource_create", e);
-            return Response.status(Status.NOT_FOUND).entity("Erro ao criar uma novo box - Executando BoxResource_create").build();
-        }
+        
+        LOG.info("Criando uma nova boxes - Executando BoxResource_create");
+        return Response.status(Status.CREATED).entity(boxService.create(dto)).build();
+
     }
 
     @PUT
     @Path("/{id}")
     //@RolesAllowed({"Funcionario"})
     public Response update(@PathParam("id") Long id, BoxDTO dto){
-        try {
-            LOG.info("Atualizando um box - Executando BoxResource_update");
-            boxService.update(id, dto);
-            return Response.status(Status.NO_CONTENT).build();
-        } catch (Exception e) {
-
-            LOG.error("Erro ao atualizar uma caixa livro - Executando BoxResource_update", e);
-            return Response.status(Status.NOT_FOUND).entity("Erro ao atualizar um box - Executando BoxResource_update").build();
-        }
+        
+        LOG.info("Atualizando um box - Executando BoxResource_update");
+        boxService.update(id, dto);
+        return Response.status(Status.NO_CONTENT).build();
+       
     }
 
     @DELETE
