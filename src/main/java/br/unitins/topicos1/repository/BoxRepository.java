@@ -1,6 +1,5 @@
 package br.unitins.topicos1.repository;
 
-import br.unitins.topicos1.model.autor.Autor;
 import br.unitins.topicos1.model.box.Box;
 import io.quarkus.hibernate.orm.panache.PanacheQuery;
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
