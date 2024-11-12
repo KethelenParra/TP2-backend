@@ -18,8 +18,8 @@ public record LivroResponseDTO(
         EditoraResponseDTO editora,
         FornecedorResponseDTO fornecedor, 
         List<AutorResponseDTO> autores,
-        List<GeneroResponseDTO> generos
-        //String nomeImagem
+        List<GeneroResponseDTO> generos,
+        String nomeImagem
 ) {
     private static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     public static LivroResponseDTO valueOf(Livro livro) {
@@ -43,8 +43,8 @@ public record LivroResponseDTO(
                 EditoraResponseDTO.valueOf(livro.getEditora()),
                 FornecedorResponseDTO.valueOf(livro.getFornecedor()),
                 listaAutor,
-                listaGenero
-                //livro.getNomeImagem()
+                listaGenero,
+                livro.getNomeImagem()
         );
     }
 }

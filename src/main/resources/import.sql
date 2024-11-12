@@ -124,25 +124,104 @@ VALUES
        ('Hachette', 'hachette@gmail.com', 'Paris', 'Paris', 33);
 
 -- Inserir livro
-INSERT INTO livro (titulo, preco, quantidadeEstoque, isbn, descricao, datalancamento, id_fornecedor, id_editora, classificacao) 
-VALUES 
-       ('Confess', 39.90, 50, '9781501176838', 'Confess é um romance contemporâneo escrito por Colleen Hoover. O livro foi publicado em 2015 e é centrado em Auburn Reed e Owen Gentry. Auburn tem um passado difícil e encontra Owen, um artista misterioso, enquanto trabalha em uma galeria de arte. Juntos, eles embarcam em uma jornada emocional, desvendando segredos e enfrentando desafios que testam seu amor.','12/09/2020', 3, 3, 3),
-       ('A Hipotese do Amor', 29.99, 100, '9780593336823', 'The Love Hypothesis é um romance contemporâneo escrito por Ali Hazelwood. O livro narra a história de Olive Smith, uma estudante de pós-graduação determinada a provar uma teoria científica sobre o amor. Com a ajuda de seu charmoso professor, eles embarcam em uma jornada de descoberta científica e pessoal.','12/08/2020', 1, 1, 1),   
-       ('O Vendedor de Sonhos', 34.90, 80, '9788575429039',  'O Vendedor de Sonhos é um romance psicológico escrito por Augusto Cury. O livro conta a história de um homem misterioso que salva a vida de um suicida e o convence a acompanhar em uma jornada para mudar a sociedade através de sonhos e reflexões profundas sobre a vida.','12/06/2008', 2, 2, 2),
-       ('Harry Potter e a Pedra Filosofal', 49.90, 100, '9788532530802', 'Harry Potter é uma série de sete romances de fantasia escrita pela autora britânica J.K. Rowling. Os livros narram as aventuras de um jovem bruxo, Harry Potter, e seus amigos Hermione Granger e Ron Weasley, todos estudantes na Escola de Magia e Bruxaria de Hogwarts.', '08/08/2011', 4, 4, 4),
-       ('1984', 35.00, 80, '9788532530803', '1984 é um romance distópico escrito por George Orwell em 1948 e publicado em 1949. A obra é um dos maiores clássicos da literatura mundial e uma das mais influentes e importantes do século XX.', '14/09/1987', 4, 3, 4),
-       ('O Diário da Nossa Paixão', 29.90, 70, '9788532511666', 'O Diário da Nossa Paixão é um romance do escritor norte-americano Nicholas Sparks, que relata a história de amor entre Noah Calhoun e Allie Nelson, que se conhecem e se apaixonam durante um verão.', '12/02/1978', 1, 2, 4),
-       ('Harry Potter e as Relíquias da morte', 65.00, 20, '9788532522610', 'Encontro inevitável com Lord Voldemort não pode mais ser adiado. Harry, no entanto, precisa ganhar tempo para encontrar as Horcruxes que ainda estão faltando. E, pelo caminho, descobrir o que são afinal as Relíquias da Morte e como ele pode usá-las contra o Lorde das Trevas','12/09/1998', 4, 3, 1),
-       ('O Alquimista', 39.90, 50, '9788577023206', 'O Alquimista, de Paulo Coelho, é uma obra que narra a jornada de Santiago, um jovem pastor que busca um tesouro localizado nas pirâmides do Egito. O livro explora temas de autoconhecimento e a importância de seguir os próprios sonhos.', '01/01/1988', 1, 2, 1),
-       ('O Hobbit', 49.90, 60, '9788532530543', 'O Hobbit, de J.R.R. Tolkien, é um romance de fantasia que conta a história de Bilbo Bolseiro, um hobbit que embarca em uma aventura com um grupo de anões para recuperar seu tesouro de um dragão chamado Smaug.', '21/09/1937', 4, 4, 1),
-       ('Cem Anos de Solidão', 29.99, 40, '9788535925224', 'Cem Anos de Solidão, de Gabriel García Márquez, narra a história da família Buendía ao longo de várias gerações na mítica cidade de Macondo, abordando temas de solidão e realismo mágico.', '05/06/1967', 2, 3, 1),
-       ('A Revolução dos Bichos', 19.90, 80, '9788535925385', 'A Revolução dos Bichos, de George Orwell, é uma fábula política que critica o totalitarismo através da história de um grupo de animais que se revoltam contra seus humanos opressores.', '17/08/1945', 1, 3, 1),
-       ('A Menina que Roubava Livros', 39.90, 100, '9788573021761', 'A Menina que Roubava Livros, de Markus Zusak, é um romance ambientado na Alemanha nazista que narra a história de Liesel, uma jovem que encontra consolo em livros e compartilha suas histórias durante tempos difíceis.', '01/03/2005', 3, 2, 2),
-       ('A Culpa é das Estrelas', 29.90, 70, '9788580574853', 'A Culpa é das Estrelas, de John Green, é um romance sobre a vida de Hazel Grace, uma adolescente com câncer, que se apaixonada por Augustus Waters, também portador da doença, enquanto enfrentam suas dificuldades.', '10/01/2012', 2, 1, 2),
-       ('O Senhor das Moscas', 39.90, 60, '9788535925811', 'O Senhor das Moscas, de William Golding, conta a história de um grupo de meninos que ficam presos em uma ilha deserta e sua luta pela sobrevivência enquanto as estruturas sociais se desintegram.', '17/08/1954', 4, 3, 3),
-       ('Orgulho e Preconceito', 49.90, 80, '9788535931225', 'Orgulho e Preconceito, de Jane Austen, é um romance que examina a natureza do amor e do casamento através da história de Elizabeth Bennet e suas interações com o orgulhoso Mr. Darcy.', '28/01/1813', 3, 2, 3),
-       ('O Retrato de Dorian Gray', 39.90, 50, '9788535935926', 'O Retrato de Dorian Gray, de Oscar Wilde, conta a história de um jovem que, após ver seu retrato envelhecer em seu lugar, vive uma vida de hedonismo e excessos, com consequências trágicas.', '20/06/1890', 3, 4, 3),
-       ('Fahrenheit 451', 29.90, 70, '9788535920845', 'Fahrenheit 451, de Ray Bradbury, é uma distopia que descreve um futuro em que os livros são proibidos e os "bombeiros" queimam qualquer livro encontrado, explorando temas de censura e liberdade.', '19/10/1953', 2, 3, 2);
+-- Colleen Hoover
+INSERT INTO livro (titulo, preco, quantidadeEstoque, isbn, descricao, datalancamento, id_fornecedor, id_editora, classificacao, nomeImagem)
+VALUES
+    ('É Assim que Acaba', 34.90, 100, '9788501110646', 'História emocionante de amor, superação e escolhas difíceis.', '02/08/2016', 9, 10, 4, 'e-assim-que-acaba.jpg'),
+    ('Verity', 36.90, 80, '9788501110653', 'Thriller psicológico sobre segredos sombrios de uma autora famosa.', '01/12/2018', 9, 10, 4, 'verity.jpg'),
+    ('Todas as Suas (Im)perfeições', 32.90, 70, '9788501110660', 'Um olhar profundo sobre os desafios e imperfeições de um relacionamento.', '17/07/2018', 9, 10, 4, 'todas-as-suas-imperfeicoes.jpg'),
+    ('Talvez um Dia', 31.90, 60, '9788501110677', 'Romance sobre amor e música entre duas almas criativas e apaixonadas.', '18/03/2014', 9, 10, 4, 'talvez-um-dia.jpg'),
+    ('Novembro, 9', 30.00, 90, '9788501110684', 'História de amor marcada por encontros anuais no mesmo dia.', '10/11/2015', 9, 10, 4, 'novembro-9.jpg'),
+    ('Confesse', 29.50, 75, '9788501110691', 'Romance sobre segredos, perdão e um amor que desafia as circunstâncias.', '10/03/2015', 9, 10, 3, 'confesse.jpg'),
+    ('Métrica', 28.90, 85, '9788501110707', 'A descoberta do amor e da poesia na vida de uma jovem em transição.', '05/01/2012', 9, 10, 3, 'metrica.jpg'),
+    ('Pausa', 27.90, 80, '9788501110714', 'Continuação de "Métrica", explorando desafios e amadurecimento em um relacionamento.', '21/08/2012', 9, 10, 3, 'pausa.jpg'),
+    ('Essa Garota', 26.90, 70, '9788501110721', 'Terceiro livro da série Slammed, com novos olhares sobre os eventos passados.', '13/04/2013', 9, 10, 3, 'essa-garota.jpg'),
+    ('Sem Esperança', 33.50, 65, '9788501110738', 'Versão da história de Holder de "Um Caso Perdido", com novos detalhes e revelações.', '07/07/2013', 9, 10, 4, 'sem-esperanca.jpg'),
+    ('Em Busca de Cinderela', 24.90, 60, '9788501110745', 'Spin-off da série "Hopeless", sobre um encontro inesperado que muda vidas.', '14/10/2013', 9, 10, 3, 'em-busca-de-cinderela.jpg'),
+    ('Um Caso Perdido', 32.00, 70, '9788501110752', 'Primeiro livro da série Hopeless, sobre segredos familiares e novos começos.', '17/12/2012', 9, 10, 4, 'um-caso-perdido.jpg'),
+    ('Tarde Demais', 28.90, 75, '9788501110769', 'História intensa e controversa sobre obsessão e relacionamentos tóxicos.', '28/03/2016', 9, 10, 3, 'tarde-demais.jpg'),
+    ('Heart Bones', 34.00, 60, '9788501110776', 'Romance sobre descobertas, dor e amor entre duas pessoas em mundos diferentes.', '19/08/2020', 9, 10, 3, 'heart-bones.jpg'),
+    ('Layla', 31.50, 65, '9788501110783', 'Romance sobrenatural que mistura amor, suspense e o inexplicável.', '08/12/2020', 9, 10, 3, 'layla.jpg'),
+    ('Reminders of Him', 35.90, 80, '9788501110790', 'Uma história sobre redenção, perdão e a força do amor de uma mãe.', '18/01/2022', 9, 10, 4, 'reminders-of-him.jpg');
+
+-- George Orwell
+INSERT INTO livro (titulo, preco, quantidadeEstoque, isbn, descricao, datalancamento, id_fornecedor, id_editora, classificacao, nomeImagem)
+VALUES
+    ('1984', 35.00, 80, '9788532530803', '1984 é um romance distópico escrito por George Orwell que explora o totalitarismo.', '14/09/1987', 4, 3, 4, '1984.jpg'),
+    ('A Revolução dos Bichos', 19.90, 80, '9788535925385', 'A Revolução dos Bichos é uma fábula política que critica o totalitarismo.', '17/08/1945', 1, 3, 1, 'a-revolucao-dos-bichos.jpg'),
+    ('Dias na Birmânia', 30.00, 50, '9788535917762', 'Romance que retrata o colonialismo britânico na Birmânia e suas consequências.', '01/03/1934', 2, 3, 2, 'dias-na-birmania.jpg'),
+    ('O Caminho para Wigan Pier', 27.90, 40, '9788535905615', 'Uma crítica à situação da classe trabalhadora na Inglaterra na década de 1930.', '08/02/1937', 1, 2, 3, 'o-caminho-para-wigan-pier.jpg'),
+    ('Lutando na Espanha', 32.50, 35, '9788535912347', 'Relato da experiência de George Orwell na Guerra Civil Espanhola.', '25/10/1938', 2, 3, 4, 'lutando-na-espanha.jpg');
+
+-- J.K. Rowling
+INSERT INTO livro (titulo, preco, quantidadeEstoque, isbn, descricao, datalancamento, id_fornecedor, id_editora, classificacao, nomeImagem)
+VALUES
+    ('Harry Potter e a Pedra Filosofal', 49.90, 100, '9788532530802', 'Primeiro livro da série Harry Potter, onde Harry descobre ser um bruxo.', '08/08/2011', 4, 4, 4, 'pedra-filosofal.jpg'),
+    ('Harry Potter e a Câmara Secreta', 44.90, 90, '9788532530819', 'Segundo livro da série, onde Harry retorna a Hogwarts e enfrenta novos perigos.', '02/07/1998', 4, 4, 4, 'camara-secreta.jpg'),
+    ('Harry Potter e o Prisioneiro de Azkaban', 45.90, 85, '9788532530826', 'Terceiro livro da série, onde Harry descobre mais sobre seu passado e Sirius Black.', '08/03/1999', 4, 4, 4, 'prisioneiro-de-azkaban.jpg'),
+    ('Harry Potter e o Cálice de Fogo', 59.90, 70, '9788532530833', 'Quarto livro da série, onde Harry participa do Torneio Tribruxo.', '01/08/2000', 4, 4, 4, 'calice-de-fogo.jpg'),
+    ('Harry Potter e as Relíquias da Morte', 65.00, 20, '9788532522610', 'Último livro da série, com o confronto final entre Harry e Voldemort.', '12/09/1998', 4, 3, 1, 'reliquias-da-morte.jpg');
+
+-- Gabriel García Márquez
+INSERT INTO livro (titulo, preco, quantidadeEstoque, isbn, descricao, datalancamento, id_fornecedor, id_editora, classificacao, nomeImagem)
+VALUES
+    ('Cem Anos de Solidão', 29.99, 40, '9788535925224', 'História da família Buendía em Macondo, abordando realismo mágico.', '05/06/1967', 2, 3, 1, 'cem-anos-de-solidao.jpg'),
+    ('O Amor nos Tempos do Cólera', 34.90, 50, '9788535922230', 'Romance que narra a paixão duradoura entre Florentino Ariza e Fermina Daza.', '15/09/1985', 2, 2, 2, 'o-amor-njos-tempo-de-colera.jpg'),
+    ('Crônica de uma Morte Anunciada', 25.90, 60, '9788535916726', 'História baseada em um evento real, onde todos sabiam do assassinato, exceto a vítima.', '06/03/1981', 2, 3, 2, 'cronica-de-uma-morte-anunciada.jpg'),
+    ('O General em Seu Labirinto', 28.50, 45, '9788535923143', 'Relato ficcional dos últimos dias de Simón Bolívar.', '01/07/1989', 2, 2, 3, 'o-general-em-seu-labirinto.jpg'),
+    ('Doze Contos Peregrinos', 23.90, 55, '9788535907892', 'Coletânea de contos que exploram temas de exílio e destino.', '12/10/1992', 2, 3, 3, 'doze-contos-peregrinos');
+
+-- Jane Austen
+INSERT INTO livro (titulo, preco, quantidadeEstoque, isbn, descricao, datalancamento, id_fornecedor, id_editora, classificacao, nomeImagem)
+VALUES
+    ('Orgulho e Preconceito', 39.90, 75, '9788532531292', 'Clássico romance sobre as complexidades sociais e amorosas na Inglaterra do século XIX.', '28/01/1813', 6, 6, 4, 'orgulho-e-preconceito.jpg'),
+    ('Razão e Sensibilidade', 37.90, 60, '9788532531308', 'História das irmãs Dashwood e seus desafios emocionais e financeiros.', '01/10/1811', 6, 6, 3, 'razao-e-sensibilidade.jpg'),
+    ('Emma', 36.50, 50, '9788532531315', 'Romance que acompanha as tentativas de casamenteira da jovem e rica Emma Woodhouse.', '23/12/1815', 6, 6, 3, 'emma.jpg'),
+    ('Persuasão', 32.90, 40, '9788532531322', 'História de amor e redenção entre Anne Elliot e o Capitão Wentworth.', '20/12/1817', 6, 6, 4, 'persuasao.jpg'),
+    ('Mansfield Park', 33.90, 55, '9788532531339', 'Relato das dificuldades de Fanny Price ao se mudar para a mansão de seus tios ricos.', '09/07/1814', 6, 6, 3, 'mansfield-park.jpg');
+
+-- Machado de Assis
+INSERT INTO livro (titulo, preco, quantidadeEstoque, isbn, descricao, datalancamento, id_fornecedor, id_editora, classificacao, nomeImagem)
+VALUES
+    ('Dom Casmurro', 29.90, 100, '9788535920127', 'Clássico de Machado de Assis que aborda amor, ciúme e traição.', '01/01/1899', 1, 2, 4, 'dom-casmurro.jpg'),
+    ('Memórias Póstumas de Brás Cubas', 27.50, 90, '9788535910487', 'Narrativa inovadora com reflexões críticas sobre a sociedade brasileira.', '01/01/1881', 1, 2, 4, 'memorias-postumas.jpg'),
+    ('Quincas Borba', 26.90, 80, '9788535914560', 'Romance sobre ambição e loucura, centrado na filosofia do Humanitismo.', '01/01/1891', 1, 2, 3, 'quincas-borda'),
+    ('Esaú e Jacó', 28.00, 75, '9788535917219', 'História de dois irmãos gêmeos com visões políticas opostas.', '01/01/1904', 1, 2, 3, 'esau-e-jaco.jpg'),
+    ('Helena', 25.50, 65, '9788535920912', 'Romance que explora amor e hierarquia social na sociedade carioca do século XIX.', '01/01/1876', 1, 2, 2, 'helena.jpg');
+
+-- Stephen King
+INSERT INTO livro (titulo, preco, quantidadeEstoque, isbn, descricao, datalancamento, id_fornecedor, id_editora, classificacao, nomeImagem)
+VALUES
+    ('O Iluminado', 44.90, 70, '9788532517894', 'Thriller psicológico sobre um hotel assombrado e a sanidade de seu zelador.', '01/01/1977', 3, 4, 4, 'o-iluminado.jpg'),
+    ('A Coisa', 59.90, 50, '9788532517931', 'História de terror que segue um grupo de crianças enfrentando uma entidade maléfica.', '01/01/1986', 3, 4, 4, 'a-coisa.jpeg'),
+    ('Carrie, a Estranha', 34.90, 65, '9788532517849', 'O primeiro romance de King, abordando bullying e vingança sobrenatural.', '01/01/1974', 3, 4, 3, 'carrie-a-estranha.jpg'),
+    ('Misery', 38.00, 55, '9788532517818', 'Suspense psicológico sobre um escritor sequestrado por uma fã obsessiva.', '01/01/1987', 3, 4, 4, 'misery.jpg'),
+    ('Sob a Redoma', 47.50, 40, '9788532517993', 'História de uma cidade presa sob uma cúpula misteriosa e suas lutas pelo poder.', '01/01/2009', 3, 4, 4, 'sob-a-redoma.jpg');
+
+-- Agatha Christie
+INSERT INTO livro (titulo, preco, quantidadeEstoque, isbn, descricao, datalancamento, id_fornecedor, id_editora, classificacao, nomeImagem)
+VALUES
+    ('Assassinato no Expresso do Oriente', 35.90, 90, '9788535925672', 'Uma das mais famosas investigações de Hercule Poirot.', '01/01/1934', 2, 3, 4, 'o-assassinato-no-expresso.jpg'),
+    ('E Não Sobrou Nenhum', 39.90, 95, '9788535917844', 'Dez estranhos são convidados para uma ilha e começam a ser assassinados um por um.', '01/01/1939', 2, 3, 4, 'e-nao-sobrou-nenhum.jpg'),
+    ('O Misterioso Caso de Styles', 28.50, 80, '9788535917899', 'Primeiro livro de Hercule Poirot, com sua estreia no gênero policial.', '01/01/1920', 2, 3, 3, 'o-misterioso-caso-de-styles.jpg'),
+    ('Morte no Nilo', 36.00, 85, '9788535917882', 'Poirot investiga um assassinato durante um cruzeiro no rio Nilo.', '01/01/1937', 2, 3, 4, 'morte-no-nilo.jpg'),
+    ('Os Crimes ABC', 33.50, 75, '9788535917875', 'Poirot enfrenta um assassino em série que escolhe suas vítimas em ordem alfabética.', '01/01/1936', 2, 3, 4, 'os-crimes-abc.jpg');
+
+-- J.R.R. Tolkien
+INSERT INTO livro (titulo, preco, quantidadeEstoque, isbn, descricao, datalancamento, id_fornecedor, id_editora, classificacao, nomeImagem)
+VALUES
+    ('O Senhor dos Anéis: A Sociedade do Anel', 59.90, 70, '9788535902772', 'Primeiro volume da épica trilogia de fantasia de Tolkien.', '01/07/1954', 3, 3, 4, 'a-sociedade-do-anel.jpg'),
+    ('O Senhor dos Anéis: As Duas Torres', 59.90, 65, '9788535902789', 'Segundo volume da trilogia com batalhas épicas e intrigas.', '01/11/1954', 3, 3, 4, 'as-duas-torres.jpg'),
+    ('O Senhor dos Anéis: O Retorno do Rei', 59.90, 60, '9788535902796', 'Conclusão da trilogia, com a batalha final pela Terra-média.', '01/10/1955', 3, 3, 4, 'o-retorno-do-rei.jpg'),
+    ('O Hobbit', 49.90, 100, '9788535902826', 'História de Bilbo Bolseiro e sua jornada até a Montanha Solitária.', '01/09/1937', 3, 3, 3, 'o-hobbit.jpg'),
+    ('O Silmarillion', 45.50, 50, '9788535902840', 'História da Primeira Era da Terra-média e das Silmarils.', '15/09/1977', 3, 3, 3, 'o-silmarilion.jpg');
+
+-- Ali Hazelwood
+INSERT INTO livro (titulo, preco, quantidadeEstoque, isbn, descricao, datalancamento, id_fornecedor, id_editora, classificacao, nomeImagem)
+VALUES
+    ('A Hipótese do Amor', 38.90, 50, '9788501110806', 'Comédia romântica sobre uma cientista que se envolve em um falso relacionamento para ajudar uma amiga.', '14/09/2021', 9, 10, 4, 'a-hipotese-do-amor.jpg'),
+    ('Amor, Teoricamente', 41.90, 45, '9788501110820', 'História divertida e romântica sobre uma cientista que se envolve com seu rival em um projeto acadêmico.', '23/08/2022', 9, 10, 4, 'amor-teoricamente.jpg'),
+    ('A Razão do Amor', 35.90, 30, '9788501110837', 'Romance sobre os desafios e surpresas enfrentados por uma professora universitária enquanto lida com conflitos profissionais e pessoais.', '14/02/2023', 9, 10, 4, 'a-razao-do-amor.jpg');
 
 -- Inserir relacionamento entre livro e autor
 INSERT INTO livro_autor (idlivro, idautor) VALUES (1, 1);
