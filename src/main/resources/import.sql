@@ -129,7 +129,7 @@ INSERT INTO livro (titulo, preco, quantidadeEstoque, isbn, descricao, datalancam
 VALUES
     ('É Assim que Acaba', 34.90, 100, '9788501110646', 'História emocionante de amor, superação e escolhas difíceis.', '02/08/2016', 9, 10, 4, 'e-assim-que-acaba.jpg'),
     ('Verity', 36.90, 80, '9788501110653', 'Thriller psicológico sobre segredos sombrios de uma autora famosa.', '01/12/2018', 9, 10, 4, 'verity.jpg'),
-    ('Todas as Suas (Im)perfeições', 32.90, 70, '9788501110660', 'Um olhar profundo sobre os desafios e imperfeições de um relacionamento.', '17/07/2018', 9, 10, 4, 'todas-as-suas-imperfeicoes.jpg'),
+    ('Todas as Suas (Im)perfeições', 32.90, 70, '9788501110660', 'Um olhar profundo sobre os desafios e imperfeições de um relacionamento.', '17/07/2018', 9, 10, 4, 'todas-suas-imperfeicoes.jpg'),
     ('Talvez um Dia', 31.90, 60, '9788501110677', 'Romance sobre amor e música entre duas almas criativas e apaixonadas.', '18/03/2014', 9, 10, 4, 'talvez-um-dia.jpg'),
     ('Novembro, 9', 30.00, 90, '9788501110684', 'História de amor marcada por encontros anuais no mesmo dia.', '10/11/2015', 9, 10, 4, 'novembro-9.jpg'),
     ('Confesse', 29.50, 75, '9788501110691', 'Romance sobre segredos, perdão e um amor que desafia as circunstâncias.', '10/03/2015', 9, 10, 3, 'confesse.jpg'),
@@ -150,7 +150,7 @@ VALUES
     ('1984', 35.00, 80, '9788532530803', '1984 é um romance distópico escrito por George Orwell que explora o totalitarismo.', '14/09/1987', 4, 3, 4, '1984.jpg'),
     ('A Revolução dos Bichos', 19.90, 80, '9788535925385', 'A Revolução dos Bichos é uma fábula política que critica o totalitarismo.', '17/08/1945', 1, 3, 1, 'a-revolucao-dos-bichos.jpg'),
     ('Dias na Birmânia', 30.00, 50, '9788535917762', 'Romance que retrata o colonialismo britânico na Birmânia e suas consequências.', '01/03/1934', 2, 3, 2, 'dias-na-birmania.jpg'),
-    ('O Caminho para Wigan Pier', 27.90, 40, '9788535905615', 'Uma crítica à situação da classe trabalhadora na Inglaterra na década de 1930.', '08/02/1937', 1, 2, 3, 'o-caminho-para-wigan-pier.jpg'),
+    ('O Caminho para Wigan Pier', 27.90, 40, '9788535905615', 'Uma crítica à situação da classe trabalhadora na Inglaterra na década de 1930.', '08/02/1937', 1, 2, 3, 'o-caminho-para-wigan.jpg'),
     ('Lutando na Espanha', 32.50, 35, '9788535912347', 'Relato da experiência de George Orwell na Guerra Civil Espanhola.', '25/10/1938', 2, 3, 4, 'lutando-na-espanha.jpg');
 
 -- J.K. Rowling
@@ -166,10 +166,10 @@ VALUES
 INSERT INTO livro (titulo, preco, quantidadeEstoque, isbn, descricao, datalancamento, id_fornecedor, id_editora, classificacao, nomeImagem)
 VALUES
     ('Cem Anos de Solidão', 29.99, 40, '9788535925224', 'História da família Buendía em Macondo, abordando realismo mágico.', '05/06/1967', 2, 3, 1, 'cem-anos-de-solidao.jpg'),
-    ('O Amor nos Tempos do Cólera', 34.90, 50, '9788535922230', 'Romance que narra a paixão duradoura entre Florentino Ariza e Fermina Daza.', '15/09/1985', 2, 2, 2, 'o-amor-njos-tempo-de-colera.jpg'),
-    ('Crônica de uma Morte Anunciada', 25.90, 60, '9788535916726', 'História baseada em um evento real, onde todos sabiam do assassinato, exceto a vítima.', '06/03/1981', 2, 3, 2, 'cronica-de-uma-morte-anunciada.jpg'),
+    ('O Amor nos Tempos do Cólera', 34.90, 50, '9788535922230', 'Romance que narra a paixão duradoura entre Florentino Ariza e Fermina Daza.', '15/09/1985', 2, 2, 2, 'o-amor-nos-tempos-de-colera.jpg'),
+    ('Crônica de uma Morte Anunciada', 25.90, 60, '9788535916726', 'História baseada em um evento real, onde todos sabiam do assassinato, exceto a vítima.', '06/03/1981', 2, 3, 2, 'cronica-de-uma-morte-anuciada.jpg'),
     ('O General em Seu Labirinto', 28.50, 45, '9788535923143', 'Relato ficcional dos últimos dias de Simón Bolívar.', '01/07/1989', 2, 2, 3, 'o-general-em-seu-labirinto.jpg'),
-    ('Doze Contos Peregrinos', 23.90, 55, '9788535907892', 'Coletânea de contos que exploram temas de exílio e destino.', '12/10/1992', 2, 3, 3, 'doze-contos-peregrinos');
+    ('Doze Contos Peregrinos', 23.90, 55, '9788535907892', 'Coletânea de contos que exploram temas de exílio e destino.', '12/10/1992', 2, 3, 3, 'doze-contos-peregrinos.jpg');
 
 -- Jane Austen
 INSERT INTO livro (titulo, preco, quantidadeEstoque, isbn, descricao, datalancamento, id_fornecedor, id_editora, classificacao, nomeImagem)
@@ -185,7 +185,7 @@ INSERT INTO livro (titulo, preco, quantidadeEstoque, isbn, descricao, datalancam
 VALUES
     ('Dom Casmurro', 29.90, 100, '9788535920127', 'Clássico de Machado de Assis que aborda amor, ciúme e traição.', '01/01/1899', 1, 2, 4, 'dom-casmurro.jpg'),
     ('Memórias Póstumas de Brás Cubas', 27.50, 90, '9788535910487', 'Narrativa inovadora com reflexões críticas sobre a sociedade brasileira.', '01/01/1881', 1, 2, 4, 'memorias-postumas.jpg'),
-    ('Quincas Borba', 26.90, 80, '9788535914560', 'Romance sobre ambição e loucura, centrado na filosofia do Humanitismo.', '01/01/1891', 1, 2, 3, 'quincas-borda'),
+    ('Quincas Borba', 26.90, 80, '9788535914560', 'Romance sobre ambição e loucura, centrado na filosofia do Humanitismo.', '01/01/1891', 1, 2, 3, 'quincas-borba.jpg'),
     ('Esaú e Jacó', 28.00, 75, '9788535917219', 'História de dois irmãos gêmeos com visões políticas opostas.', '01/01/1904', 1, 2, 3, 'esau-e-jaco.jpg'),
     ('Helena', 25.50, 65, '9788535920912', 'Romance que explora amor e hierarquia social na sociedade carioca do século XIX.', '01/01/1876', 1, 2, 2, 'helena.jpg');
 
@@ -193,7 +193,7 @@ VALUES
 INSERT INTO livro (titulo, preco, quantidadeEstoque, isbn, descricao, datalancamento, id_fornecedor, id_editora, classificacao, nomeImagem)
 VALUES
     ('O Iluminado', 44.90, 70, '9788532517894', 'Thriller psicológico sobre um hotel assombrado e a sanidade de seu zelador.', '01/01/1977', 3, 4, 4, 'o-iluminado.jpg'),
-    ('A Coisa', 59.90, 50, '9788532517931', 'História de terror que segue um grupo de crianças enfrentando uma entidade maléfica.', '01/01/1986', 3, 4, 4, 'a-coisa.jpeg'),
+    ('A Coisa', 59.90, 50, '9788532517931', 'História de terror que segue um grupo de crianças enfrentando uma entidade maléfica.', '01/01/1986', 3, 4, 4, 'a-coisa.jpg'),
     ('Carrie, a Estranha', 34.90, 65, '9788532517849', 'O primeiro romance de King, abordando bullying e vingança sobrenatural.', '01/01/1974', 3, 4, 3, 'carrie-a-estranha.jpg'),
     ('Misery', 38.00, 55, '9788532517818', 'Suspense psicológico sobre um escritor sequestrado por uma fã obsessiva.', '01/01/1987', 3, 4, 4, 'misery.jpg'),
     ('Sob a Redoma', 47.50, 40, '9788532517993', 'História de uma cidade presa sob uma cúpula misteriosa e suas lutas pelo poder.', '01/01/2009', 3, 4, 4, 'sob-a-redoma.jpg');
