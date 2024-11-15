@@ -127,6 +127,14 @@ public class LivroResource {
         return livroService.countByNome(nome);
     }
 
+    @GET
+    @Path("/count/search/{autor}")
+    // @RolesAllowed({"Funcionario"})
+    public Long countAutor (@PathParam("autor") String autor) {
+        LOG.infof("Contando todos os autores");
+        return livroService.countByAutor(autor);
+    }
+
     @POST
     //@RolesAllowed({"Funcionario"})
     public Response create (LivroDTO dto){
