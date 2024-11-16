@@ -223,7 +223,8 @@ VALUES
     ('Amor, Teoricamente', 41.90, 45, '9788501110820', 'História divertida e romântica sobre uma cientista que se envolve com seu rival em um projeto acadêmico.', '23/08/2022', 9, 10, 4, 'amor-teoricamente.jpg'),
     ('A Razão do Amor', 35.90, 30, '9788501110837', 'Romance sobre os desafios e surpresas enfrentados por uma professora universitária enquanto lida com conflitos profissionais e pessoais.', '14/02/2023', 9, 10, 4, 'a-razao-do-amor.jpg');
 
--- Inserir relacionamento entre livro e autor
+-- Inserir relacionamento entre livro e auto
+-- livros colleen 
 INSERT INTO livro_autor (idlivro, idautor) VALUES (1, 1);
 INSERT INTO livro_autor (idlivro, idautor) VALUES (2, 2);
 INSERT INTO livro_autor (idlivro, idautor) VALUES (3, 3);
@@ -237,6 +238,8 @@ INSERT INTO livro_autor (idlivro, idautor) VALUES (10, 6);
 INSERT INTO livro_autor (idlivro, idautor) VALUES (11, 7); 
 INSERT INTO livro_autor (idlivro, idautor) VALUES (12, 8);
 INSERT INTO livro_autor (idlivro, idautor) VALUES (13, 9); 
+
+-- livros fulano tal
 INSERT INTO livro_autor (idlivro, idautor) VALUES (14, 10); 
 INSERT INTO livro_autor (idlivro, idautor) VALUES (15, 11); 
 INSERT INTO livro_autor (idlivro, idautor) VALUES (16, 12); 

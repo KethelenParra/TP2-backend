@@ -26,4 +26,6 @@ public interface LivroService {
     public long count();
     public long countByAutor(String autor);
     public long countByNome(String nome);
+    public List<LivroResponseDTO> findWithFilters(List<Long> autores, List<Long> editoras, List<Long> generos);
+    
 }

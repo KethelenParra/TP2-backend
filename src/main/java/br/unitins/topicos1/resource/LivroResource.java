@@ -1,5 +1,7 @@
 package br.unitins.topicos1.resource;
 
+import java.util.List;
+
 import org.jboss.logging.Logger;
 import org.jboss.resteasy.annotations.providers.multipart.MultipartForm;
 
@@ -201,4 +203,15 @@ public class LivroResource {
             return Response.status(Status.INTERNAL_SERVER_ERROR).build();
         }
     }   
+
+    @GET
+    @Path("/search/filters")
+    public Response findWithFilters(
+            @QueryParam("autores") List<Long> autores,
+            @QueryParam("editoras") List<Long> editoras,
+            @QueryParam("generos") List<Long> generos
+    ) {
+        LOG.info("Buscando livros com filtros de autores, editoras e gêneros - Executando LivroResource_findWithFilters");
+        return Response.ok(livroService.findWithFilters(autores, editoras, generos)).build();
+    }
 }

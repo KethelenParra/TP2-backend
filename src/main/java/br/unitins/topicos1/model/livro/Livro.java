@@ -45,7 +45,7 @@ public class Livro extends DefaultEntity{
 
     @ManyToOne
     @JoinColumn(name = "id_editora", nullable = false)
-    private Editora Editora;
+    private Editora editora;
 
     @ManyToMany
     @JoinTable(
@@ -156,12 +156,12 @@ public class Livro extends DefaultEntity{
     }
 
     public Editora getEditora() {
-        return Editora;
+        return editora;
     }
 
 
     public void setEditora(Editora editora) {
-        Editora = editora;
+        this.editora = editora;
     }
 
 

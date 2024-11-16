@@ -227,4 +227,18 @@ public class LivroServiceImpl implements LivroService{
     public long countByAutor(String autor) {
         return livroRepository.findByAutor(autor).count();
     }
+
+    @Override
+    public List<LivroResponseDTO> findWithFilters(List<Long> autores, List<Long> editoras, List<Long> generos) {
+        List<Livro> livros = livroRepository.findWithFilters(autores, editoras, generos).list();
+
+        if (livros.isEmpty()) {
+            throw new ValidationException("filters","Sem livros encontrados com os filtros aplicados."+autores + editoras + generos);
+        }
+
+        return livros.stream()
+                .map(LivroResponseDTO::valueOf)
+                .toList();
+    }
+
 }
