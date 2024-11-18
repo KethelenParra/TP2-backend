@@ -27,9 +27,9 @@ import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.Response.ResponseBuilder;
 import jakarta.ws.rs.core.Response.Status;
 
+@Path("/livros")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-@Path("/livros")
 public class LivroResource {
 
     @Inject
@@ -59,13 +59,6 @@ public class LivroResource {
         return Response.ok(livroService.findAll(page, pageSize)).build();
     }
 
-    @GET
-    @Path("/search/titulo/{titulo}")
-    //@RolesAllowed({"Funcionario", "Cliente"})
-    public Response findByTitulo(@PathParam("titulo") String titulo){
-        LOG.info("Buscando livros por título - Executando LivroResource_FindByTitulo");
-        return Response.ok(livroService.findByTitulo(titulo)).build();
-    }
     @GET
     @Path("/search/titulo/{titulo}")
     //@RolesAllowed({"Funcionario", "Cliente"})
@@ -122,7 +115,7 @@ public class LivroResource {
     }
 
     @GET
-    @Path("/count/search/{nome}")
+    @Path("/count/search/titulo/{nome}")
     // @RolesAllowed({"Funcionario"})
     public Long count (@PathParam("nome") String nome) {
         LOG.infof("Contando todos os livros");
@@ -130,7 +123,7 @@ public class LivroResource {
     }
 
     @GET
-    @Path("/count/search/{autor}")
+    @Path("/count/search/autor/{autor}")
     // @RolesAllowed({"Funcionario"})
     public Long countAutor (@PathParam("autor") String autor) {
         LOG.infof("Contando todos os autores");
@@ -203,7 +196,6 @@ public class LivroResource {
             return Response.status(Status.INTERNAL_SERVER_ERROR).build();
         }
     }   
-
     @GET
     @Path("/search/filters")
     public Response findWithFilters(
@@ -211,7 +203,15 @@ public class LivroResource {
             @QueryParam("editoras") List<Long> editoras,
             @QueryParam("generos") List<Long> generos
     ) {
-        LOG.info("Buscando livros com filtros de autores, editoras e gêneros - Executando LivroResource_findWithFilters");
-        return Response.ok(livroService.findWithFilters(autores, editoras, generos)).build();
+        LOG.info("Buscando livros com filtros:");
+        LOG.info("Autores: " + autores);
+        LOG.info("Editoras: " + editoras);
+        LOG.info("Gêneros: " + generos);
+    
+        Response response = Response.ok(livroService.findWithFiltersAndRelated(autores, editoras, generos)).build();
+        LOG.info("Resposta gerada: " + response.getEntity());
+    
+        return response;
     }
+    
 }

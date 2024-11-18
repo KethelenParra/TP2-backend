@@ -7,6 +7,7 @@ import br.unitins.topicos1.dto.AlterarUsernameDTO;
 import br.unitins.topicos1.dto.ClienteDTO;
 import br.unitins.topicos1.dto.Response.AlterarSenhaDTO;
 import br.unitins.topicos1.service.ClienteService;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.validation.Valid;
 import jakarta.ws.rs.Consumes;
@@ -147,7 +148,7 @@ public class ClienteResource {
     }
 
     @GET
-    //@RolesAllowed({"Cliente"})
+    @RolesAllowed({"Cliente"})
     @Path("/search/meu-perfil")
     public Response meuPerfil() {
         try {
@@ -160,7 +161,7 @@ public class ClienteResource {
     }
 
     @PATCH
-    //@RolesAllowed({"Cliente"})
+    @RolesAllowed({"Cliente"})
     @Path("/search/incluir-livro-desejo/{id-livro}")
     public Response adicionarLivroDesejo(@PathParam("id-livro") Long idLivro){
         try {
@@ -174,7 +175,7 @@ public class ClienteResource {
     }
 
     @PATCH
-    //@RolesAllowed({"Cliente"})
+    @RolesAllowed({"Cliente"})
     @Path("/search/remover-livro-desejo/{id-livro}")
     public Response removendoLivroDesejo(@PathParam("id-livro") Long idLivro){
         try {

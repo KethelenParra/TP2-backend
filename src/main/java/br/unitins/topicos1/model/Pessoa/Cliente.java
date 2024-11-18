@@ -23,7 +23,6 @@ public class Cliente extends DefaultEntity {
                 joinColumns = @JoinColumn(name = "id_cliente"),
                 inverseJoinColumns = @JoinColumn(name = "id_livro"))
     private List<Livro> listaDesejo;
-
     
     private String cep;
     private String logradouro;

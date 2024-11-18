@@ -1,6 +1,8 @@
 package br.unitins.topicos1.service.serviceImpl;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import br.unitins.topicos1.dto.LivroDTO;
 import br.unitins.topicos1.dto.Response.LivroResponseDTO;
@@ -241,4 +243,24 @@ public class LivroServiceImpl implements LivroService{
                 .toList();
     }
 
+    @Override
+    public Map<String, Object> findWithFiltersAndRelated(List<Long> autores, List<Long> editoras, List<Long> generos) {
+        if (autores == null) autores = List.of();
+        if (editoras == null) editoras = List.of();
+        if (generos == null) generos = List.of();
+        
+        List<LivroResponseDTO> livros = findWithFilters(autores, editoras, generos);
+        List<Long> relatedEditoras = livroRepository.findEditorasByFilters(autores, editoras, generos);
+        List<Long> relatedGeneros = livroRepository.findGenerosByFilters(autores, editoras, generos);
+        List<Long> relatedAutores = livroRepository.findAutoresByFilters(autores, editoras, generos);
+    
+        Map<String, Object> response = new HashMap<>();
+        response.put("livros", livros);
+        response.put("editoras", relatedEditoras);
+        response.put("generos", relatedGeneros);
+        response.put("autores", relatedAutores);
+    
+        return response;
+    }
+        
 }

@@ -1,6 +1,7 @@
 package br.unitins.topicos1.service;
 
 import java.util.List;
+import java.util.Map;
 
 import br.unitins.topicos1.dto.LivroDTO;
 import br.unitins.topicos1.dto.Response.LivroResponseDTO;
@@ -27,5 +28,5 @@ public interface LivroService {
     public long countByAutor(String autor);
     public long countByNome(String nome);
     public List<LivroResponseDTO> findWithFilters(List<Long> autores, List<Long> editoras, List<Long> generos);
-    
+    public Map<String, Object> findWithFiltersAndRelated(List<Long> autores, List<Long> editoras, List<Long> generos);
 }
