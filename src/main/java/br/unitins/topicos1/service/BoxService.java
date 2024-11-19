@@ -1,6 +1,7 @@
 package br.unitins.topicos1.service;
 
 import java.util.List;
+import java.util.Map;
 
 import br.unitins.topicos1.dto.BoxDTO;
 import br.unitins.topicos1.dto.Response.BoxResponseDTO;
@@ -21,5 +22,7 @@ public interface BoxService {
     public List<BoxResponseDTO> findByAutor(int page, int pageSize, String autor);
     public long count();
     public long countByNome(String nome);
-
+    public long countByAutor(String autor);
+    public List<BoxResponseDTO> findWithFilters(List<Long> autores, List<Long> editoras, List<Long> generos);
+    public Map<String, Object> findWithFiltersAndRelated(List<Long> autores, List<Long> editoras, List<Long> generos);
 }

@@ -54,19 +54,23 @@ VALUES
        ('George Orwell', 'George Orwell foi um escritor e jornalista inglês. Sua obra é marcada por uma inteligência perspicaz e uma consciência profunda da injustiça social. Suas obras mais famosas incluem 1984 e A Revolução dos Bichos.'),
        ('Stephen King', 'Stephen King é um autor americano conhecido por seus romances de horror e ficção sobrenatural. Suas obras incluem O Iluminado, It e Carrie.'),
        ('Agatha Christie', 'Agatha Christie foi uma escritora inglesa conhecida por seus romances policiais, como Assassinato no Expresso do Oriente e O Caso dos Dez Negrinhos.'),
-       ('Paulo Coelho', 'Paulo Coelho é um escritor brasileiro conhecido por seus romances espirituais, sendo o mais famoso O Alquimista.'),
-       ('Margaret Atwood', 'Margaret Atwood é uma escritora canadense, amplamente reconhecida por seu romance O Conto da Aia, que explora temas de opressão e feminismo.'),
-       ('Isaac Asimov', 'Isaac Asimov foi um autor de ficção científica russo-americano, mais conhecido por suas séries Fundação e Robôs.'),
-       ('Neil Gaiman', 'Neil Gaiman é um autor inglês conhecido por suas obras de fantasia sombria, como Deuses Americanos e Sandman.'),
-       ('Haruki Murakami', 'Haruki Murakami é um romancista japonês que combina realismo mágico e ficção surrealista, autor de obras como Kafka à Beira-Mar e 1Q84.'),
+       ('C.S. Lewis', 'C.S. Lewis é um Escritor, teólogo e professor irlandês, C.S. Lewis é famoso pela série "As Crônicas de Nárnia", que combina fantasia, alegorias cristãs e aventuras épicas. Além de ficção, escreveu obras teológicas e ensaios filosóficos, destacando-se como um dos grandes intelectuais do século XX.'),
+       ('Rick Riordan', 'Rick Riordan é um Autor americano conhecido pela série "Percy Jackson e os Olimpianos", que mistura mitologia grega com a vida moderna. Seus livros conquistaram jovens leitores em todo o mundo, tornando-o um dos principais escritores de fantasia para o público juvenil.'),
+       ('George R.R. Martin', 'George R.R. Martin é um Escritor e roteirista americano, George R.R. Martin é o autor da série de fantasia épica "As Crônicas de Gelo e Fogo", que inspirou a série de TV "Game of Thrones". Suas histórias são marcadas por personagens complexos, intrigas políticas e tramas imprevisíveis.'),
+       ('Douglas Adams ', 'Douglas Adams  foi um Escritor britânico, Douglas Adams é mundialmente famoso por "O Guia do Mochileiro das Galáxias", uma obra de ficção científica cômica que explora temas filosóficos com humor surreal. É considerado um clássico da literatura geek.'),
+       ('Jane Austen', 'Jane Austen (1775 - 1817) foi uma escritora inglesa renomada por seus romances que exploram as relações humanas e os costumes sociais de sua época com humor e inteligência. Entre suas obras mais famosas estão "Orgulho e Preconceito" e "Razão e Sensibilidade", que continuam influentes por sua crítica social e personagens marcantes. Austen viveu na Inglaterra rural e escreveu sobre as complexidades da vida cotidiana e os papéis de gênero no século XIX.'),
        ('Tolkien', 'J.R.R. Tolkien foi um autor e professor inglês, mais conhecido por suas obras de fantasia épica, O Senhor dos Anéis e O Hobbit.'),
        ('Gabriel García Márquez', 'Gabriel García Márquez foi um autor colombiano, ganhador do Prêmio Nobel de Literatura e conhecido por seu livro Cem Anos de Solidão.'),
        ('Arthur Conan Doyle', 'Arthur Conan Doyle foi um escritor escocês, mais conhecido por ter criado o detetive Sherlock Holmes.'),
-       ('Ernest Hemingway', 'Ernest Hemingway foi um autor e jornalista americano, ganhador do Prêmio Nobel de Literatura, conhecido por obras como O Velho e o Mar.'),
-       ('James Joyce', 'James Joyce foi um romancista e poeta irlandês, mais conhecido por seu trabalho modernista Ulisses.'),
-       ('F. Scott Fitzgerald', 'F. Scott Fitzgerald foi um romancista americano famoso por seu romance O Grande Gatsby, retratando a Era do Jazz nos Estados Unidos.'),
+       ('Stephenie Meyer', 'Stephenie Meyer é Autora americana, Stephenie Meyer ganhou fama com a saga "Crepúsculo", que conta a história de amor entre uma humana e um vampiro. Seus livros foram um fenômeno global, conquistando milhões de fãs e gerando uma popular franquia de filmes.'),
+       ('Machado de Assis', 'Machado de Assis (1839 - 1908) foi um dos maiores escritores brasileiros, pioneiro do Realismo no Brasil e fundador da Academia Brasileira de Letras, onde ocupou a cadeira nº 1. Nascido no Rio de Janeiro, de origem humilde, tornou-se um mestre da literatura, explorando temas como a condição humana, hipocrisia social e introspecção psicológica. Entre suas obras mais conhecidas estão "Dom Casmurro" e "Memórias Póstumas de Brás Cubas", clássicos que marcaram a literatura mundial.'),
+       ('James Dashner ', 'James Dashner é um Escritor americano conhecido pela série "Maze Runner" (Correr ou Morrer), uma distopia cheia de mistérios, ação e suspense, que se tornou um sucesso entre leitores jovens e foi adaptada para o cinema.'),
        ('Jane Austen', 'Jane Austen foi uma autora inglesa cujas obras, como Orgulho e Preconceito, são mundialmente apreciadas por suas críticas sociais e personagens femininas fortes.'),
-       ('Virginia Woolf', 'Virginia Woolf foi uma escritora inglesa, uma das figuras mais importantes do modernismo literário do século XX, conhecida por suas obras como Mrs. Dalloway e Ao Farol.');
+       ('Veronica Roth', 'Veronica Roth é a autora da trilogia "Divergente", uma distopia que explora escolhas, identidade e sociedade fragmentada. Seu trabalho atraiu uma legião de fãs e foi adaptado para o cinema com grande sucesso.'),
+       ('Lois Lowry', 'Autora americana, Lois Lowry é conhecida pelo "Quarteto O Doador", que inclui o aclamado livro "O Doador de Memórias", uma distopia sensível que reflete sobre escolhas, liberdade e humanidade.'),
+       ('Stephen Chbosky', ' Stephen Chbosky escreveu o romance "As Vantagens de Ser Invisível", uma história tocante sobre adolescência, amizade e saúde mental. O livro é amplamente celebrado e adaptado para o cinema com grande sucesso.'),
+       ('Sarah J. Maas', 'Sarah J. Maas é uma autora americana de fantasia, famosa pela série "Um Corte de Espinhos e Rosas". Suas histórias combinam romance, ação e magia, criando universos complexos e emocionantes que encantam leitores ao redor do mundo.');
+
 
 -- Inserir gênero
 INSERT INTO genero (nome, descricao) 
@@ -226,23 +230,83 @@ VALUES
 -- Inserir relacionamento entre livro e auto
 -- livros colleen 
 INSERT INTO livro_autor (idlivro, idautor) VALUES (1, 1);
-INSERT INTO livro_autor (idlivro, idautor) VALUES (2, 2);
-INSERT INTO livro_autor (idlivro, idautor) VALUES (3, 3);
-INSERT INTO livro_autor (idlivro, idautor) VALUES (4, 4);
-INSERT INTO livro_autor (idlivro, idautor) VALUES (5, 5);
-INSERT INTO livro_autor (idlivro, idautor) VALUES (6, 6);
+INSERT INTO livro_autor (idlivro, idautor) VALUES (2, 1);
+INSERT INTO livro_autor (idlivro, idautor) VALUES (3, 1);
+INSERT INTO livro_autor (idlivro, idautor) VALUES (4, 1);
+INSERT INTO livro_autor (idlivro, idautor) VALUES (5, 1);
+INSERT INTO livro_autor (idlivro, idautor) VALUES (6, 1);
 INSERT INTO livro_autor (idlivro, idautor) VALUES (7, 1); 
-INSERT INTO livro_autor (idlivro, idautor) VALUES (8, 14); 
-INSERT INTO livro_autor (idlivro, idautor) VALUES (9, 15); 
-INSERT INTO livro_autor (idlivro, idautor) VALUES (10, 6); 
-INSERT INTO livro_autor (idlivro, idautor) VALUES (11, 7); 
-INSERT INTO livro_autor (idlivro, idautor) VALUES (12, 8);
-INSERT INTO livro_autor (idlivro, idautor) VALUES (13, 9); 
+INSERT INTO livro_autor (idlivro, idautor) VALUES (8, 1); 
+INSERT INTO livro_autor (idlivro, idautor) VALUES (9, 1); 
+INSERT INTO livro_autor (idlivro, idautor) VALUES (10, 1); 
+INSERT INTO livro_autor (idlivro, idautor) VALUES (11, 1); 
+INSERT INTO livro_autor (idlivro, idautor) VALUES (12, 1);
+INSERT INTO livro_autor (idlivro, idautor) VALUES (13, 1); 
+INSERT INTO livro_autor (idlivro, idautor) VALUES (14, 1); 
+INSERT INTO livro_autor (idlivro, idautor) VALUES (15, 1);
+INSERT INTO livro_autor (idlivro, idautor) VALUES (16, 1); 
 
--- livros fulano tal
-INSERT INTO livro_autor (idlivro, idautor) VALUES (14, 10); 
-INSERT INTO livro_autor (idlivro, idautor) VALUES (15, 11); 
-INSERT INTO livro_autor (idlivro, idautor) VALUES (16, 12); 
+-- livros george
+INSERT INTO livro_autor (idlivro, idautor) VALUES (17, 6);
+INSERT INTO livro_autor (idlivro, idautor) VALUES (18, 6); 
+INSERT INTO livro_autor (idlivro, idautor) VALUES (19, 6); 
+INSERT INTO livro_autor (idlivro, idautor) VALUES (20, 6);
+INSERT INTO livro_autor (idlivro, idautor) VALUES (21, 6); 
+
+-- livros j.k rowling
+INSERT INTO livro_autor (idlivro, idautor) VALUES (22, 5);
+INSERT INTO livro_autor (idlivro, idautor) VALUES (23, 5); 
+INSERT INTO livro_autor (idlivro, idautor) VALUES (24, 5); 
+INSERT INTO livro_autor (idlivro, idautor) VALUES (25, 5);
+INSERT INTO livro_autor (idlivro, idautor) VALUES (26, 5); 
+
+-- livros gabriel marquez
+INSERT INTO livro_autor (idlivro, idautor) VALUES (27, 15);
+INSERT INTO livro_autor (idlivro, idautor) VALUES (28, 15); 
+INSERT INTO livro_autor (idlivro, idautor) VALUES (29, 15); 
+INSERT INTO livro_autor (idlivro, idautor) VALUES (30, 15);
+INSERT INTO livro_autor (idlivro, idautor) VALUES (31, 15);
+
+-- livros jane austin
+INSERT INTO livro_autor (idlivro, idautor) VALUES (32, 13);
+INSERT INTO livro_autor (idlivro, idautor) VALUES (33, 13); 
+INSERT INTO livro_autor (idlivro, idautor) VALUES (34, 13); 
+INSERT INTO livro_autor (idlivro, idautor) VALUES (35, 13);
+INSERT INTO livro_autor (idlivro, idautor) VALUES (36, 13);
+
+-- Machado de Assis
+INSERT INTO livro_autor (idlivro, idautor) VALUES (37, 18);
+INSERT INTO livro_autor (idlivro, idautor) VALUES (38, 18); 
+INSERT INTO livro_autor (idlivro, idautor) VALUES (39, 18); 
+INSERT INTO livro_autor (idlivro, idautor) VALUES (40, 18);
+INSERT INTO livro_autor (idlivro, idautor) VALUES (41, 18);
+
+-- Machado de Assis
+INSERT INTO livro_autor (idlivro, idautor) VALUES (42, 7);
+INSERT INTO livro_autor (idlivro, idautor) VALUES (43, 7); 
+INSERT INTO livro_autor (idlivro, idautor) VALUES (44, 7); 
+INSERT INTO livro_autor (idlivro, idautor) VALUES (45, 7);
+INSERT INTO livro_autor (idlivro, idautor) VALUES (46, 7);
+
+-- Agatha Christie
+INSERT INTO livro_autor (idlivro, idautor) VALUES (47, 8);
+INSERT INTO livro_autor (idlivro, idautor) VALUES (48, 8); 
+INSERT INTO livro_autor (idlivro, idautor) VALUES (49, 8); 
+INSERT INTO livro_autor (idlivro, idautor) VALUES (50, 8);
+INSERT INTO livro_autor (idlivro, idautor) VALUES (51, 8);
+
+-- J.R.R. Tolkien
+INSERT INTO livro_autor (idlivro, idautor) VALUES (52, 14);
+INSERT INTO livro_autor (idlivro, idautor) VALUES (53, 14); 
+INSERT INTO livro_autor (idlivro, idautor) VALUES (54, 14); 
+INSERT INTO livro_autor (idlivro, idautor) VALUES (55, 14);
+INSERT INTO livro_autor (idlivro, idautor) VALUES (56, 14);
+
+-- Ali heazelwood
+INSERT INTO livro_autor (idlivro, idautor) VALUES (57, 2);
+INSERT INTO livro_autor (idlivro, idautor) VALUES (58, 2); 
+INSERT INTO livro_autor (idlivro, idautor) VALUES (59, 2); 
+
 -- Inserir relacionamento entre livro e gênero
 INSERT INTO livro_genero (idlivro, idgenero) VALUES (1, 1);
 INSERT INTO livro_genero (idlivro, idgenero) VALUES (2, 1);
@@ -301,7 +365,7 @@ VALUES
        (0.0, 1, 140.25, 2);
 
 -- Box
-INSERT INTO box (nome, descricaoBox, quantidadeEstoque, id_fornecedor, id_editora, preco, classificacao) 
+INSERT INTO box (nome, descricaoBox, quantidadeEstoque, id_fornecedor, id_editora, preco, classificacao, nomeImagem) 
 VALUES 
        ('Coleção Harry Potter', 
        'Harry Potter é uma série sobre um jovem bruxo que descobre seu destino em um mundo mágico. Ao longo dos sete livros, ele enfrenta desafios, faz amigos e luta contra Voldemort, o bruxo responsável pela morte de seus pais. A história mistura magia, amizade e coragem, tornando-se um dos maiores fenômenos da literatura mundial. 
@@ -312,14 +376,14 @@ VALUES
        5. Harry Potter e a Ordem da Fênix (766 páginas) - A resistência contra Voldemort cresce enquanto Harry descobre mais sobre sua conexão com o vilão. 
        6. Harry Potter e o Enigma do Príncipe (607 páginas) - Harry se aproxima de Dumbledore para entender o passado de Voldemort. 
        7. Harry Potter e as Relíquias da Morte (607 páginas) - A batalha final contra Voldemort se aproxima.', 
-       50, 1, 2, 299.99, 1),
+       50, 1, 2, 299.99, 1, 'box-harry-potter.jpg'),
 
        ('Trilogia O Senhor dos Anéis', 
        'A épica jornada de Frodo e seus amigos para destruir o Um Anel. Escrito por J.R.R. Tolkien, esta trilogia é um dos maiores marcos da literatura fantástica. 
        1. A Sociedade do Anel (423 páginas) - Frodo inicia sua jornada para destruir o Um Anel. 
        2. As Duas Torres (352 páginas) - A Irmandade se separa, e Frodo segue com Sam em direção a Mordor. 
        3. O Retorno do Rei (416 páginas) - A batalha final entre as forças de Sauron e a Terra Média acontece enquanto Frodo tenta destruir o anel.', 
-       30, 2, 1, 349.90, 2),
+       30, 2, 1, 349.90, 2, 'box-senhor-dos-aneis.jpg'),
 
        ('As Crônicas de Nárnia', 
        'O clássico de C.S. Lewis, Nárnia é um mundo mágico cheio de criaturas fantásticas e grandes aventuras, onde quatro irmãos são chamados a proteger a terra do mal. 
@@ -330,7 +394,7 @@ VALUES
        5. O Cavalo e Seu Menino (240 páginas) - Uma aventura no deserto enquanto um garoto e um cavalo fogem em busca de liberdade. 
        6. O Sobrinho do Mago (240 páginas) - A origem de Nárnia e a criação de seu mundo mágico. 
        7. A Última Batalha (228 páginas) - A conclusão épica da saga, onde Nárnia enfrenta sua batalha final.', 
-       40, 1, 2, 259.99, 3),
+       40, 1, 2, 259.99, 3, 'box-as-cronicas-de-narnia.jpg'),
 
        ('Coleção Sherlock Holmes', 
        'Uma coleção completa das aventuras do detetive mais famoso do mundo, Sherlock Holmes, criado por Sir Arthur Conan Doyle. 
@@ -338,7 +402,7 @@ VALUES
        2. O Signo dos Quatro (283 páginas) - Uma aventura envolvendo um tesouro desaparecido e segredos do passado. 
        3. O Cão dos Baskervilles (256 páginas) - Sherlock investiga a lenda de um cão monstruoso em Dartmoor. 
        4. O Vale do Medo (320 páginas) - Um assassinato misterioso leva Sherlock a desvendar uma trama complexa.', 
-       20, 3, 4, 199.90, 4),
+       20, 3, 4, 199.90, 4, 'box-sherlock-holmes.jpg'),
 
        ('Coleção Percy Jackson', 
        'A série Percy Jackson segue um jovem que descobre ser filho de um deus grego, enfrentando aventuras e desafios no mundo moderno. 
@@ -347,15 +411,15 @@ VALUES
        3. A Maldição do Titã (336 páginas) - Percy e seus amigos tentam salvar a deusa Ártemis e uma amiga sequestrada. 
        4. A Batalha do Labirinto (368 páginas) - Percy precisa navegar no Labirinto para impedir a invasão de Luke. 
        5. O Último Olimpiano (400 páginas) - A batalha final entre os deuses e os titãs ameaça o Olimpo.', 
-       35, 4, 2, 229.90, 1),
+       35, 4, 2, 229.90, 1, 'box-percy-jackson.jpg'),
 
-       ('Uma Canção de Gelo e Fogo', 
+       ('As crônicas de Gelo e Fogo', 
        'Uma série de fantasia épica escrita por George R.R. Martin, que se passa nos continentes fictícios de Westeros e Essos, onde famílias nobres lutam pelo Trono de Ferro. 
        1. A Guerra dos Tronos (694 páginas) - A luta pelo Trono de Ferro começa com a morte de um rei. 
        2. A Fúria dos Reis (768 páginas) - A guerra se intensifica com novas alianças e traições. 
        3. O Festim dos Corvos (753 páginas) - As consequências da guerra começam a se manifestar. 
        4. A Dança dos Dragões (1016 páginas) - Novas batalhas e dragões se tornam centrais na luta pelo poder.', 
-       25, 2, 5, 199.90, 1),
+       25, 2, 5, 199.90, 1, 'box-as-cronicas-de-gelo-e-fogo.jpg'),
 
        ('O Guia do Mochileiro das Galáxias', 
        'Uma série de ficção científica cômica escrita por Douglas Adams, que segue as desventuras de Arthur Dent após a destruição da Terra. 
@@ -363,7 +427,7 @@ VALUES
        2. O Restaurante no Fim do Universo (246 páginas) - A continuação das aventuras de Arthur e seus amigos. 
        3. A Vida, o Universo e Tudo Mais (215 páginas) - Arthur se vê em situações cada vez mais absurdas. 
        4. Até mais, e Obrigado pelos Peixes (224 páginas) - A busca pelo sentido da vida continua.', 
-       30, 2, 6, 149.90, 2),
+       30, 2, 6, 149.90, 2, 'box-mochileiro-das-galaxias.jpg'),
 
        ('A Saga Crepúsculo', 
        'A saga de romance e fantasia escrita por Stephenie Meyer, que gira em torno do amor entre Bella Swan e o vampiro Edward Cullen. 
@@ -371,56 +435,56 @@ VALUES
        2. Lua Nova (563 páginas) - Após a partida de Edward, Bella se envolve com Jacob Black. 
        3. Eclipse (629 páginas) - A batalha entre vampiros e lobos se intensifica. 
        4. Amanhecer (754 páginas) - O destino de Bella e Edward se decide.', 
-       40, 1, 7, 199.90, 1),
+       40, 1, 7, 199.90, 1, 'box-crepusculo.jpg'),
 
        ('Correr ou Morrer', 
        'Uma série de ficção científica distópica escrita por James Dashner, que segue um grupo de adolescentes tentando escapar de um labirinto mortal. 
        1. Correr ou Morrer (374 páginas) - Thomas acorda em um labirinto sem memória. 
        2. Prova de Fogo (368 páginas) - O grupo enfrenta novos desafios fora do labirinto. 
        3. A Cura Mortal (400 páginas) - A luta pela sobrevivência chega ao clímax.', 
-       35, 2, 8, 159.90, 1),
+       35, 2, 8, 159.90, 1, 'box-correr-ou-morrer.jpg'),
 
        ('Trilogia Divergente', 
        'Uma série de ficção científica distópica escrita por Veronica Roth, que se passa em uma Chicago futurista. 
        1. Divergente (487 páginas) - Tris Prior descobre que é Divergente e luta contra o sistema. 
        2. Insurgente (544 páginas) - A luta contra a opressão continua. 
        3. Convergente (576 páginas) - O final da saga revela verdades chocantes.', 
-       30, 2, 9, 179.90, 1),
+       30, 2, 9, 179.90, 1, 'box-divergente.jpg'),
 
-       ('Quarteto O Dador', 
+       ('Quarteto', 
        'Uma série de fantasia distópica escrita por Lois Lowry, que explora temas de controle social e a importância das memórias. 
        1. O Dador (192 páginas) - Jonas descobre os segredos de sua sociedade. 
        2. A Mensageira (272 páginas) - O mundo começa a se expandir. 
        3. O Mensageiro (211 páginas) - Novas verdades são reveladas. 
        4. A Quarta História (212 páginas) - Uma nova perspectiva sobre o mundo é apresentada.', 
-       20, 1, 10, 139.90, 1),
+       20, 1, 10, 139.90, 1, 'box-quarteto.jpg' ),
 
        ('As Vantagens de Ser Invisível', 
        'Um romance de Stephen Chbosky que segue a vida de Charlie, um adolescente tímido que enfrenta os desafios do ensino médio. 
        1. As Vantagens de Ser Invisível (213 páginas) - A jornada de Charlie através do amor e amizade.', 
-       50, 1, 2, 89.90, 3),
+       50, 1, 2, 89.90, 3, 'box-as-vantagens-de-ser-invisivel.jpg'),
 
        ('Um Corte de Espinhos e Rosas', 
        'Uma série de fantasia romântica escrita por Sarah J. Maas, que combina elementos de contos de fadas com uma narrativa emocionante. 
        1. Um Corte de Espinhos e Rosas (432 páginas) - Feyre, uma humana, é levada para o mundo das fadas. 
        2. Um Corte de Névoa e Fúria (624 páginas) - Feyre deve lutar para proteger aqueles que ama. 
        3. Um Corte de Asas e Ruína (699 páginas) - O conflito entre humanos e fadas chega a um clímax.', 
-       35, 2, 1, 199.90, 1);
+       35, 2, 1, 199.90, 1, 'box-corte-de-espinhos-e-rosas.jpg');
 
 -- Inserir relacionamento entre box e autor
-INSERT INTO box_autor (idbox, idautor) VALUES (1, 1);
-INSERT INTO box_autor (idbox, idautor) VALUES (2, 2);
-INSERT INTO box_autor (idbox, idautor) VALUES (3, 3);
-INSERT INTO box_autor (idbox, idautor) VALUES (4, 4);
-INSERT INTO box_autor (idbox, idautor) VALUES (5, 5);
-INSERT INTO box_autor (idbox, idautor) VALUES (6, 6);
-INSERT INTO box_autor (idbox, idautor) VALUES (7, 7);
-INSERT INTO box_autor (idbox, idautor) VALUES (8, 8);
-INSERT INTO box_autor (idbox, idautor) VALUES (9, 9);
-INSERT INTO box_autor (idbox, idautor) VALUES (10, 10);
-INSERT INTO box_autor (idbox, idautor) VALUES (11, 11);
-INSERT INTO box_autor (idbox, idautor) VALUES (12, 12);
-INSERT INTO box_autor (idbox, idautor) VALUES (13, 13);
+INSERT INTO box_autor (idbox, idautor) VALUES (1, 5);
+INSERT INTO box_autor (idbox, idautor) VALUES (2, 14);
+INSERT INTO box_autor (idbox, idautor) VALUES (3, 9);
+INSERT INTO box_autor (idbox, idautor) VALUES (4, 16);
+INSERT INTO box_autor (idbox, idautor) VALUES (5, 10);
+INSERT INTO box_autor (idbox, idautor) VALUES (6, 11);
+INSERT INTO box_autor (idbox, idautor) VALUES (7, 12);
+INSERT INTO box_autor (idbox, idautor) VALUES (8, 17);
+INSERT INTO box_autor (idbox, idautor) VALUES (9, 19);
+INSERT INTO box_autor (idbox, idautor) VALUES (10, 21);
+INSERT INTO box_autor (idbox, idautor) VALUES (11, 22);
+INSERT INTO box_autor (idbox, idautor) VALUES (12, 23);
+INSERT INTO box_autor (idbox, idautor) VALUES (13, 24);
 
 --Inserir relacionamento entre box e gênero
 INSERT INTO box_genero (idbox, idgenero) VALUES (1, 1);

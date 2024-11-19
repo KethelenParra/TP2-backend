@@ -15,8 +15,8 @@ public record BoxResponseDTO(
     Double preco,
     Classificacao classificacao, // Renomeei para ficar consistente
     List<GeneroResponseDTO> generos,
-    List<AutorResponseDTO> autores
-   //String nomeImagem
+    List<AutorResponseDTO> autores,
+   String nomeImagem
 ) {
 
     public static BoxResponseDTO valueOf(Box box){
@@ -41,8 +41,8 @@ public record BoxResponseDTO(
             box.getPreco(), 
             box.getClassificacao(),
             listaGenero,  
-            listaAutor  
-            //box.getNomeImagem()  
+            listaAutor,
+            box.getNomeImagem()  
         );
     }
 }

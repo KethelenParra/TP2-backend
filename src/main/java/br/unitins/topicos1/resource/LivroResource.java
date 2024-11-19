@@ -196,6 +196,7 @@ public class LivroResource {
             return Response.status(Status.INTERNAL_SERVER_ERROR).build();
         }
     }   
+    
     @GET
     @Path("/search/filters")
     public Response findWithFilters(

@@ -1,12 +1,13 @@
 package br.unitins.topicos1.service.serviceImpl;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import br.unitins.topicos1.dto.BoxDTO;
 import br.unitins.topicos1.dto.Response.BoxResponseDTO;
 import br.unitins.topicos1.model.Enum.Classificacao;
 import br.unitins.topicos1.model.box.Box;
-import br.unitins.topicos1.repository.LivroRepository;
 import br.unitins.topicos1.repository.AutorRepository;
 import br.unitins.topicos1.repository.BoxRepository;
 import br.unitins.topicos1.repository.EditoraRepository;
@@ -21,9 +22,6 @@ import jakarta.validation.Valid;
 
 @ApplicationScoped
 public class BoxServiceImpl implements BoxService {
-
-    @Inject
-    public LivroRepository livroRepository;
 
     @Inject
     public BoxRepository boxRepository;
@@ -193,5 +191,43 @@ public class BoxServiceImpl implements BoxService {
     @Override
     public long countByNome(String nome) {
         return boxRepository.findByBox(nome).count();
+    }
+
+    @Override
+    public long countByAutor(String autor) {
+        return boxRepository.findByAutor(autor).count();
+    }
+
+    @Override
+    public List<BoxResponseDTO> findWithFilters(List<Long> autores, List<Long> editoras, List<Long> generos) {
+        List<Box> box = boxRepository.findWithFilters(autores, editoras, generos).list();
+
+        if (box.isEmpty()) {
+            throw new ValidationException("filters","Sem livros encontrados com os filtros aplicados."+autores + editoras + generos);
+        }
+
+        return box.stream()
+                .map(BoxResponseDTO::valueOf)
+                .toList();
+    }
+
+    @Override
+    public Map<String, Object> findWithFiltersAndRelated(List<Long> autores, List<Long> editoras, List<Long> generos) {
+        if (autores == null) autores = List.of();
+        if (editoras == null) editoras = List.of();
+        if (generos == null) generos = List.of();
+        
+        List<BoxResponseDTO> box = findWithFilters(autores, editoras, generos);
+        List<Long> relatedEditoras = boxRepository.findEditorasByFilters(autores, editoras, generos);
+        List<Long> relatedGeneros = boxRepository.findGenerosByFilters(autores, editoras, generos);
+        List<Long> relatedAutores = boxRepository.findAutoresByFilters(autores, editoras, generos);
+    
+        Map<String, Object> response = new HashMap<>();
+        response.put("boxes", box);
+        response.put("editoras", relatedEditoras);
+        response.put("generos", relatedGeneros);
+        response.put("autores", relatedAutores);
+    
+        return response;
     }
 }

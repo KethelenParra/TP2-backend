@@ -29,7 +29,7 @@ public class Box extends DefaultEntity{
     @Column(nullable = false)
     private Double preco;
 
-    // private String nomeImagem;
+    private String nomeImagem;
 
     private Classificacao classificacao;
     
@@ -39,7 +39,7 @@ public class Box extends DefaultEntity{
     
     @ManyToOne
     @JoinColumn(name = "id_editora", nullable = false)
-    private Editora Editora;
+    private Editora editora;
 
     @ManyToMany
     @JoinTable(
@@ -89,13 +89,13 @@ public class Box extends DefaultEntity{
         this.preco = preco;
     }
 
-    // // public String getNomeImagem() {
-    // //     return nomeImagem;
-    // // }
+    public String getNomeImagem() {
+        return nomeImagem;
+    }
 
-    // // public void setNomeImagem(String nomeImagem) {
-    // //     this.nomeImagem = nomeImagem;
-    // // }
+    public void setNomeImagem(String nomeImagem) {
+        this.nomeImagem = nomeImagem;
+    }
 
     public Classificacao getClassificacao() {
         return classificacao;
@@ -114,11 +114,11 @@ public class Box extends DefaultEntity{
     }
 
     public Editora getEditora() {
-        return Editora;
+        return editora;
     }
 
     public void setEditora(Editora editora) {
-        Editora = editora;
+        this.editora = editora;
     }
 
     public List<Genero> getListaGeneros() {
