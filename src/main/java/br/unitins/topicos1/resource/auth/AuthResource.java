@@ -60,6 +60,7 @@ public class AuthResource {
                 return Response.status(Status.NOT_FOUND).build();
             }
         } catch (Exception e) {
+            LOG.info("Tentando logar com username: " + dto.username() + "e senha: " + dto.senha());
             LOG.error("Erro durante o login. Verifique seu username ou senha!");
             throw new ValidationException("Verificando", "Erro durante o login. Verifique seu username ou senha! - Executando AuthResource_Login");
         }
