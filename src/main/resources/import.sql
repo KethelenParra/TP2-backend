@@ -44,32 +44,31 @@ VALUES ('Analista de Sistemas', 6000.00, 6),
 
 
 -- Inserir autores
-INSERT INTO autor (nome, biografia) 
+INSERT INTO autor (nome, biografia, nomeImagem) 
 VALUES 
-       ('Colleen Hoover', 'Colleen Hoover é uma escritora norte-americana que escreve principalmente romances nos gêneros romântico e ficção para jovens adultos. Muitos de seus trabalhos foram autopublicados antes de serem adquiridos por uma editora.'),
-       ('Ali Hazelwood', 'Ali Hazelwood é uma autora italiana, que viveu em diversos países antes de se mudar para os Estados Unidos para se doutorar em Neurociência. Que conquistou o mundo da literatura com seus romances de ficção científica que combinam humor, inteligência e romance'),
-       ('Augusto Cury', 'Augusto Jorge Cury é um psiquiatra, professor e escritor brasileiro. Augusto é autor da Teoria da Inteligência Multifocal e seus livros foram publicados em mais de 70 países, com mais de 25 milhões de livros vendidos somente no Brasil.'),
-       ('Nicholas Sparks', 'Nicholas Charles Sparks é um escritor norte-americano. Ele é conhecido por suas novelas românticas, muitas das quais se passam em Carolina do Norte, onde Sparks cresceu. Suas obras incluem O Diário da Nossa Paixão, Um Amor Para Recordar e Querido John.'),
-       ('J.K. Rowling', 'Joanne Rowling, mais conhecida pelo pseudônimo J.K. Rowling, é uma escritora, roteirista e produtora cinematográfica britânica, mundialmente famosa pela série de livros Harry Potter.'),
-       ('George Orwell', 'George Orwell foi um escritor e jornalista inglês. Sua obra é marcada por uma inteligência perspicaz e uma consciência profunda da injustiça social. Suas obras mais famosas incluem 1984 e A Revolução dos Bichos.'),
-       ('Stephen King', 'Stephen King é um autor americano conhecido por seus romances de horror e ficção sobrenatural. Suas obras incluem O Iluminado, It e Carrie.'),
-       ('Agatha Christie', 'Agatha Christie foi uma escritora inglesa conhecida por seus romances policiais, como Assassinato no Expresso do Oriente e O Caso dos Dez Negrinhos.'),
-       ('C.S. Lewis', 'C.S. Lewis é um Escritor, teólogo e professor irlandês, C.S. Lewis é famoso pela série "As Crônicas de Nárnia", que combina fantasia, alegorias cristãs e aventuras épicas. Além de ficção, escreveu obras teológicas e ensaios filosóficos, destacando-se como um dos grandes intelectuais do século XX.'),
-       ('Rick Riordan', 'Rick Riordan é um Autor americano conhecido pela série "Percy Jackson e os Olimpianos", que mistura mitologia grega com a vida moderna. Seus livros conquistaram jovens leitores em todo o mundo, tornando-o um dos principais escritores de fantasia para o público juvenil.'),
-       ('George R.R. Martin', 'George R.R. Martin é um Escritor e roteirista americano, George R.R. Martin é o autor da série de fantasia épica "As Crônicas de Gelo e Fogo", que inspirou a série de TV "Game of Thrones". Suas histórias são marcadas por personagens complexos, intrigas políticas e tramas imprevisíveis.'),
-       ('Douglas Adams ', 'Douglas Adams  foi um Escritor britânico, Douglas Adams é mundialmente famoso por "O Guia do Mochileiro das Galáxias", uma obra de ficção científica cômica que explora temas filosóficos com humor surreal. É considerado um clássico da literatura geek.'),
-       ('Jane Austen', 'Jane Austen (1775 - 1817) foi uma escritora inglesa renomada por seus romances que exploram as relações humanas e os costumes sociais de sua época com humor e inteligência. Entre suas obras mais famosas estão "Orgulho e Preconceito" e "Razão e Sensibilidade", que continuam influentes por sua crítica social e personagens marcantes. Austen viveu na Inglaterra rural e escreveu sobre as complexidades da vida cotidiana e os papéis de gênero no século XIX.'),
-       ('Tolkien', 'J.R.R. Tolkien foi um autor e professor inglês, mais conhecido por suas obras de fantasia épica, O Senhor dos Anéis e O Hobbit.'),
-       ('Gabriel García Márquez', 'Gabriel García Márquez foi um autor colombiano, ganhador do Prêmio Nobel de Literatura e conhecido por seu livro Cem Anos de Solidão.'),
-       ('Arthur Conan Doyle', 'Arthur Conan Doyle foi um escritor escocês, mais conhecido por ter criado o detetive Sherlock Holmes.'),
-       ('Stephenie Meyer', 'Stephenie Meyer é Autora americana, Stephenie Meyer ganhou fama com a saga "Crepúsculo", que conta a história de amor entre uma humana e um vampiro. Seus livros foram um fenômeno global, conquistando milhões de fãs e gerando uma popular franquia de filmes.'),
-       ('Machado de Assis', 'Machado de Assis (1839 - 1908) foi um dos maiores escritores brasileiros, pioneiro do Realismo no Brasil e fundador da Academia Brasileira de Letras, onde ocupou a cadeira nº 1. Nascido no Rio de Janeiro, de origem humilde, tornou-se um mestre da literatura, explorando temas como a condição humana, hipocrisia social e introspecção psicológica. Entre suas obras mais conhecidas estão "Dom Casmurro" e "Memórias Póstumas de Brás Cubas", clássicos que marcaram a literatura mundial.'),
-       ('James Dashner ', 'James Dashner é um Escritor americano conhecido pela série "Maze Runner" (Correr ou Morrer), uma distopia cheia de mistérios, ação e suspense, que se tornou um sucesso entre leitores jovens e foi adaptada para o cinema.'),
-       ('Jane Austen', 'Jane Austen foi uma autora inglesa cujas obras, como Orgulho e Preconceito, são mundialmente apreciadas por suas críticas sociais e personagens femininas fortes.'),
-       ('Veronica Roth', 'Veronica Roth é a autora da trilogia "Divergente", uma distopia que explora escolhas, identidade e sociedade fragmentada. Seu trabalho atraiu uma legião de fãs e foi adaptado para o cinema com grande sucesso.'),
-       ('Lois Lowry', 'Autora americana, Lois Lowry é conhecida pelo "Quarteto O Doador", que inclui o aclamado livro "O Doador de Memórias", uma distopia sensível que reflete sobre escolhas, liberdade e humanidade.'),
-       ('Stephen Chbosky', ' Stephen Chbosky escreveu o romance "As Vantagens de Ser Invisível", uma história tocante sobre adolescência, amizade e saúde mental. O livro é amplamente celebrado e adaptado para o cinema com grande sucesso.'),
-       ('Sarah J. Maas', 'Sarah J. Maas é uma autora americana de fantasia, famosa pela série "Um Corte de Espinhos e Rosas". Suas histórias combinam romance, ação e magia, criando universos complexos e emocionantes que encantam leitores ao redor do mundo.');
+       ('Colleen Hoover', 'Colleen Hoover é uma escritora norte-americana que escreve principalmente romances nos gêneros romântico e ficção para jovens adultos. Muitos de seus trabalhos foram autopublicados antes de serem adquiridos por uma editora.', 'colleen.jpg'),
+       ('Ali Hazelwood', 'Ali Hazelwood é uma autora italiana, que viveu em diversos países antes de se mudar para os Estados Unidos para se doutorar em Neurociência. Que conquistou o mundo da literatura com seus romances de ficção científica que combinam humor, inteligência e romance', 'ali-Hazel.jpg'),
+       ('Augusto Cury', 'Augusto Jorge Cury é um psiquiatra, professor e escritor brasileiro. Augusto é autor da Teoria da Inteligência Multifocal e seus livros foram publicados em mais de 70 países, com mais de 25 milhões de livros vendidos somente no Brasil.', 'augusto-cury.jpg'),
+       ('Nicholas Sparks', 'Nicholas Charles Sparks é um escritor norte-americano. Ele é conhecido por suas novelas românticas, muitas das quais se passam em Carolina do Norte, onde Sparks cresceu. Suas obras incluem O Diário da Nossa Paixão, Um Amor Para Recordar e Querido John.', 'nicholas.jpg'),
+       ('J.K. Rowling', 'Joanne Rowling, mais conhecida pelo pseudônimo J.K. Rowling, é uma escritora, roteirista e produtora cinematográfica britânica, mundialmente famosa pela série de livros Harry Potter.', 'jkrowling.jpg'),
+       ('George Orwell', 'George Orwell foi um escritor e jornalista inglês. Sua obra é marcada por uma inteligência perspicaz e uma consciência profunda da injustiça social. Suas obras mais famosas incluem 1984 e A Revolução dos Bichos.', 'geoge-orwell.jpg'),
+       ('Stephen King', 'Stephen King é um autor americano conhecido por seus romances de horror e ficção sobrenatural. Suas obras incluem O Iluminado, It e Carrie.', 'stephen.jpg'),
+       ('Agatha Christie', 'Agatha Christie foi uma escritora inglesa conhecida por seus romances policiais, como Assassinato no Expresso do Oriente e O Caso dos Dez Negrinhos.', 'agatha.jpg'),
+       ('C.S. Lewis', 'C.S. Lewis é um Escritor, teólogo e professor irlandês, C.S. Lewis é famoso pela série "As Crônicas de Nárnia", que combina fantasia, alegorias cristãs e aventuras épicas. Além de ficção, escreveu obras teológicas e ensaios filosóficos, destacando-se como um dos grandes intelectuais do século XX.', 'lewis.jpg'),
+       ('Rick Riordan', 'Rick Riordan é um Autor americano conhecido pela série "Percy Jackson e os Olimpianos", que mistura mitologia grega com a vida moderna. Seus livros conquistaram jovens leitores em todo o mundo, tornando-o um dos principais escritores de fantasia para o público juvenil.', 'rick.jpg'),
+       ('George R.R. Martin', 'George R.R. Martin é um Escritor e roteirista americano, George R.R. Martin é o autor da série de fantasia épica "As Crônicas de Gelo e Fogo", que inspirou a série de TV "Game of Thrones". Suas histórias são marcadas por personagens complexos, intrigas políticas e tramas imprevisíveis.', 'geoge-martin.jpg'),
+       ('Douglas Adams ', 'Douglas Adams  foi um Escritor britânico, Douglas Adams é mundialmente famoso por "O Guia do Mochileiro das Galáxias", uma obra de ficção científica cômica que explora temas filosóficos com humor surreal. É considerado um clássico da literatura geek.', 'douglas.jpg'),
+       ('Jane Austen', 'Jane Austen (1775 - 1817) foi uma escritora inglesa renomada por seus romances que exploram as relações humanas e os costumes sociais de sua época com humor e inteligência. Entre suas obras mais famosas estão "Orgulho e Preconceito" e "Razão e Sensibilidade", que continuam influentes por sua crítica social e personagens marcantes. Austen viveu na Inglaterra rural e escreveu sobre as complexidades da vida cotidiana e os papéis de gênero no século XIX.', 'jane-austen.jpg'),
+       ('Tolkien', 'J.R.R. Tolkien foi um autor e professor inglês, mais conhecido por suas obras de fantasia épica, O Senhor dos Anéis e O Hobbit.', 'tolkien.jpg'),
+       ('Gabriel García Márquez', 'Gabriel García Márquez foi um autor colombiano, ganhador do Prêmio Nobel de Literatura e conhecido por seu livro Cem Anos de Solidão.', 'gabriel-garcia.jpg'),
+       ('Arthur Conan Doyle', 'Arthur Conan Doyle foi um escritor escocês, mais conhecido por ter criado o detetive Sherlock Holmes.', 'arthur-conan.jpg'),
+       ('Stephenie Meyer', 'Stephenie Meyer é Autora americana, Stephenie Meyer ganhou fama com a saga "Crepúsculo", que conta a história de amor entre uma humana e um vampiro. Seus livros foram um fenômeno global, conquistando milhões de fãs e gerando uma popular franquia de filmes.', 'sthepenie.jpg'),
+       ('Machado de Assis', 'Machado de Assis (1839 - 1908) foi um dos maiores escritores brasileiros, pioneiro do Realismo no Brasil e fundador da Academia Brasileira de Letras, onde ocupou a cadeira nº 1. Nascido no Rio de Janeiro, de origem humilde, tornou-se um mestre da literatura, explorando temas como a condição humana, hipocrisia social e introspecção psicológica. Entre suas obras mais conhecidas estão "Dom Casmurro" e "Memórias Póstumas de Brás Cubas", clássicos que marcaram a literatura mundial.', 'machado.jpg'),
+       ('James Dashner ', 'James Dashner é um Escritor americano conhecido pela série "Maze Runner" (Correr ou Morrer), uma distopia cheia de mistérios, ação e suspense, que se tornou um sucesso entre leitores jovens e foi adaptada para o cinema.', 'james.jpg'),
+       ('Veronica Roth', 'Veronica Roth é a autora da trilogia "Divergente", uma distopia que explora escolhas, identidade e sociedade fragmentada. Seu trabalho atraiu uma legião de fãs e foi adaptado para o cinema com grande sucesso.', 'veronica.jpg'),
+       ('Lois Lowry', 'Autora americana, Lois Lowry é conhecida pelo "Quarteto O Doador", que inclui o aclamado livro "O Doador de Memórias", uma distopia sensível que reflete sobre escolhas, liberdade e humanidade.', 'lois.jpg'),
+       ('Stephen Chbosky', ' Stephen Chbosky escreveu o romance "As Vantagens de Ser Invisível", uma história tocante sobre adolescência, amizade e saúde mental. O livro é amplamente celebrado e adaptado para o cinema com grande sucesso.', 'chbosky.jpg'),
+       ('Sarah J. Maas', 'Sarah J. Maas é uma autora americana de fantasia, famosa pela série "Um Corte de Espinhos e Rosas". Suas histórias combinam romance, ação e magia, criando universos complexos e emocionantes que encantam leitores ao redor do mundo.', 'sara.jpg');
 
 
 -- Inserir gênero
@@ -114,18 +113,18 @@ VALUES
        ('Editora FTD S.A.', '88.111.666/0001-88', '321654987', 'ftd@gmail.com', 'São Paulo', 'São Paulo', 350, 27);
 
 -- Inserir editora
-INSERT INTO editora (nome, email, estado, cidade, id_telefone) 
+INSERT INTO editora (nome, email, estado, cidade, id_telefone, nomeImagem) 
 VALUES 
-       ('Atria Books', 'atriabooks@gmail.com', 'nova york', 'nova york', 18),
-       ('Globo Livros', 'globolivros@gmail.com', 'Rio de Janeiro', 'Rio de Janeiro', 19),
-       ('Intrínseca', 'intrinseca@gmail.com', 'Rio de Janeiro', 'Rio de Janeiro', 20),
-       ('Editora Rocco', 'rocco@gmail.com', 'Rio de Janeiro', 'Rio de Janeiro', 21),
-       ('Penguin Books', 'penguinbooks@gmail.com', 'Nova York', 'Nova York', 28),
-       ('Random House', 'randomhouse@gmail.com', 'Nova York', 'Nova York', 29),
-       ('HarperCollins', 'harpercollins@gmail.com', 'Londres', 'Londres', 30),
-       ('Simon & Schuster', 'simon_schuster@gmail.com', 'Nova York', 'Nova York', 31),
-       ('Scholastic', 'scholastic@gmail.com', 'Nova York', 'Nova York', 32),
-       ('Hachette', 'hachette@gmail.com', 'Paris', 'Paris', 33);
+       ('Atria Books', 'atriabooks@gmail.com', 'nova york', 'nova york', 18, 'atria.png'),
+       ('Globo Livros', 'globolivros@gmail.com', 'Rio de Janeiro', 'Rio de Janeiro', 19, 'globo-livros.png'),
+       ('Intrínseca', 'intrinseca@gmail.com', 'Rio de Janeiro', 'Rio de Janeiro', 20, 'intrinseca.png'),
+       ('Editora Rocco', 'rocco@gmail.com', 'Rio de Janeiro', 'Rio de Janeiro', 21, 'rocco.jpg'),
+       ('Penguin Books', 'penguinbooks@gmail.com', 'Nova York', 'Nova York', 28, 'penguin.png'),
+       ('Random House', 'randomhouse@gmail.com', 'Nova York', 'Nova York', 29, 'random.png'),
+       ('HarperCollins', 'harpercollins@gmail.com', 'Londres', 'Londres', 30, 'harper.png'),
+       ('Simon & Schuster', 'simon_schuster@gmail.com', 'Nova York', 'Nova York', 31, 'simon.png'),
+       ('Scholastic', 'scholastic@gmail.com', 'Nova York', 'Nova York', 32, 'scholastic.jpg'),
+       ('Hachette', 'hachette@gmail.com', 'Paris', 'Paris', 33, 'hachette.png');
 
 -- Inserir livro
 -- Colleen Hoover
@@ -328,8 +327,27 @@ INSERT INTO livro_genero (idlivro, idgenero) VALUES (16, 2);
 -- Avaliacao
 INSERT INTO avaliacao (dataAvaliacao, estrela, id_livro, id_cliente) 
 VALUES 
-       ('2023-01-22', 3, 1, 1),
-       ('2023-02-08', 1, 2, 1);
+       ('2021-01-24', 3, 3, 1),
+       ('2024-02-23', 4, 1, 3),
+       ('2024-04-22', 4, 15, 2),
+       ('2023-05-21', 4, 2, 2),
+       ('2014-03-28', 1, 4, 2),
+       ('2016-01-29', 3, 3, 3),
+       ('2018-05-25', 3, 4, 1),
+       ('2015-07-21', 1, 2, 1),
+       ('2013-08-22', 2, 2, 3),
+       ('2023-09-05', 2, 3, 2),
+       ('2013-11-12', 1, 4, 3),
+       ('2023-12-06', 4, 5, 3),
+       ('2022-12-07', 4, 1, 2),
+       ('2024-04-05', 4, 6, 1),
+       ('2021-06-05', 4, 8, 1),
+       ('2023-09-11', 3, 14, 2),
+       ('2021-08-30', 3, 12, 3),
+       ('2020-05-24', 2, 16, 2),
+       ('2024-05-15', 2, 5, 2),
+       ('2021-07-22', 4, 1, 1);
+
 INSERT INTO avaliacao (dataAvaliacao, estrela, id_livro, id_cliente, comentario)
        VALUES ('2022-11-09', 4, 3, 2, 'muito legal');
 
@@ -484,7 +502,7 @@ INSERT INTO box_autor (idbox, idautor) VALUES (9, 19);
 INSERT INTO box_autor (idbox, idautor) VALUES (10, 21);
 INSERT INTO box_autor (idbox, idautor) VALUES (11, 22);
 INSERT INTO box_autor (idbox, idautor) VALUES (12, 23);
-INSERT INTO box_autor (idbox, idautor) VALUES (13, 24);
+INSERT INTO box_autor (idbox, idautor) VALUES (13, 6);
 
 --Inserir relacionamento entre box e gênero
 INSERT INTO box_genero (idbox, idgenero) VALUES (1, 1);
