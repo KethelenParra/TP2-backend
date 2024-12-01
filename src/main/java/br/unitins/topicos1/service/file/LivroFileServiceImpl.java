@@ -16,7 +16,7 @@ import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 
 @ApplicationScoped
-public class LivroFileServiceImpl implements FileService{
+public class LivroFileServiceImpl implements LivroFileService{
     
     @Inject
     LivroRepository livroRepository;
@@ -32,7 +32,8 @@ public class LivroFileServiceImpl implements FileService{
     public void salvar(Long id, String nomeImagem, byte[] imagem) {
         Livro livro = livroRepository.findById(id);
         try {
-            livro.setNomeImagem(salvarImagem(nomeImagem, imagem));
+            String novoNomeImagem = salvarImagem(nomeImagem, imagem);
+            livro.setNomeImagem(novoNomeImagem);
         } catch (IOException e) {
             throw new ValidationException("imagem", e.getMessage());
         }
@@ -79,7 +80,8 @@ public class LivroFileServiceImpl implements FileService{
 
     @Override
     public File download(String nomeImagem) {
-        return new File(PATH_USER + nomeImagem);
+        File file = new File(PATH_USER + nomeImagem);
+        return file;
     }
     
 }
