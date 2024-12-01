@@ -1,15 +1,20 @@
 package br.unitins.topicos1.resource.pessoa;
 
+import java.util.List;
+
 import org.jboss.logging.Logger;
 
 import br.unitins.topicos1.dto.AlterarEmailDTO;
 import br.unitins.topicos1.dto.AlterarUsernameDTO;
 import br.unitins.topicos1.dto.ClienteDTO;
 import br.unitins.topicos1.dto.Response.AlterarSenhaDTO;
+import br.unitins.topicos1.dto.Response.LivroResponseDTO;
 import br.unitins.topicos1.service.ClienteService;
+import jakarta.annotation.security.RolesAllowed;
 // import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.validation.Valid;
+import jakarta.validation.ValidationException;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
@@ -148,7 +153,7 @@ public class ClienteResource {
     }
 
     @GET
-    // @RolesAllowed({"Cliente"})
+    @RolesAllowed({"Cliente"})
     @Path("/search/meu-perfil")
     public Response meuPerfil() {
         try {
@@ -161,7 +166,7 @@ public class ClienteResource {
     }
 
     @PATCH
-    // @RolesAllowed({"Cliente"})
+    @RolesAllowed({"Cliente"})
     @Path("/search/incluir-livro-desejo/{id-livro}")
     public Response adicionarLivroDesejo(@PathParam("id-livro") Long idLivro){
         try {
@@ -175,7 +180,7 @@ public class ClienteResource {
     }
 
     @PATCH
-    // @RolesAllowed({"Cliente"})
+    @RolesAllowed({"Cliente"})
     @Path("/search/remover-livro-desejo/{id-livro}")
     public Response removendoLivroDesejo(@PathParam("id-livro") Long idLivro){
         try {
@@ -187,4 +192,21 @@ public class ClienteResource {
             return Response.status(Status.NOT_FOUND).entity("Erro ao remover livro da lista de desejo.").build();
         }
     }
+
+    @GET
+    @RolesAllowed({"Cliente"})
+    @Path("/search/lista-desejos")
+    public Response getLivrosListaDesejo() {
+        try {
+            List<LivroResponseDTO> livrosDesejados = clienteService.findLivrosDesejados();
+            return Response.ok(livrosDesejados).build();
+        } catch (ValidationException e) {
+            LOG.error("Erro ao buscar a lista de desejos: ", e);
+            return Response.status(Response.Status.NOT_FOUND).entity(e.getMessage()).build();
+        } catch (Exception e) {
+            LOG.error("Erro inesperado ao buscar a lista de desejos: ", e);
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("Erro interno ao buscar a lista de desejos.").build();
+        }
+    }
+
 }

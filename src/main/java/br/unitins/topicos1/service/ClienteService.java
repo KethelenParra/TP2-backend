@@ -7,6 +7,7 @@ import br.unitins.topicos1.dto.AlterarUsernameDTO;
 import br.unitins.topicos1.dto.ClienteDTO;
 import br.unitins.topicos1.dto.Response.AlterarSenhaDTO;
 import br.unitins.topicos1.dto.Response.ClienteResponseDTO;
+import br.unitins.topicos1.dto.Response.LivroResponseDTO;
 import br.unitins.topicos1.dto.Response.UsuarioResponseDTO;
 import jakarta.validation.Valid;
 
@@ -27,5 +28,7 @@ public interface ClienteService {
     public ClienteResponseDTO findMeuPerfil();
     public void adicionarLivroDesejo(Long idLivro);
     public void removerLivroDesejo(Long idLivro);
- 
+
+    public List<LivroResponseDTO> findLivrosDesejados();
+
 }
