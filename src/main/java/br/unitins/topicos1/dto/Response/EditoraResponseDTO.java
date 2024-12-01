@@ -8,7 +8,8 @@ public record EditoraResponseDTO(
     String email, 
     String estado,
     String cidade,
-    TelefoneResponseDTO telefone
+    TelefoneResponseDTO telefone,
+    String nomeImagem
 ) {
     public static EditoraResponseDTO valueOf(Editora editora){
         return new EditoraResponseDTO(
@@ -17,7 +18,8 @@ public record EditoraResponseDTO(
             editora.getEmail(),
             editora.getEstado(),
             editora.getCidade(),
-            TelefoneResponseDTO.valueOf(editora.getTelefone())
+            TelefoneResponseDTO.valueOf(editora.getTelefone()),
+            editora.getNomeImagem()
         );
     }
 }

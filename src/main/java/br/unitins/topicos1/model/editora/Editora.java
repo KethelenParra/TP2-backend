@@ -26,6 +26,16 @@ public class Editora extends DefaultEntity{
 
     private String estado;
     private String cidade;
+
+    private String nomeImagem;
+
+    public String getNomeImagem() {
+        return nomeImagem;
+    }
+
+    public void setNomeImagem(String nomeImagem) {
+        this.nomeImagem = nomeImagem;
+    }
    
     public String getEstado() {
         return estado;
