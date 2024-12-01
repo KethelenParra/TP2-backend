@@ -16,7 +16,7 @@ import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 
 @ApplicationScoped
-public class BoxFileserviceImpl implements FileService {
+public class BoxFileserviceImpl implements BoxFileService {
 
     @Inject
     BoxRepository boxRepository;
