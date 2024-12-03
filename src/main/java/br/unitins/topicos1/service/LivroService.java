@@ -24,6 +24,9 @@ public interface LivroService {
     public List<LivroResponseDTO> findByAutor(int page, int pageSize, String autor);
     public List<LivroResponseDTO> findByIsbn(int page, int pageSize, String isbn);
     public List<LivroResponseDTO> findByTitulo(int page, int pageSize, String titulo);
+
+    LivroResponseDTO salveImage(Long id, String nomeImagem);
+    
     public long count();
     public long countByAutor(String autor);
     public long countByNome(String nome);

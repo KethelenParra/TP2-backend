@@ -1,15 +1,17 @@
 package br.unitins.topicos1.resource;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.jboss.logging.Logger;
 import org.jboss.resteasy.annotations.providers.multipart.MultipartForm;
 
 import br.unitins.topicos1.dto.LivroDTO;
-import br.unitins.topicos1.form.ImageForm;
+import br.unitins.topicos1.form.LivroImageForm;
+import br.unitins.topicos1.model.Enum.Classificacao;
+import br.unitins.topicos1.service.ClienteService;
 import br.unitins.topicos1.service.LivroService;
-import br.unitins.topicos1.service.file.LivroFileServiceImpl;
-// import br.unitins.topicos1.service.file.LivroFileServiceImpl;
+import br.unitins.topicos1.service.file.LivroFileService;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
@@ -36,7 +38,10 @@ public class LivroResource {
     public LivroService livroService;
 
     @Inject
-    public LivroFileServiceImpl fileService;
+    public ClienteService clienteService;
+    
+    @Inject
+    public LivroFileService fileService;
 
     private static final Logger LOG = Logger.getLogger(LivroResource.class);
 
@@ -165,15 +170,15 @@ public class LivroResource {
     }  
     
     @PATCH
-    @Path("/{id}/image/upload")
+    @Path("/image/upload")
     //@RolesAllowed({"Funcionario"})
     @Consumes(MediaType.MULTIPART_FORM_DATA)
-    public Response upload(@PathParam("id") Long id, @MultipartForm ImageForm form) {
+    public Response salvarImagem(@MultipartForm LivroImageForm form) {
         try {
-            fileService.salvar(id, form.getNomeImagem(), form.getImagem());
+            fileService.salvar(form.getId(), form.getNomeImagem(), form.getImagem());
             LOG.infof("Imagem salva com sucesso - Executando LivroResource_upload");
             return Response.noContent().build();
-        } catch (Exception e) {
+        } catch (IOException e) {
             LOG.error("Erro ao salvar imagem do livro - Executando LivroResource_uploar", e);
             return Response.status(Status.CONFLICT).entity("Erro ao salvar imagem do livro - Executando LivroResource_upload").build();
         }
@@ -184,17 +189,9 @@ public class LivroResource {
     //@RolesAllowed({"Funcionario"})
     @Produces(MediaType.APPLICATION_OCTET_STREAM)
     public Response download(@PathParam("nomeImagem") String nomeImagem) {
-        try {
-            
-            ResponseBuilder response = Response.ok(fileService.download(nomeImagem));
-            response.header("Content-Disposition", "attachment;filename=" + nomeImagem);
-            LOG.infof("Download do arquivo %s concluído com sucesso. - Executando LivroResource_download", nomeImagem);
-            return response.build();
-        } catch (Exception e) {
-            LOG.errorf("Erro ao realizar o download do arquivo:- Executando LivroResource_download %s", nomeImagem, e);
-
-            return Response.status(Status.INTERNAL_SERVER_ERROR).build();
-        }
+        ResponseBuilder response = Response.ok(fileService.download(nomeImagem));
+        response.header("Content-Disposition", "attachment;filename=" + nomeImagem);
+        return response.build();
     }   
     
     @GET
@@ -214,5 +211,11 @@ public class LivroResource {
     
         return response;
     }
-    
+
+    @GET
+    @Path("/classificacao")
+    public Response getClassificacao(){
+        return Response.ok(Classificacao.values()).build();
+    }
+
 }

@@ -1,14 +1,20 @@
 package br.unitins.topicos1.resource;
 
+import java.io.IOException;
+
 import org.jboss.logging.Logger;
+import org.jboss.resteasy.annotations.providers.multipart.MultipartForm;
 
 import br.unitins.topicos1.dto.EditoraDTO;
+import br.unitins.topicos1.form.EditoraImageForm;
 import br.unitins.topicos1.service.EditoraService;
+import br.unitins.topicos1.service.file.EditoraFileService;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.DefaultValue;
 import jakarta.ws.rs.GET;
+import jakarta.ws.rs.PATCH;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.Path;
@@ -17,6 +23,7 @@ import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import jakarta.ws.rs.core.Response.ResponseBuilder;
 import jakarta.ws.rs.core.Response.Status;
 
 @Produces(MediaType.APPLICATION_JSON)
@@ -26,6 +33,9 @@ public class EditoraResource {
 
     @Inject
     public EditoraService editoraService;
+
+     @Inject
+    public EditoraFileService fileService;
 
     private static final Logger LOG = Logger.getLogger(EditoraResource.class);
 
@@ -106,5 +116,30 @@ public class EditoraResource {
     public Long count (@PathParam("nome") String nome) {
         LOG.infof("Contando todos os editoras");
         return editoraService.countByNome(nome);
+    }
+
+    @PATCH
+    @Path("/image/upload")
+    //@RolesAllowed({"Funcionario"})
+    @Consumes(MediaType.MULTIPART_FORM_DATA)
+    public Response salvarImagem(@MultipartForm EditoraImageForm form) {
+        try {
+            fileService.salvar(form.getId(), form.getNomeImagem(), form.getImagem());
+            LOG.infof("Imagem salva com sucesso - Executando EditoraResource_upload");
+            return Response.noContent().build();
+        } catch (IOException e) {
+            LOG.error("Erro ao salvar imagem do livro - Executando EditoraResource_upload", e);
+            return Response.status(Status.CONFLICT).entity("Erro ao salvar imagem do editora - Executando AutorResource_upload").build();
+        }
+    }
+
+    @GET
+    @Path("/image/download/{nomeImagem}")
+    //@RolesAllowed({"Funcionario"})
+    @Produces(MediaType.APPLICATION_OCTET_STREAM)
+    public Response download(@PathParam("nomeImagem") String nomeImagem) {
+        ResponseBuilder response = Response.ok(fileService.download(nomeImagem));
+        response.header("Content-Disposition", "attachment;filename=" + nomeImagem);
+        return response.build();
     }
 }

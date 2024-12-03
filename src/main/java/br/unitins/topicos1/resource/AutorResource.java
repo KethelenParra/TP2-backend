@@ -3,9 +3,9 @@ import org.jboss.logging.Logger;
 import org.jboss.resteasy.annotations.providers.multipart.MultipartForm;
 
 import br.unitins.topicos1.dto.AutorDTO;
-import br.unitins.topicos1.form.ImageForm;
+import br.unitins.topicos1.form.AutorImageForm;
 import br.unitins.topicos1.service.AutorService;
-import br.unitins.topicos1.service.file.AutorFileServiceImpl;
+import br.unitins.topicos1.service.file.AutorFileService;
 //import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.validation.Valid;
@@ -34,7 +34,7 @@ public class AutorResource {
     public AutorService autorService;
 
     @Inject
-    public AutorFileServiceImpl fileService;
+    public AutorFileService fileService;
 
     private static final Logger LOG = Logger.getLogger(AutorResource.class);
 
@@ -126,12 +126,12 @@ public class AutorResource {
     }
 
     @PATCH
-    @Path("/{id}/image/upload")
+    @Path("/image/upload")
     //@RolesAllowed({"Funcionario"})
     @Consumes(MediaType.MULTIPART_FORM_DATA)
-    public Response upload(@PathParam("id") Long id, @MultipartForm ImageForm form) {
+    public Response upload( @MultipartForm AutorImageForm form) {
         try {
-            fileService.salvar(id, form.getNomeImagem(), form.getImagem());
+            fileService.salvar(form.getId(), form.getNomeImagem(), form.getImagem());
             LOG.infof("Imagem salva com sucesso - Executando AutorResource_upload");
             return Response.noContent().build();
         } catch (Exception e) {
@@ -145,16 +145,8 @@ public class AutorResource {
     //@RolesAllowed({"Funcionario"})
     @Produces(MediaType.APPLICATION_OCTET_STREAM)
     public Response download(@PathParam("nomeImagem") String nomeImagem) {
-        try {
-            
-            ResponseBuilder response = Response.ok(fileService.download(nomeImagem));
-            response.header("Content-Disposition", "attachment;filename=" + nomeImagem);
-            LOG.infof("Download do arquivo %s concluído com sucesso. - Executando AutorResource_download", nomeImagem);
-            return response.build();
-        } catch (Exception e) {
-            LOG.errorf("Erro ao realizar o download do arquivo: %s", nomeImagem, e);
-
-            return Response.status(Status.INTERNAL_SERVER_ERROR).build();
-        }
+        ResponseBuilder response = Response.ok(fileService.download(nomeImagem));
+        response.header("Content-Disposition", "attachment;filename=" + nomeImagem);
+        return response.build();
     }
 }

@@ -23,34 +23,19 @@ public enum Classificacao {
     public int getId() {
         return id;
     }
-    public void setId(int id) {
-        this.id = id;
-    }
+   
     public String getDescricao() {
         return descricao;
     }
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
 
-    public static Classificacao getById(int id) {
-        for (Classificacao classificacao : values()) {
-            if (classificacao.getId() == id) {
+    public static Classificacao valueOf(Integer id) throws IllegalArgumentException {
+        if (id == null)
+            return null;
+
+        for(Classificacao classificacao : Classificacao.values()) {
+            if (id.equals(classificacao.getId()))
                 return classificacao;
-            }
-        }
-        throw new IllegalArgumentException("ID de classificação inválido: " + id);
-    }
-
-    public static String getDescricaoById(int id) {
-        return getById(id).getDescricao();
-    }
-
-    public static Classificacao valueOf(Integer id) throws IllegalArgumentException{
-        for (Classificacao classificacao : Classificacao.values()){
-            if (classificacao.id == id)
-                return classificacao;
-        }
-        throw new IllegalArgumentException("id de classificação inválido.");
+        } 
+        throw new IllegalArgumentException("Id inválido:" + id);
     }
 }

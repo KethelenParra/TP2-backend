@@ -262,5 +262,15 @@ public class LivroServiceImpl implements LivroService{
     
         return response;
     }
-        
+
+    @Override
+    @Transactional
+    public LivroResponseDTO salveImage(Long id, String nomeImagem) {
+
+        Livro entity = livroRepository.findById(id);
+        entity.setNomeImagem(nomeImagem);
+
+        return LivroResponseDTO.valueOf(entity);
+    }
+       
 }

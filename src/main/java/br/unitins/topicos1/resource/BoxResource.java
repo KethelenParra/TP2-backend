@@ -5,9 +5,10 @@ import org.jboss.logging.Logger;
 import org.jboss.resteasy.annotations.providers.multipart.MultipartForm;
 
 import br.unitins.topicos1.dto.BoxDTO;
-import br.unitins.topicos1.form.ImageForm;
+import br.unitins.topicos1.form.BoxImageForm;
+import br.unitins.topicos1.model.Enum.Classificacao;
 import br.unitins.topicos1.service.BoxService;
-import br.unitins.topicos1.service.file.BoxFileserviceImpl;
+import br.unitins.topicos1.service.file.BoxFileService;
 //import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
@@ -34,7 +35,7 @@ public class BoxResource {
     public BoxService boxService;
 
     @Inject
-    public BoxFileserviceImpl fileService;
+    public BoxFileService fileService;
 
     private static final Logger LOG = Logger.getLogger(BoxResource.class);
 
@@ -147,12 +148,12 @@ public class BoxResource {
     }  
     
     @PATCH
-    @Path("/{id}/image/upload")
+    @Path("/image/upload")
     //@RolesAllowed({"Funcionario"})
     @Consumes(MediaType.MULTIPART_FORM_DATA)
-    public Response upload(@PathParam("id") Long id, @MultipartForm ImageForm form) {
+    public Response upload(@MultipartForm BoxImageForm form) {
         try {
-            fileService.salvar(id, form.getNomeImagem(), form.getImagem());
+            fileService.salvar(form.getId(), form.getNomeImagem(), form.getImagem());
             LOG.infof("Imagem salva com sucesso - Executando BoxResource_upload");
             return Response.noContent().build();
         } catch (Exception e) {
@@ -166,17 +167,9 @@ public class BoxResource {
     //@RolesAllowed({"Funcionario"})
     @Produces(MediaType.APPLICATION_OCTET_STREAM)
     public Response download(@PathParam("nomeImagem") String nomeImagem) {
-        try {
-            
-            ResponseBuilder response = Response.ok(fileService.download(nomeImagem));
-            response.header("Content-Disposition", "attachment;filename=" + nomeImagem);
-            LOG.infof("Download do arquivo %s concluído com sucesso. - Executando BoxResource_download", nomeImagem);
-            return response.build();
-        } catch (Exception e) {
-            LOG.errorf("Erro ao realizar o download do arquivo:- Executando BoxResource_download %s", nomeImagem, e);
-
-            return Response.status(Status.INTERNAL_SERVER_ERROR).build();
-        }
+        ResponseBuilder response = Response.ok(fileService.download(nomeImagem));
+        response.header("Content-Disposition", "attachment;filename=" + nomeImagem);
+        return response.build();
     }
 
     @GET
@@ -197,4 +190,9 @@ public class BoxResource {
         return response;
     }
 
+    @GET
+    @Path("/classificacao")
+    public Response getClassificacao(){
+        return Response.ok(Classificacao.values()).build();
+    }
 }

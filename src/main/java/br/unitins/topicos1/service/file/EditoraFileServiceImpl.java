@@ -8,31 +8,31 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
-import br.unitins.topicos1.model.box.Box;
-import br.unitins.topicos1.repository.BoxRepository;
+import br.unitins.topicos1.model.editora.Editora;
+import br.unitins.topicos1.repository.EditoraRepository;
 import br.unitins.topicos1.validation.ValidationException;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 
 @ApplicationScoped
-public class BoxFileserviceImpl implements BoxFileService {
+public class EditoraFileServiceImpl implements EditoraFileService {
 
     @Inject
-    BoxRepository boxRepository;
+    EditoraRepository editoraRepository;
 
     private final String PATH_USER = System.getProperty("user.home")
         + File.separator + "quarkus"
         + File.separator + "images"
         + File.separator + "livro" + File.separator;
 
-    
+ 
     @Override
     @Transactional
     public void salvar(Long id, String nomeImagem, byte[] imagem) {
-       Box box = boxRepository.findById(id);
-       try {
-            box.setNomeImagem(salvarImagem(nomeImagem, imagem));
+        Editora editora = editoraRepository.findById(id);
+        try {
+            editora.setNomeImagem(salvarImagem(nomeImagem, imagem));
         } catch (IOException e) {
             throw new ValidationException("imagem", e.getMessage());
         }
@@ -77,10 +77,9 @@ public class BoxFileserviceImpl implements BoxFileService {
         return nomeArquivo;
     }
 
-
     @Override
     public File download(String nomeImagem) {
-        return new File(PATH_USER + nomeImagem);    
+        return new File(PATH_USER + nomeImagem);
     }
     
 }

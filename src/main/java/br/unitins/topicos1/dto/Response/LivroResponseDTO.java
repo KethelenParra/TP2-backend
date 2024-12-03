@@ -20,8 +20,8 @@ public record LivroResponseDTO(
         List<AutorResponseDTO> autores,
         List<GeneroResponseDTO> generos,
         String nomeImagem
+ 
 ) {
-    private static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     public static LivroResponseDTO valueOf(Livro livro) {
                 List<AutorResponseDTO> listaAutor = livro.getListaAutor()
                                         .stream()
@@ -38,13 +38,13 @@ public record LivroResponseDTO(
                 livro.getPreco(),
                 livro.getIsbn(),
                 livro.getDescricao(),
-                livro.getDatalancamento().format(formatter),
+                livro.getDatalancamento().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")),
                 livro.getClassificacao(),
                 EditoraResponseDTO.valueOf(livro.getEditora()),
                 FornecedorResponseDTO.valueOf(livro.getFornecedor()),
                 listaAutor,
                 listaGenero,
-                livro.getNomeImagem()
+                livro.getNomeImagem()     
         );
     }
 }

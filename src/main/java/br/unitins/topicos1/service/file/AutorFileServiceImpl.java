@@ -16,7 +16,7 @@ import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 
 @ApplicationScoped
-public class AutorFileServiceImpl implements FileService {
+public class AutorFileServiceImpl implements AutorFileService {
 
     @Inject
     AutorRepository autorRepository;
@@ -24,7 +24,7 @@ public class AutorFileServiceImpl implements FileService {
     private final String PATH_USER = System.getProperty("user.home")
         + File.separator + "quarkus"
         + File.separator + "images"
-        + File.separator + "autor" + File.separator;
+        + File.separator + "livro" + File.separator;
 
  
     @Override

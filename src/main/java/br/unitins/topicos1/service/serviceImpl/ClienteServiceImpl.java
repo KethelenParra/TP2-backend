@@ -11,6 +11,7 @@ import br.unitins.topicos1.dto.ClienteDTO;
 import br.unitins.topicos1.dto.TelefoneDTO;
 import br.unitins.topicos1.dto.Response.AlterarSenhaDTO;
 import br.unitins.topicos1.dto.Response.ClienteResponseDTO;
+import br.unitins.topicos1.dto.Response.LivroResponseDTO;
 import br.unitins.topicos1.dto.Response.UsuarioResponseDTO;
 import br.unitins.topicos1.model.Enum.Sexo;
 import br.unitins.topicos1.model.Pessoa.Cliente;
@@ -259,6 +260,24 @@ public class ClienteServiceImpl implements ClienteService {
         }
                 
         listaDesejo.remove(livroRepository.findById(idLivro));
+    }
+
+  @Override
+    public List<LivroResponseDTO> findLivrosDesejados() {
+        // Obtém o cliente logado
+        Usuario usuario = usuarioRepository.findById(Long.valueOf(tokenJwt.getClaim("id").toString()));
+
+        Cliente cliente = clienteRepository.findByIdUsuario(usuario.getId());
+
+        if (cliente == null) {
+            throw new ValidationException("cliente","Cliente não encontrado para o usuário logado.");
+        }
+
+        // Mapeia os livros da lista de desejos para DTOs
+        return cliente.getListaDesejo()
+                    .stream()
+                    .map(LivroResponseDTO::valueOf)
+                    .toList();
     }
 
 }
