@@ -134,10 +134,17 @@ public class ClienteServiceImpl implements ClienteService {
     }
 
     @Override
-    public List<ClienteResponseDTO> findAll() {
-        return clienteRepository.listAll().stream().map(ClienteResponseDTO::valueOf).toList();
+    public List<ClienteResponseDTO> findAll(int page, int pageSize) {
+        List<Cliente> listCliente = clienteRepository
+                                            .findAll()
+                                            .page(page, pageSize)
+                                            .list();
+
+        return listCliente.stream()
+            .map(clientes -> ClienteResponseDTO.valueOf(clientes))
+            .toList();
     }
-    
+
     @Override
     public List<ClienteResponseDTO> findByEstado(String estado) {
         return clienteRepository.findByEstado(estado).stream().map(ClienteResponseDTO::valueOf).toList();
@@ -146,6 +153,11 @@ public class ClienteServiceImpl implements ClienteService {
     @Override
     public List<UsuarioResponseDTO> findByCpf(String cpf) {
         return usuarioRepository.findByCpf(cpf).stream().map(UsuarioResponseDTO::valueOf).toList();
+    }
+
+    @Override
+    public long count() {
+        return usuarioRepository.count();
     }
     
     @Override

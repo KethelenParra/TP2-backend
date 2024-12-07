@@ -115,8 +115,15 @@ public class FuncionarioServiceImpl implements FuncionarioService {
     }
 
     @GET
-    public List<FuncionarioResponseDTO> findAll() {
-        return funcionarioRepository.listAll().stream().map(a -> FuncionarioResponseDTO.valueOf(a)).toList();
+    public List<FuncionarioResponseDTO> findAll(int page, int pageSize) {
+
+        List<Funcionario> listFuncionario = funcionarioRepository
+                                            .findAll()
+                                            .page(page, pageSize)
+                                            .list();
+        return listFuncionario.stream()
+            .map(funcionarios -> FuncionarioResponseDTO.valueOf(funcionarios))
+            .toList();
     }
 
     @Override
@@ -128,6 +135,11 @@ public class FuncionarioServiceImpl implements FuncionarioService {
     @Override
     public List<UsuarioResponseDTO> findByCpf(String cpf) {
         return usuarioRepository.findByCpf(cpf).stream().map(c -> UsuarioResponseDTO.valueOf(c)).toList();
+    }
+
+    @Override
+    public long count() {
+        return usuarioRepository.count();
     }
 
     @Override

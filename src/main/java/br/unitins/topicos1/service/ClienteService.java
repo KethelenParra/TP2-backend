@@ -16,7 +16,7 @@ public interface ClienteService {
     public void update(Long id, ClienteDTO dto);
     public void delete(Long id);
     public ClienteResponseDTO findById(Long id);
-    public List<ClienteResponseDTO> findAll();
+    public List<ClienteResponseDTO> findAll(int page, int pageSize);
     public List<ClienteResponseDTO> findByEstado(String estado);
     public List<UsuarioResponseDTO> findByCpf(String cpf);
     public UsuarioResponseDTO login(String username, String senha);
@@ -24,6 +24,8 @@ public interface ClienteService {
     public void alterarSenha(AlterarSenhaDTO dto);
     public void alterarUsername(AlterarUsernameDTO dto);
     public void alterarEmail(AlterarEmailDTO dto);
+
+    public long count();
 
     public ClienteResponseDTO findMeuPerfil();
     public void adicionarLivroDesejo(Long idLivro);

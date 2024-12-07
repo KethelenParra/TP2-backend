@@ -15,10 +15,12 @@ public interface FuncionarioService {
     public void update(Long id, FuncionarioDTO dto);
     public void delete(Long id);
     public FuncionarioResponseDTO findById(Long id);
-    public List<FuncionarioResponseDTO> findAll();
+    public List<FuncionarioResponseDTO> findAll(int page, int pageSize);
     public List<FuncionarioResponseDTO> findByCargo(String cargo);
     public List<UsuarioResponseDTO> findByCpf(String cpf);
     public UsuarioResponseDTO login(String username, String senha);  
+
+    public long count();
 
     public void alterarSenha(AlterarSenhaDTO dto);
     public void alterarUsername(AlterarUsernameDTO dto);

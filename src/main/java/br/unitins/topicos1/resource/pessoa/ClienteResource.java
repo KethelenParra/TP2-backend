@@ -17,6 +17,7 @@ import jakarta.validation.Valid;
 import jakarta.validation.ValidationException;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
+import jakarta.ws.rs.DefaultValue;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.PATCH;
 import jakarta.ws.rs.POST;
@@ -24,6 +25,7 @@ import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.Response.Status;
@@ -40,10 +42,12 @@ public class ClienteResource {
 
     @GET
     //@RolesAllowed({"Funcionario"})
-    public Response findAll() {
+    public Response findAll(
+        @QueryParam("page") @DefaultValue("0") int page,
+        @QueryParam("pageSize") @DefaultValue("100") int pageSize) {
         LOG.info("Buscando todos os clientes");
         LOG.debug("ERRO DE DEBUG.");
-        return Response.ok(clienteService.findAll()).build();
+        return Response.ok(clienteService.findAll(page, pageSize)).build();
     }
 
     @GET
@@ -68,6 +72,13 @@ public class ClienteResource {
     public Response findById(@PathParam("id") Long id) {
         LOG.infof("Executando o método findById. Id: %s", id.toString());
         return Response.ok(clienteService.findById(id)).build();
+    }
+
+    @GET
+    @Path("/count")
+    public Response count() {
+        LOG.infof("Contando todos os boxes");
+        return Response.ok(clienteService.count()).build();
     }
 
     @POST
