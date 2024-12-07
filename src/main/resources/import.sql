@@ -370,17 +370,17 @@ VALUES
 -- pedido
 INSERT INTO pedido (dataPedido, valorTotal, ifPedidoFeito, id_formaPagamento, id_cliente)
 VALUES 
-       ('2023-06-10', 511, true, 1, 2),
-       ('2023-06-15', 140.25, true, 2, 2);
+       ('2023-06-10', 32.9, true, 1, 2),
+       ('2023-06-15', 102.7, false, 2, 2);
 
 -- itemPedido
-INSERT INTO itemPedido (desconto, quantidade, subtotal, id_livro) 
+INSERT INTO itemPedido (desconto, quantidade, subtotal, id_livro, id_pedido) 
 VALUES 
-       (3.00, 10, 270, 1),
-       (1.25, 5, 88.25, 2),
-       (0.90, 3, 52.60, 1),
-       (0.0, 2, 511, 3),
-       (0.0, 1, 140.25, 2);
+       (3.00, 10, 270.00, 1, 1), -- Associado ao pedido com id 1
+       (1.25, 5, 88.25, 2, 1),  -- Associado ao pedido com id 1
+       (0.90, 3, 52.60, 1, 1),  -- Associado ao pedido com id 1
+       (0.00, 2, 65.9, 3, 2), -- Associado ao pedido com id 2
+       (0.00, 1, 36.9, 2, 2); -- Associado ao pedido com id 2
 
 -- Box
 INSERT INTO box (nome, descricaoBox, quantidadeEstoque, id_fornecedor, id_editora, preco, classificacao, nomeImagem) 
@@ -518,3 +518,9 @@ INSERT INTO box_genero (idbox, idgenero) VALUES (10, 1);
 INSERT INTO box_genero (idbox, idgenero) VALUES (11, 3);
 INSERT INTO box_genero (idbox, idgenero) VALUES (12, 1);
 INSERT INTO box_genero (idbox, idgenero) VALUES (13, 2);
+
+INSERT INTO itemDesejo (id_cliente, id_box) VALUES 
+(1, 1); -- Cliente 1 deseja o box com id 1
+
+INSERT INTO itemDesejo (id_cliente, id_livro) VALUES 
+(1, 1); -- Cliente 1 deseja o livro com id 1

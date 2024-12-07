@@ -1,6 +1,5 @@
 package br.unitins.topicos1.service.serviceImpl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.microprofile.jwt.JsonWebToken;
@@ -11,12 +10,16 @@ import br.unitins.topicos1.dto.ClienteDTO;
 import br.unitins.topicos1.dto.TelefoneDTO;
 import br.unitins.topicos1.dto.Response.AlterarSenhaDTO;
 import br.unitins.topicos1.dto.Response.ClienteResponseDTO;
-import br.unitins.topicos1.dto.Response.LivroResponseDTO;
+import br.unitins.topicos1.dto.Response.ItemDesejoResponseDTO;
 import br.unitins.topicos1.dto.Response.UsuarioResponseDTO;
 import br.unitins.topicos1.model.Enum.Sexo;
 import br.unitins.topicos1.model.Pessoa.Cliente;
+import br.unitins.topicos1.model.Pessoa.ItemDesejo;
 import br.unitins.topicos1.model.Pessoa.Usuario;
+import br.unitins.topicos1.model.box.Box;
 import br.unitins.topicos1.model.livro.Livro;
+import br.unitins.topicos1.repository.BoxRepository;
+import br.unitins.topicos1.repository.ItemRepository;
 import br.unitins.topicos1.repository.LivroRepository;
 import br.unitins.topicos1.repository.pessoa.ClienteRepository;
 import br.unitins.topicos1.repository.pessoa.UsuarioRepository;
@@ -39,7 +42,13 @@ public class ClienteServiceImpl implements ClienteService {
     public UsuarioRepository usuarioRepository;
 
     @Inject
+    public ItemRepository itemRepository;
+
+    @Inject
     public LivroRepository livroRepository;
+
+    @Inject
+    public BoxRepository boxRepository;
 
     @Inject
     public HashService hashService;
@@ -230,54 +239,62 @@ public class ClienteServiceImpl implements ClienteService {
         return ClienteResponseDTO.valueOf(cliente);
     }
 
-    @Override
+    
+@Override
     @Transactional
-    public void adicionarLivroDesejo(Long idLivro) {
+    public void adicionarItemDesejo(Long idLivro, Long idBox) {
         Usuario usuario = usuarioRepository.findById(Long.valueOf(tokenJwt.getClaim("id").toString()));
-
-        Cliente cliente = clienteRepository.findByIdUsuario(usuario.getId());
-
-        List<Livro> listaDesejo = cliente.getListaDesejo();
-        if (listaDesejo == null) {
-            listaDesejo = new ArrayList<>();
-        } else {
-            listaDesejo = cliente.getListaDesejo();
-        }
-
-        listaDesejo.add(livroRepository.findById(idLivro));
-    }
-
-    @Override
-    @Transactional
-    public void removerLivroDesejo(Long idLivro) {
-        Usuario usuario = usuarioRepository.findById(Long.valueOf(tokenJwt.getClaim("id").toString()));
-
-        Cliente cliente = clienteRepository.findByIdUsuario(usuario.getId());
-
-        List<Livro> listaDesejo = cliente.getListaDesejo();
-        if (listaDesejo == null) {
-            throw new ValidationException("listaDesejo", "Não há livro para ser removido!");
-        }
-                
-        listaDesejo.remove(livroRepository.findById(idLivro));
-    }
-
-  @Override
-    public List<LivroResponseDTO> findLivrosDesejados() {
-        // Obtém o cliente logado
-        Usuario usuario = usuarioRepository.findById(Long.valueOf(tokenJwt.getClaim("id").toString()));
-
         Cliente cliente = clienteRepository.findByIdUsuario(usuario.getId());
 
         if (cliente == null) {
-            throw new ValidationException("cliente","Cliente não encontrado para o usuário logado.");
+            throw new ValidationException("cliente","Cliente não encontrado.");
         }
 
-        // Mapeia os livros da lista de desejos para DTOs
+        ItemDesejo itemDesejo = new ItemDesejo();
+        itemDesejo.setCliente(cliente);
+
+        if (idLivro != null) {
+            Livro livro = livroRepository.findById(idLivro);
+            if (livro == null) {
+                throw new NotFoundException("Livro não encontrado.");
+            }
+            itemDesejo.setLivro(livro);
+        } else if (idBox != null) {
+            Box box = boxRepository.findById(idBox);
+            if (box == null) {
+                throw new NotFoundException("Box não encontrado.");
+            }
+            itemDesejo.setBox(box);
+        } else {
+            throw new ValidationException("itemDesejo","É necessário fornecer um ID de livro ou box.");
+        }
+
+        itemRepository.persist(itemDesejo);
+    }
+
+    @Override
+    @Transactional
+    public void removerItemDesejo(Long idItem) {
+        ItemDesejo item = itemRepository.findById(idItem);
+        if (item == null) {
+            throw new NotFoundException("Item de desejo não encontrado.");
+        }
+        itemRepository.delete(item);
+    }
+
+    @Override
+    public List<ItemDesejoResponseDTO> findListaDesejos() {
+        Usuario usuario = usuarioRepository.findById(Long.valueOf(tokenJwt.getClaim("id").toString()));
+        Cliente cliente = clienteRepository.findByIdUsuario(usuario.getId());
+
+        if (cliente == null) {
+            throw new ValidationException("cliente","Cliente não encontrado.");
+        }
+
         return cliente.getListaDesejo()
-                    .stream()
-                    .map(LivroResponseDTO::valueOf)
-                    .toList();
+                .stream()
+                .map(ItemDesejoResponseDTO::valueOf)
+                .toList();
     }
 
 }

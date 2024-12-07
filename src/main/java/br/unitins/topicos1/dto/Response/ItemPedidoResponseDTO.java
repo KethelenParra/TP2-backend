@@ -11,13 +11,28 @@ public record ItemPedidoResponseDTO(
     String subTotal
 ) {
     public static ItemPedidoResponseDTO valueOf(ItemPedido item) {
-        return new ItemPedidoResponseDTO(
-            item.getLivro().getId(), 
-            item.getLivro().getTitulo(), 
-            item.getLivro().getPreco(),
-            item.getQuantidade(),
-            "R$" + String.format("%.2f", item.getDesconto()),
-            "R$" + String.format("%.2f", item.getSubTotal())
-        );
+        if (item.getLivro() != null) {
+            // Caso seja um Livro
+            return new ItemPedidoResponseDTO(
+                item.getLivro().getId(),
+                item.getLivro().getTitulo(),
+                item.getLivro().getPreco(),
+                item.getQuantidade(),
+                "R$" + String.format("%.2f", item.getDesconto()),
+                "R$" + String.format("%.2f", item.getSubTotal())
+            );
+        } else if (item.getBox() != null) {
+            // Caso seja um Box
+            return new ItemPedidoResponseDTO(
+                item.getBox().getId(),
+                item.getBox().getNome(),
+                item.getBox().getPreco(),
+                item.getQuantidade(),
+                "R$" + String.format("%.2f", item.getDesconto()),
+                "R$" + String.format("%.2f", item.getSubTotal())
+            );
+        } else {
+            throw new IllegalStateException("ItemPedido não possui Livro ou Box associado.");
+        }
     }
 }

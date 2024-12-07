@@ -1,5 +1,6 @@
 package br.unitins.topicos1.repository;
 
+import br.unitins.topicos1.model.box.Box;
 import br.unitins.topicos1.model.livro.Livro;
 import br.unitins.topicos1.model.pedido.ItemPedido;
 
@@ -14,5 +15,12 @@ public class ItemPedidoRepository implements PanacheRepository<ItemPedido>  {
             return null;
 
         return find("FROM ItemPedido WHERE livro = ?1", livro).firstResult();
+    }
+
+    public ItemPedido findByBox (Box box){
+        if (box == null)
+            return null;
+
+        return find("FROM ItemPedido WHERE box = ?1", box).firstResult();
     }
 }

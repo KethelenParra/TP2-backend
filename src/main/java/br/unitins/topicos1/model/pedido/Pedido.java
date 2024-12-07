@@ -8,6 +8,7 @@ import br.unitins.topicos1.model.Pessoa.Cliente;
 import br.unitins.topicos1.model.defaultEntity.DefaultEntity;
 import br.unitins.topicos1.model.formaPagamento.FormaPagamento;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
@@ -30,7 +31,7 @@ public class Pedido extends DefaultEntity {
     @JoinColumn(name = "id_cliente")
     private Cliente cliente;
     
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = false, fetch = FetchType.EAGER)
     @JoinColumn(name = "id_pedido")
     private List<ItemPedido> itens;
     
