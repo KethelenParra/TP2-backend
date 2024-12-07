@@ -1,5 +1,6 @@
 package br.unitins.topicos1.model.pedido;
 
+import br.unitins.topicos1.model.box.Box;
 import br.unitins.topicos1.model.defaultEntity.DefaultEntity;
 import br.unitins.topicos1.model.livro.Livro;
 import jakarta.persistence.Column;
@@ -18,8 +19,12 @@ public class ItemPedido extends DefaultEntity {
     private Double subTotal;
     
     @ManyToOne
-    @JoinColumn(name = "id_livro", nullable = false)
+    @JoinColumn(name = "id_livro")
     private Livro livro;
+
+    @ManyToOne
+    @JoinColumn(name = "id_box")
+    private Box box;
 
     public Double getSubTotal() {
         return subTotal;
@@ -52,4 +57,13 @@ public class ItemPedido extends DefaultEntity {
     public void setLivro(Livro livro) {
         this.livro = livro;
     }
+
+    public Box getBox() {
+        return box;
+    }
+
+    public void setBox(Box box) {
+        this.box = box;
+    }
+
 }

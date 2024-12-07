@@ -17,10 +17,11 @@ public record PedidoResponseDTO(
     String statusPedido
 ) {
     public static PedidoResponseDTO valueOf(Pedido pedido) {
+        System.out.println("Itens do Pedido: " + pedido.getItens());
         List<ItemPedidoResponseDTO> lista = pedido.getItens()
-                                           .stream()
-                                           .map(ItemPedidoResponseDTO::valueOf)
-                                           .toList();
+                                                   .stream()
+                                                   .map(ItemPedidoResponseDTO::valueOf)
+                                                   .toList();
         return new PedidoResponseDTO(
             pedido.getId(),
             ClienteResponseDTO.valueOf(pedido.getCliente()), 

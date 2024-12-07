@@ -11,13 +11,16 @@ import br.unitins.topicos1.dto.ItemPedidoDTO;
 import br.unitins.topicos1.dto.PedidoDTO;
 import br.unitins.topicos1.dto.Response.PedidoResponseDTO;
 import br.unitins.topicos1.model.Pessoa.Cliente;
+import br.unitins.topicos1.model.box.Box;
 import br.unitins.topicos1.model.formaPagamento.BandeiraCartao;
 import br.unitins.topicos1.model.formaPagamento.Boleto;
 import br.unitins.topicos1.model.formaPagamento.CartaoCredito;
 import br.unitins.topicos1.model.formaPagamento.Pix;
+import br.unitins.topicos1.model.livro.Livro;
 import br.unitins.topicos1.model.pedido.ItemPedido;
 import br.unitins.topicos1.model.pedido.Pedido;
 import br.unitins.topicos1.repository.BoletoRepository;
+import br.unitins.topicos1.repository.BoxRepository;
 import br.unitins.topicos1.repository.CartaoCreditoRepository;
 import br.unitins.topicos1.repository.ItemPedidoRepository;
 import br.unitins.topicos1.repository.LivroRepository;
@@ -48,6 +51,9 @@ public class PedidoServiceImpl implements PedidoService {
     public LivroRepository livroRepository;
 
     @Inject
+    public BoxRepository boxRepository;
+
+    @Inject
     public BoletoRepository boletoRepository;
 
     @Inject
@@ -71,18 +77,17 @@ public class PedidoServiceImpl implements PedidoService {
         if (cliente == null) {
             throw new ValidationException("Buscando Cliente", "Cliente não encontrado - Executando PedidoServiceImpl_create");
         }     
-                
+
         if (!clienteAutenticado(username, dto.idCliente())) {
             throw new ValidationException("Verificando...", "Você não tem autorização para realizar o pedido. - Executando PedidoServiceImpl_create");
         }     
-        
+
         Pedido pedidoExistente = pedidoRepository.findByClienteNaoFinalizado(cliente);
-        if(pedidoExistente != null){
-            throw new ValidationException("Buscando Pedido", "Já existe um pedido em aberto. Pague seu ultimo pedido ou delete para fazer um novo. - Executando PedidoServiceImpl_create");
+        if (pedidoExistente != null) {
+            throw new ValidationException("Buscando Pedido", "Já existe um pedido em aberto. Pague seu último pedido ou delete para fazer um novo. - Executando PedidoServiceImpl_create");
         }
 
         Pedido pedido = new Pedido();
-                
         pedido.setCliente(cliente);
         pedido.setDataPedido(LocalDateTime.now());
         List<ItemPedido> itens = new ArrayList<>();
@@ -90,18 +95,44 @@ public class PedidoServiceImpl implements PedidoService {
 
         for (ItemPedidoDTO itemDTO : dto.itens()) {
             ItemPedido item = new ItemPedido();
-            item.setLivro(livroRepository.findById(itemDTO.idLivro()));
             item.setQuantidade(itemDTO.quantidade());
-            if (item.getQuantidade() <= item.getLivro().getQuantidadeEstoque()) {
-                item.getLivro().diminuindoEstoque(item.getQuantidade());
+        
+            if (itemDTO.idLivro() != null) {
+                Livro livro = livroRepository.findById(itemDTO.idLivro());
+                if (livro == null) {
+                    throw new ValidationException("create", "Livro não encontrado");
+                }
+        
+                if (item.getQuantidade() > livro.getQuantidadeEstoque()) {
+                    throw new ValidationException("create", "Quantidade em estoque insuficiente para o livro requisitado");
+                }
+        
+                livro.diminuindoEstoque(item.getQuantidade());
+                item.setLivro(livro);
+                item.setSubTotal((livro.getPreco() - calcularDesconto(item)) * item.getQuantidade());
             }
+        
+            if (itemDTO.idBox() != null) {
+                Box box = boxRepository.findById(itemDTO.idBox());
+                if (box == null) {
+                    throw new ValidationException("create", "Box não encontrado");
+                }
+        
+                if (item.getQuantidade() > box.getQuantidadeEstoque()) {
+                    throw new ValidationException("create", "Quantidade em estoque insuficiente para o box requisitado");
+                }
+        
+                box.diminuindoEstoque(item.getQuantidade());
+                item.setBox(box);
+                item.setSubTotal((box.getPreco() - calcularDesconto(item)) * item.getQuantidade());
+            }
+        
             item.setDesconto(calcularDesconto(item));
-            item.setSubTotal((item.getLivro().getPreco() - calcularDesconto(item)) * item.getQuantidade());
             itens.add(item);
-
+        
             valorTotal += calcularValorTotal(item);
         }
-
+        
         pedido.setItens(itens);
         pedido.setValorTotal(valorTotal);
 
@@ -110,14 +141,31 @@ public class PedidoServiceImpl implements PedidoService {
     }
 
     private Double calcularValorTotal(ItemPedido item) {
-        return (item.getLivro().getPreco() - calcularDesconto(item)) * item.getQuantidade();
+        if (item.getLivro() != null) {
+            return (item.getLivro().getPreco() - calcularDesconto(item)) * item.getQuantidade();
+        } else if (item.getBox() != null) {
+            return (item.getBox().getPreco() - calcularDesconto(item)) * item.getQuantidade();
+        }
+        throw new ValidationException("calcularValorTotal", "Item sem livro ou box associado");
     }
 
     private Double calcularDesconto(ItemPedido item) {
         Double desconto = 0.0;
-        if (item.getQuantidade() >= 3) {
-            desconto = (item.getLivro().getPreco() * 0.10);
+    
+        if (item.getLivro() != null) {
+            // Exemplo: desconto de 10% para livros se a quantidade for maior ou igual a 3
+            if (item.getQuantidade() >= 3) {
+                desconto = item.getLivro().getPreco() * 0.10;
+            }
+        } else if (item.getBox() != null) {
+            // Exemplo: desconto de 15% para boxes se a quantidade for maior ou igual a 2
+            if (item.getQuantidade() >= 2) {
+                desconto = item.getBox().getPreco() * 0.15;
+            }
+        } else {
+            throw new ValidationException("calcularDesconto", "Item sem livro ou box associado");
         }
+    
         return desconto;
     }
 
@@ -166,7 +214,7 @@ public class PedidoServiceImpl implements PedidoService {
 
     @Override
     public PedidoResponseDTO findById(Long id) {
-        return PedidoResponseDTO.valueOf(pedidoRepository.findById(id));
+        return PedidoResponseDTO.valueOf(pedidoRepository.findByIdWithItens(id));
     }
 
     @Override
