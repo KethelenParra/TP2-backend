@@ -8,11 +8,11 @@ import br.unitins.topicos1.dto.FuncionarioDTO;
 import br.unitins.topicos1.dto.Response.AlterarSenhaDTO;
 import br.unitins.topicos1.model.Enum.Sexo;
 import br.unitins.topicos1.service.FuncionarioService;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.validation.Valid;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
-import jakarta.ws.rs.DefaultValue;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.PATCH;
 import jakarta.ws.rs.POST;
@@ -20,7 +20,6 @@ import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
-import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.Response.Status;
@@ -36,13 +35,11 @@ public class FuncionarioResource {
     private static final Logger LOG = Logger.getLogger(FuncionarioResource.class);
 
     @GET
-    //@RolesAllowed({"Funcionario"})
-    public Response findAll(
-        @QueryParam("page") @DefaultValue("0") int page,
-        @QueryParam("pageSize") @DefaultValue("100") int pageSize) {
+    @RolesAllowed({"Funcionario"})
+    public Response findAll() {
         LOG.info("Buscando todos os Funcionarios");
         LOG.debug("ERRO DE DEBUG.");
-        return Response.ok(funcionarioService.findAll(page, pageSize)).build();
+        return Response.ok(funcionarioService.findAll()).build();
     }
 
     @GET
@@ -61,7 +58,7 @@ public class FuncionarioResource {
     }
 
     @GET
-    //@RolesAllowed({"Funcionario"})
+    @RolesAllowed({"Funcionario"})
     @Path("/search/cpf/{cpf}")
     public Response findByCpf(@PathParam("cpf") String cpf) {
         LOG.info("Buscando Funcionario pelo cpf: " + cpf);
@@ -69,7 +66,7 @@ public class FuncionarioResource {
     }
 
     @GET
-    //@RolesAllowed({"Funcionario"})
+    @RolesAllowed({"Funcionario"})
     @Path("/{id}")
     public Response findById(@PathParam("id") Long id) {
         LOG.infof("Executando o metodo findById. Id: %s", id.toString());
@@ -77,7 +74,7 @@ public class FuncionarioResource {
     }
 
     @POST
-    //@RolesAllowed({"Funcionario"})
+    @RolesAllowed({"Funcionario"})
     public Response create(@Valid FuncionarioDTO dto) {
 
         try {
@@ -90,7 +87,7 @@ public class FuncionarioResource {
     }
 
     @PUT
-    //@RolesAllowed({"Funcionario"})
+    @RolesAllowed({"Funcionario"})
     @Path("/{id}")
     public Response update(@PathParam("id") Long id, FuncionarioDTO dto) {
         try {
@@ -105,7 +102,7 @@ public class FuncionarioResource {
     }
 
     @DELETE
-    //@RolesAllowed({"Funcionario"})
+    @RolesAllowed({"Funcionario"})
     @Path("/{id}")
     public Response delete(@PathParam("id") Long id) {
         try {
@@ -120,7 +117,7 @@ public class FuncionarioResource {
 
     @PATCH
     @Path("/search/alterar-senha")
-    //@RolesAllowed({"Funcionario"})
+    @RolesAllowed({"Funcionario"})
     public Response alterarSenha(AlterarSenhaDTO dto) {
         try {
             LOG.info("Senha alterada com sucesso");
@@ -134,7 +131,7 @@ public class FuncionarioResource {
 
     @PATCH
     @Path("/search/alterar-email")
-    //@RolesAllowed({"Funcionario"})
+    @RolesAllowed({"Funcionario"})
     public Response alterarEmail(AlterarEmailDTO dto) {
         try {
             LOG.info("Email alterado com sucesso.");            
@@ -148,7 +145,7 @@ public class FuncionarioResource {
 
     @PATCH
     @Path("/search/alterar-username")
-    //@RolesAllowed({"Funcionario"})
+    @RolesAllowed({"Funcionario"})
     public Response alterarUsername(AlterarUsernameDTO dto) {
         try {
             LOG.info("Username alterado com sucesso.");
@@ -162,7 +159,7 @@ public class FuncionarioResource {
 
     @GET
     @Path("/search/meu-perfil")
-    //@RolesAllowed({"Funcionario"})
+    @RolesAllowed({"Funcionario"})
     public Response meuPerfil() {
         try {
             LOG.info("Buscando perfil do funcionario logado");

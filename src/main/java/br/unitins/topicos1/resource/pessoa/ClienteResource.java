@@ -16,7 +16,6 @@ import jakarta.inject.Inject;
 import jakarta.validation.Valid;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
-import jakarta.ws.rs.DefaultValue;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.PATCH;
 import jakarta.ws.rs.POST;
@@ -40,17 +39,14 @@ public class ClienteResource {
     private static final Logger LOG = Logger.getLogger(ClienteResource.class);
 
     @GET
-    //@RolesAllowed({"Funcionario"})
-    public Response findAll(
-        @QueryParam("page") @DefaultValue("0") int page,
-        @QueryParam("pageSize") @DefaultValue("100") int pageSize) {
+
+    public Response findAll() {
         LOG.info("Buscando todos os clientes");
         LOG.debug("ERRO DE DEBUG.");
-        return Response.ok(clienteService.findAll(page, pageSize)).build();
+        return Response.ok(clienteService.findAll()).build();
     }
 
     @GET
-    //@RolesAllowed({"Funcionario"})
     @Path("/search/estado/{estado}")
     public Response findByEstado(@PathParam("estado") String estado) {
         LOG.info("Buscando clientes por estados");
@@ -58,7 +54,6 @@ public class ClienteResource {
     }
 
     @GET
-    //@RolesAllowed({"Funcionario"})
     @Path("/search/cpf/{cpf}")
     public Response findByCpf(@PathParam("cpf") String cpf) {
         LOG.info("Buscando cpf do cliente");
@@ -67,7 +62,7 @@ public class ClienteResource {
 
     @GET
     @Path("/{id}")
-    //@RolesAllowed({"Funcionario"})
+    @RolesAllowed({"Funcionario"})
     public Response findById(@PathParam("id") Long id) {
         LOG.infof("Executando o método findById. Id: %s", id.toString());
         return Response.ok(clienteService.findById(id)).build();
@@ -81,7 +76,7 @@ public class ClienteResource {
     }
 
     @POST
-    //@RolesAllowed({"Cliente"})
+    @RolesAllowed({"Cliente"})
     public Response create(@Valid ClienteDTO dto) {
         try {
             LOG.info("Cliente criado com suceso");
@@ -93,7 +88,7 @@ public class ClienteResource {
     }
 
     @PUT
-    //@RolesAllowed({"Cliente"})
+    @RolesAllowed({"Cliente"})
     @Path("/{id}")
     public Response update(@PathParam("id") Long id, ClienteDTO dto) {
         try {
@@ -107,7 +102,7 @@ public class ClienteResource {
     }
 
     @DELETE
-    //@RolesAllowed({"Cliente"})
+    @RolesAllowed({"Cliente"})
     @Path("/{id}")
     public Response delete(@PathParam("id") Long id) {
         try {
@@ -122,7 +117,7 @@ public class ClienteResource {
 
     @PATCH
     @Path("/search/alterar-senha")
-    //@RolesAllowed({"Cliente"})
+    @RolesAllowed({"Cliente"})
     public Response alterarSenha(AlterarSenhaDTO dto) {
         try {
             LOG.info("Senha alterada com sucesso");
@@ -136,7 +131,7 @@ public class ClienteResource {
 
     @PATCH
     @Path("/search/alterar-email")
-    //@RolesAllowed({"Cliente"})
+    @RolesAllowed({"Cliente"})
     public Response alterarEmail(AlterarEmailDTO dto) {
         try {
             LOG.info("Email alterado com sucesso.");            
@@ -149,7 +144,7 @@ public class ClienteResource {
     }
 
     @PATCH
-    //@RolesAllowed({"Cliente"})
+    @RolesAllowed({"Cliente"})
     @Path("/search/alterar-username")
     public Response alterarUsername(AlterarUsernameDTO dto) {
         try {

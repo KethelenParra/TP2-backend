@@ -20,5 +20,7 @@ public interface AvaliacaoService {
 
     public List<AvaliacaoResponseDTO> getByIdLivro(Long idLivro);
     public List<AvaliacaoResponseDTO> getByNomeCliente(String nome);
+
+    public double calcularMediaEstrelas(Long idLivro);
 }
 

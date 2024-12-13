@@ -43,7 +43,7 @@ public class FuncionarioServiceImpl implements FuncionarioService {
 
     @Override
     @Transactional
-    public FuncionarioResponseDTO create(@Valid FuncionarioDTO dto) {
+    public FuncionarioResponseDTO create(@Valid FuncionarioDTO dto) { 
 
         Usuario usuario = new Usuario();
         usuario.setNome(dto.nome());
@@ -71,6 +71,10 @@ public class FuncionarioServiceImpl implements FuncionarioService {
     @Transactional
     public void update(Long id, FuncionarioDTO dto) {
         Funcionario funcionarioBanco = funcionarioRepository.findById(id);
+        
+        if (dto.senha() == null || dto.senha().isEmpty()) {
+            throw new ValidationException("senha", "A senha é obrigatória.");
+        }   
         
         if (funcionarioBanco == null) {
             throw new NotFoundException("Funcionário não encontrado");
@@ -105,15 +109,8 @@ public class FuncionarioServiceImpl implements FuncionarioService {
     }
 
     @GET
-    public List<FuncionarioResponseDTO> findAll(int page, int pageSize) {
-
-        List<Funcionario> listFuncionario = funcionarioRepository
-                                            .findAll()
-                                            .page(page, pageSize)
-                                            .list();
-        return listFuncionario.stream()
-            .map(funcionarios -> FuncionarioResponseDTO.valueOf(funcionarios))
-            .toList();
+    public List<FuncionarioResponseDTO> findAll() {
+        return funcionarioRepository.listAll().stream().map(a -> FuncionarioResponseDTO.valueOf(a)).toList();
     }
 
     @Override

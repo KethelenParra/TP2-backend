@@ -23,14 +23,24 @@ public class HashServiceImpl implements HashService {
 
     @Override
     public String getHashSenha(String senha) {
+
+        verificarSenhaNaoNulaOuVazia(senha);
+
         try {
+            // Geração do hash
             byte[] result = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA512")
-                    .generateSecret(
-                            new PBEKeySpec(senha.toCharArray(), salt.getBytes(), iterationCount, keyLength))
-                    .getEncoded();
+                .generateSecret(
+                        new PBEKeySpec(senha.toCharArray(), salt.getBytes(), iterationCount, keyLength))
+                .getEncoded();
             return Base64.getEncoder().encodeToString(result);
         } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Erro ao gerar o hash da senha: " + e.getMessage(), e);
+        }
+    }
+
+    public void verificarSenhaNaoNulaOuVazia(String senha) {
+        if (senha == null || senha.isEmpty()) {
+            throw new IllegalArgumentException("A senha não pode ser nula ou vazia.");
         }
     }
 

@@ -10,6 +10,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 public class Usuario extends DefaultEntity {
@@ -24,7 +25,8 @@ public class Usuario extends DefaultEntity {
     @Column(unique = true)
     private String email;
 
-    @Column(nullable = false)
+    @Column(nullable = false) // Impede valores nulos no banco
+    @NotBlank(message = "A senha não pode ser nula ou vazia.") // Valida no backend
     private String senha;
 
     @OneToOne(cascade = CascadeType.PERSIST)

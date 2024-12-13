@@ -57,14 +57,14 @@ public class PedidoResource {
 
     @GET
     @Path("/{id}")
-    //@RolesAllowed({"Funcionario"})
+    @RolesAllowed({"Funcionario"})
     public Response findById(@PathParam("id") Long id){
         LOG.info("Buscando com id - Executando PedidoResource_FindById");
         return Response.ok(pedidoservice.findById(id)).build();
     }
 
     @GET
-    //@RolesAllowed({"Funcionario"})
+    @RolesAllowed({"Funcionario"})
     public Response findAll(){
         LOG.info("Buscando todos os pedidos - Executando PedidoResource_FindAll");
         return Response.ok(pedidoservice.findAll()).build();
@@ -72,7 +72,7 @@ public class PedidoResource {
 
     @GET
     @Path("/search/clientes/{idCliente}")
-    //@RolesAllowed({"Funcionario"})
+    @RolesAllowed({"Funcionario"})
     public Response findByCliente(@PathParam("idCliente") Long idCliente){
         LOG.info("Buscando com id do cliente - Executando PedidoResource_FindByCliente");
         return Response.ok(pedidoservice.findByCliente(idCliente)).build();
@@ -119,7 +119,7 @@ public class PedidoResource {
 
     @GET
     @Path("/search/meus-Pedidos")
-    @RolesAllowed({"Funcionario","Cliente"})
+    @RolesAllowed({"Cliente"})
     public Response meusPedidos(){
         try {
             LOG.info("Meus Pedido. - Executando PedidoResource_meusPedidos");
@@ -138,7 +138,7 @@ public class PedidoResource {
 
     @PATCH
     @Path("/search/pagar-Boleto")
-    //@RolesAllowed({"Cliente"})
+    @RolesAllowed({"Cliente"})
     public Response pagarBoleto() {
 
         try {
@@ -183,7 +183,7 @@ public class PedidoResource {
 
     @PATCH
     @Path("/search/pagar-Cartao-Credito")
-    //@RolesAllowed({"Cliente"})
+    @RolesAllowed({"Cliente"})
     public Response pagarCartaoCredito(CartaoCreditoDTO cartao) {
         try {
             String username = tokenJwt.getSubject();

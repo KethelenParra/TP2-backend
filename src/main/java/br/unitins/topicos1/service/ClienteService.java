@@ -17,7 +17,7 @@ public interface ClienteService {
     public void update(Long id, ClienteDTO dto);
     public void delete(Long id);
     public ClienteResponseDTO findById(Long id);
-    public List<ClienteResponseDTO> findAll(int page, int pageSize);
+    public List<ClienteResponseDTO> findAll();
     public List<ClienteResponseDTO> findByEstado(String estado);
     public List<UsuarioResponseDTO> findByCpf(String cpf);
     public UsuarioResponseDTO login(String username, String senha);

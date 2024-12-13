@@ -7,10 +7,10 @@ public enum Sexo {
     MASCULINO (1, "Masculino"),
     FEMININO (2, "Feminino");
 
-    private int id;
+    private Integer id;
     private String nome;
 
-    Sexo(int id, String nome){
+    Sexo(Integer id, String nome){
         this.id = id;
         this.nome = nome;
     }
@@ -23,11 +23,16 @@ public enum Sexo {
         return this.nome;
     }
 
-    public static Sexo valueOf(Integer id) throws IllegalArgumentException{
-        for (Sexo sexo : Sexo.values()){
-            if (sexo.id == id)
+    public static Sexo valueOf(Integer id) throws IllegalArgumentException {
+        if (id == null) {
+            throw new IllegalArgumentException("Id Sexo não pode ser nulo!");
+        }
+        for (Sexo sexo : Sexo.values()) {
+            if (sexo.id == id) {
                 return sexo;
+            }
         }
         throw new IllegalArgumentException("Id Sexo Inválido!");
     }
+    
 }

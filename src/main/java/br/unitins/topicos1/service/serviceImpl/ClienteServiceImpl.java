@@ -140,15 +140,8 @@ public class ClienteServiceImpl implements ClienteService {
     }
 
     @Override
-    public List<ClienteResponseDTO> findAll(int page, int pageSize) {
-        List<Cliente> listCliente = clienteRepository
-                                            .findAll()
-                                            .page(page, pageSize)
-                                            .list();
-
-        return listCliente.stream()
-            .map(clientes -> ClienteResponseDTO.valueOf(clientes))
-            .toList();
+    public List<ClienteResponseDTO> findAll() {
+        return clienteRepository.listAll().stream().map(ClienteResponseDTO::valueOf).toList();
     }
 
     @Override

@@ -70,6 +70,10 @@ public class Livro extends DefaultEntity{
         this.quantidadeEstoque -= quantidadeEstoque;
     }
 
+    public void aumentandoEstoque(Integer quantidadeEstoque) {
+        this.quantidadeEstoque += quantidadeEstoque;
+    }
+
     public String getTitulo() {
         return titulo;
     }

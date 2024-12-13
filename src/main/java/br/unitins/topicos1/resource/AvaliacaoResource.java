@@ -7,6 +7,7 @@ import org.jboss.logging.Logger;
 import br.unitins.topicos1.dto.AvaliacaoDTO;
 import br.unitins.topicos1.dto.Response.AvaliacaoResponseDTO;
 import br.unitins.topicos1.service.AvaliacaoService;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
@@ -32,7 +33,6 @@ public class AvaliacaoResource {
     private static final Logger LOG = Logger.getLogger(AvaliacaoResource.class);
 
     @GET
-    //@RolesAllowed({ "Funcionario", "Cliente" })
     public List<AvaliacaoResponseDTO> findAll() {
         LOG.info("Buscando todas as avaliações - Executando AvaliacaoResource_FindAll");
         LOG.debug("ERRO DE DEBUG. - Executando AvaliacaoResource_FindAll");
@@ -41,7 +41,7 @@ public class AvaliacaoResource {
 
     @GET
     @Path("/{id}")
-    //@RolesAllowed({ "Funcionario" })
+    @RolesAllowed({ "Funcionario" })
     public AvaliacaoResponseDTO findById(@PathParam("id") Long id) throws NotFoundException {
         LOG.infof("Buscando avaliações por ID. ", id);
         LOG.debug("ERRO DE DEBUG. - Executando AvaliacaoResource_FindById");
@@ -49,7 +49,7 @@ public class AvaliacaoResource {
     }
 
     @POST
-    //@RolesAllowed({ "Cliente"})
+    @RolesAllowed({ "Cliente"})
     public Response create(AvaliacaoDTO avaliacaoDto) {
         try {
             AvaliacaoResponseDTO avaliacao = avaliacaoService.create(avaliacaoDto);
@@ -65,7 +65,7 @@ public class AvaliacaoResource {
 
     @PUT
     @Path("/{id}")
-    //@RolesAllowed({ "Cliente" })
+    @RolesAllowed({ "Cliente" })
     public Response update(@PathParam("id") Long id, AvaliacaoDTO avaliacaoDto) {
         try {
             avaliacaoService.update(id, avaliacaoDto);
@@ -83,7 +83,7 @@ public class AvaliacaoResource {
 
     @DELETE
     @Path("/{id}")
-    //@RolesAllowed({ "Funcionario", "Cliente"})
+    @RolesAllowed({ "Funcionario", "Cliente"})
     public Response delete(@PathParam("id") Long id) throws IllegalArgumentException {
 
         try {
@@ -94,6 +94,27 @@ public class AvaliacaoResource {
             LOG.error("Erro ao deletar avaliação: parâmetros inválidos. - Executando AvaliacaoResource_delete", e);
             throw e;
         } 
+    }
+
+    @GET
+    @Path("/livro/{id}/media")
+    @RolesAllowed({ "Funcionario"})
+    public Response calcularMediaEstrelas(@PathParam("id") Long idLivro) {
+        double media = avaliacaoService.calcularMediaEstrelas(idLivro);
+        return Response.ok(media).build();
+    }
+
+    @GET
+    @Path("/livro/{id}")
+    public Response getByIdLivro(@PathParam("id") Long idLivro) {
+        try {
+            List<AvaliacaoResponseDTO> avaliacoes = avaliacaoService.getByIdLivro(idLivro);
+            return Response.ok(avaliacoes).build();
+        } catch (NotFoundException e) {
+            return Response.status(Response.Status.NOT_FOUND)
+                        .entity("Nenhuma avaliação encontrada para o livro com ID: " + idLivro)
+                        .build();
+        }
     }
 
 }
