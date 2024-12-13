@@ -4,6 +4,7 @@ import org.jboss.logging.Logger;
 
 import br.unitins.topicos1.dto.FornecedorDTO;
 import br.unitins.topicos1.service.FornecedorService;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.validation.Valid;
 import jakarta.ws.rs.Consumes;
@@ -32,7 +33,7 @@ public class FornecedorResource {
 
     @GET
     @Path("/{id}")
-    //@RolesAllowed({"Funcionario"})
+    @RolesAllowed({"Funcionario"})
     public Response findById(@PathParam("id") Long id){
         LOG.info("Executando o findById - Executando FornecedorResource_FindById");
         LOG.infof("Executando o método findById. Id: %s", id.toString());
@@ -40,7 +41,6 @@ public class FornecedorResource {
     }
 
     @GET
-    //@RolesAllowed({"Funcionario"})
     public Response findAll(
         @QueryParam("page") @DefaultValue("0") int page,
         @QueryParam("pageSize") @DefaultValue("100") int pageSize
@@ -51,7 +51,6 @@ public class FornecedorResource {
 
     @GET
     @Path("/search/nome/{nome}")
-    //@RolesAllowed({"Funcionario"})
     public Response findByNome(
         @QueryParam("page") @DefaultValue("0") int page,
         @QueryParam("pageSize") @DefaultValue("100") int pageSize,
@@ -63,7 +62,6 @@ public class FornecedorResource {
 
     @GET
     @Path("/search/cnpj/{cnpj}")
-    //@RolesAllowed({"Funcionario"})
     public Response findByCnpj(
         @QueryParam("page") @DefaultValue("0") int page,
         @QueryParam("pageSize") @DefaultValue("100") int pageSize,
@@ -82,14 +80,13 @@ public class FornecedorResource {
 
     @GET
     @Path("/count/search/{nome}")
-    // @RolesAllowed({"Funcionario"})
     public Long count (@PathParam("nome") String nome) {
         LOG.infof("Contando todos os fornecedores");
         return fornecedorService.countByNome(nome);
     }
 
     @POST
-    //@RolesAllowed({"Funcionario"})
+    @RolesAllowed({"Funcionario"})
     public Response create(@Valid FornecedorDTO dto){
         
         LOG.info("Criando novo fornecedor: - Executando FornecedorResource_create");
@@ -99,7 +96,7 @@ public class FornecedorResource {
 
     @PUT
     @Path("/{id}")
-    //@RolesAllowed({"Funcionario"})
+    @RolesAllowed({"Funcionario"})
     public Response update(@PathParam("id") Long id, FornecedorDTO dto){
         
         LOG.info("Fornecedor atualizado com sucesso - Executando FornecedorResource_update");
@@ -110,7 +107,7 @@ public class FornecedorResource {
 
     @DELETE
     @Path("/{id}")
-    //@RolesAllowed({"Funcionario"})
+    @RolesAllowed({"Funcionario"})
     public Response delete(@PathParam("id") Long id){
         try {
             LOG.info("Fornecedor deletado com sucesso - Executando FornecedorResource_delete");

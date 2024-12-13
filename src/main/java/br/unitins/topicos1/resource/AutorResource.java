@@ -6,6 +6,7 @@ import br.unitins.topicos1.dto.AutorDTO;
 import br.unitins.topicos1.form.AutorImageForm;
 import br.unitins.topicos1.service.AutorService;
 import br.unitins.topicos1.service.file.AutorFileService;
+import jakarta.annotation.security.RolesAllowed;
 //import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.validation.Valid;
@@ -40,14 +41,13 @@ public class AutorResource {
 
     @GET
     @Path("/{id}")
-    //@RolesAllowed({"Funcionario"})
+    @RolesAllowed({"Funcionario"})
     public Response findById(@PathParam("id") Long id) {
         LOG.infof("Executando o método findById. Id: %s", id.toString());
         return Response.ok(autorService.findById(id)).build();
     }
 
     @GET
-    //@RolesAllowed({"Funcionario", "Cliente"})
     public Response findAll(
         @DefaultValue("0") @QueryParam("page") int page,
         @DefaultValue("100") @QueryParam("pageSize") int pageSize) {
@@ -57,7 +57,6 @@ public class AutorResource {
 
     @GET
     @Path("/search/nome/{nome}")
-    //@RolesAllowed({"Funcionario", "Cliente"})
     public Response findByNome(
         @PathParam("nome") String nome,
         @DefaultValue("0") @QueryParam("page") int page,
@@ -68,7 +67,6 @@ public class AutorResource {
 
     @GET
     @Path("/search/biografia/{biografia}")
-    //@RolesAllowed({"Funcionario", "Cliente"}) 
     public Response findByBiografia(
         @PathParam("biografia") String biografia,
         @DefaultValue("0") @QueryParam("page") int page,
@@ -86,7 +84,6 @@ public class AutorResource {
 
     @GET
     @Path("/count/search/{nome}")
-    // @RolesAllowed({"Funcionario"})
     public Long count (@PathParam("nome") String nome) {
         LOG.infof("Contando todos os autores");
         return autorService.countByNome(nome);
@@ -94,7 +91,7 @@ public class AutorResource {
 
 
     @POST
-    //@RolesAllowed({"Funcionario"}) 
+    @RolesAllowed({"Funcionario"}) 
     public Response create(@Valid AutorDTO dto) {
         LOG.info("Executando AutorResource_create");
         return Response.status(Status.CREATED).entity(autorService.create(dto)).build();
@@ -102,7 +99,7 @@ public class AutorResource {
 
     @PUT
     @Path("/{id}")
-    //@RolesAllowed({"Funcionario"}) 
+    @RolesAllowed({"Funcionario"}) 
     public Response update(@PathParam("id") Long id, AutorDTO dto) {
         
         LOG.info("Atualizando autor: - Executando AutorResource_update" + id);
@@ -113,7 +110,7 @@ public class AutorResource {
 
     @DELETE
     @Path("/{id}")
-    //@RolesAllowed({"Funcionario"}) 
+    @RolesAllowed({"Funcionario"}) 
     public Response delete(@PathParam("id") Long id) {
         try {
             LOG.info("Removendo autor: - Executando AutorResource_delete" + id);
@@ -127,7 +124,7 @@ public class AutorResource {
 
     @PATCH
     @Path("/image/upload")
-    //@RolesAllowed({"Funcionario"})
+    @RolesAllowed({"Funcionario"})
     @Consumes(MediaType.MULTIPART_FORM_DATA)
     public Response upload( @MultipartForm AutorImageForm form) {
         try {
@@ -142,7 +139,6 @@ public class AutorResource {
 
     @GET
     @Path("/image/download/{nomeImagem}")
-    //@RolesAllowed({"Funcionario"})
     @Produces(MediaType.APPLICATION_OCTET_STREAM)
     public Response download(@PathParam("nomeImagem") String nomeImagem) {
         ResponseBuilder response = Response.ok(fileService.download(nomeImagem));

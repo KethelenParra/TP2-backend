@@ -29,8 +29,6 @@ public record BoxResponseDTO(
                                                 .stream()
                                                 .map(AutorResponseDTO::valueOf)
                                                 .toList();    
-                                                
-
         return new BoxResponseDTO(
             box.getId(),
             box.getNome(),

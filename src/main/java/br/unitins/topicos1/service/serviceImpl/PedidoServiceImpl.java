@@ -107,12 +107,9 @@ public class PedidoServiceImpl implements PedidoService {
                     throw new ValidationException("create", "Quantidade em estoque insuficiente para o livro requisitado");
                 }
         
-                livro.diminuindoEstoque(item.getQuantidade());
                 item.setLivro(livro);
                 item.setSubTotal((livro.getPreco() - calcularDesconto(item)) * item.getQuantidade());
-            }
-        
-            if (itemDTO.idBox() != null) {
+            } else if (itemDTO.idBox() != null) {
                 Box box = boxRepository.findById(itemDTO.idBox());
                 if (box == null) {
                     throw new ValidationException("create", "Box não encontrado");
@@ -122,7 +119,6 @@ public class PedidoServiceImpl implements PedidoService {
                     throw new ValidationException("create", "Quantidade em estoque insuficiente para o box requisitado");
                 }
         
-                box.diminuindoEstoque(item.getQuantidade());
                 item.setBox(box);
                 item.setSubTotal((box.getPreco() - calcularDesconto(item)) * item.getQuantidade());
             }
@@ -177,6 +173,11 @@ public class PedidoServiceImpl implements PedidoService {
             throw new ValidationException("cancelarPedido","Não há nenhuma compra em andamento");
         for (ItemPedido itemPedido : pedido.getItens()) {
             itemPedidoRepository.delete(itemPedido);
+            if (itemPedido.getLivro() != null) {
+                itemPedido.getLivro().aumentandoEstoque(itemPedido.getQuantidade());
+            } else if (itemPedido.getBox() != null) {
+                itemPedido.getBox().aumentandoEstoque(itemPedido.getQuantidade());
+            }
         }
         pedidoRepository.delete(pedido);
     }
@@ -185,16 +186,29 @@ public class PedidoServiceImpl implements PedidoService {
     public void finalizarPedido(Long idPedido) throws NullPointerException {
         Pedido pedido = pedidoRepository.findById(idPedido);
         if (pedido == null)
-            throw new ValidationException("finalizarPedido","Não há nenhuma compra em andamento");
+            throw new ValidationException("finalizarPedido", "Não há nenhuma compra em andamento");
         if (pedido.getItens().size() == 0)
-            throw new ValidationException("finalizarPedido","Não há nenhum item dentro do carrinho");
+            throw new ValidationException("finalizarPedido", "Não há nenhum item dentro do carrinho");
         pedido.setDataPedido(LocalDateTime.now());
         for (ItemPedido itemPedido : pedido.getItens()) {
-            if (itemPedido.getLivro().getQuantidadeEstoque() < itemPedido.getQuantidade()) {
-                throw new ValidationException("finalizarPedido","quantidade em estoque insuficiente para a quantidade requisitada. Não é possível finalizar a compra");
-            } else {
-                itemPedido.getLivro().diminuindoEstoque(itemPedido.getQuantidade());
+            if (itemPedido.getLivro() != null) {
+                if (itemPedido.getLivro().getQuantidadeEstoque() < itemPedido.getQuantidade()) {
+                    throw new ValidationException("finalizarPedido",
+                            "quantidade em estoque insuficiente para a quantidade requisitada. Não é possível finalizar a compra");
+                } else {
+                    itemPedido.getLivro().diminuindoEstoque(itemPedido.getQuantidade());
+                }
             }
+
+            if (itemPedido.getBox() != null) {
+                if (itemPedido.getBox().getQuantidadeEstoque() < itemPedido.getQuantidade()) {
+                    throw new ValidationException("finalizarPedido",
+                            "quantidade em estoque insuficiente para a quantidade requisitada. Não é possível finalizar a compra");
+                } else {
+                    itemPedido.getBox().diminuindoEstoque(itemPedido.getQuantidade());
+                }
+            }
+
         }
         pedido.setIfPedidoFeito(true);
     }

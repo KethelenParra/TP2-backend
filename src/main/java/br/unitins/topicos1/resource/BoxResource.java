@@ -9,6 +9,7 @@ import br.unitins.topicos1.form.BoxImageForm;
 import br.unitins.topicos1.model.Enum.Classificacao;
 import br.unitins.topicos1.service.BoxService;
 import br.unitins.topicos1.service.file.BoxFileService;
+import jakarta.annotation.security.RolesAllowed;
 //import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
@@ -41,7 +42,7 @@ public class BoxResource {
 
     @GET
     @Path("/{id}")
-    //@RolesAllowed({"Funcionario"})
+    @RolesAllowed({"Funcionario"})
     public Response findById(@PathParam("id") Long id) {
         LOG.info("Executando o findById - BoxResource");
         LOG.infof("Executando o método findById. Id: %s", id.toString());
@@ -49,7 +50,6 @@ public class BoxResource {
     }
 
     @GET
-    //@RolesAllowed({"Funcionario", "Cliente"})
     public Response findAll(
         @DefaultValue("0") @QueryParam("page") int page,
         @DefaultValue("100") @QueryParam("pageSize") int pageSize){
@@ -59,7 +59,6 @@ public class BoxResource {
 
     @GET
     @Path("/search/nome/{nome}")
-    //@RolesAllowed({"Funcionario", "Cliente"})
     public Response findByNome(
         @PathParam("nome") String nome,
         @DefaultValue("0") @QueryParam("page") int page,
@@ -70,7 +69,6 @@ public class BoxResource {
 
     @GET
     @Path("/search/descricao/{descricao}")
-    //@RolesAllowed({"Funcionario", "Cliente"})
     public Response findByDescricao(
         @PathParam("descricao") String descricao,
         @DefaultValue("0") @QueryParam("page") int page,
@@ -81,7 +79,6 @@ public class BoxResource {
 
     @GET
     @Path("/search/autor/{autor}")
-    //@RolesAllowed({"Funcionario", "Cliente"})
     public Response findByAutor(
         @PathParam("autor") String autor,
         @DefaultValue("0") @QueryParam("page") int page,
@@ -99,7 +96,6 @@ public class BoxResource {
 
     @GET
     @Path("/count/search/{nome}")
-    // @RolesAllowed({"Funcionario"})
     public Long count (@PathParam("nome") String nome) {
         LOG.infof("Contando todos os boxes");
         return boxService.countByNome(nome);
@@ -107,14 +103,13 @@ public class BoxResource {
 
     @GET
     @Path("/count/search/autor/{autor}")
-    // @RolesAllowed({"Funcionario"})
     public Long countAutor (@PathParam("autor") String autor) {
         LOG.infof("Contando todos os autores");
         return boxService.countByAutor(autor);
     }
 
     @POST
-    //@RolesAllowed({"Funcionario"})
+    @RolesAllowed({"Funcionario"})
     public Response create (BoxDTO dto){
         
         LOG.info("Criando uma nova boxes - Executando BoxResource_create");
@@ -124,7 +119,7 @@ public class BoxResource {
 
     @PUT
     @Path("/{id}")
-    //@RolesAllowed({"Funcionario"})
+    @RolesAllowed({"Funcionario"})
     public Response update(@PathParam("id") Long id, BoxDTO dto){
         
         LOG.info("Atualizando um box - Executando BoxResource_update");
@@ -135,7 +130,7 @@ public class BoxResource {
 
     @DELETE
     @Path("/{id}")
-    //@RolesAllowed({"Funcionario"})
+    @RolesAllowed({"Funcionario"})
     public Response delete(@PathParam("id") Long id){
         try {
             LOG.info("Deletando ua box - Executando BoxResource_delete");
@@ -149,7 +144,7 @@ public class BoxResource {
     
     @PATCH
     @Path("/image/upload")
-    //@RolesAllowed({"Funcionario"})
+    @RolesAllowed({"Funcionario"})
     @Consumes(MediaType.MULTIPART_FORM_DATA)
     public Response upload(@MultipartForm BoxImageForm form) {
         try {
@@ -164,7 +159,6 @@ public class BoxResource {
 
     @GET
     @Path("/image/download/{nomeImagem}")
-    //@RolesAllowed({"Funcionario"})
     @Produces(MediaType.APPLICATION_OCTET_STREAM)
     public Response download(@PathParam("nomeImagem") String nomeImagem) {
         ResponseBuilder response = Response.ok(fileService.download(nomeImagem));

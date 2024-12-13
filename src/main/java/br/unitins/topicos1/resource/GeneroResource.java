@@ -4,6 +4,7 @@ import org.jboss.logging.Logger;
 
 import br.unitins.topicos1.dto.GeneroDTO;
 import br.unitins.topicos1.service.GeneroService;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
@@ -31,7 +32,7 @@ public class GeneroResource {
 
     @GET
     @Path("/{id}")
-    //@RolesAllowed({"Funcionario"})
+    @RolesAllowed({"Funcionario"})
     public Response findById(@PathParam("id") Long id){
         LOG.info("Executando o findById - Executando GeneroResource_FindById");
         LOG.infof("Executando o método findById. Id: %s", id.toString());
@@ -39,7 +40,6 @@ public class GeneroResource {
     }
 
     @GET
-    //@RolesAllowed({"Funcionario"})
     public Response findAll(
         @QueryParam("page") @DefaultValue("0") int page,
         @QueryParam("pageSize") @DefaultValue("100") int pageSize
@@ -50,7 +50,6 @@ public class GeneroResource {
 
     @GET
     @Path("/search/nome/{nome}")
-    //@RolesAllowed({"Funcionario"})
     public Response findByNome(
         @QueryParam("page") @DefaultValue("0") int page,
         @QueryParam("pageSize") @DefaultValue("100") int pageSize,
@@ -62,7 +61,6 @@ public class GeneroResource {
 
     @GET
     @Path("/search/descricao/{descricao}")
-    //@RolesAllowed({"Funcionario"})
     public Response findByDescricao(
         @QueryParam("page") @DefaultValue("0") int page,
         @QueryParam("pageSize") @DefaultValue("100") int pageSize,
@@ -81,14 +79,13 @@ public class GeneroResource {
     
     @GET
     @Path("/count/search/{nome}")
-    // @RolesAllowed({"Funcionario"})
     public Long count (@PathParam("nome") String nome) {
         LOG.infof("Contando todos os generos");
         return generoService.countByNome(nome);
     }
 
     @POST
-    //@RolesAllowed({"Funcionario"})
+    @RolesAllowed({"Funcionario"})
     public Response create (GeneroDTO dto){
       
         LOG.info("Criando um novo genero - Executando GeneroResource_create");
@@ -98,7 +95,7 @@ public class GeneroResource {
 
     @PUT
     @Path("/{id}")
-    //@RolesAllowed({"Funcionario"})
+    @RolesAllowed({"Funcionario"})
     public Response update(@PathParam("id") Long id, GeneroDTO dto){
         
         LOG.info("Atualizando um genero - Executando GeneroResource_update");
@@ -109,7 +106,7 @@ public class GeneroResource {
 
     @DELETE
     @Path("/{id}")
-    //@RolesAllowed({"Funcionario"})
+    @RolesAllowed({"Funcionario"})
     public Response delete(@PathParam("id") Long id){
         try {
             LOG.info("Deletando um genero - Executando GeneroResource_delete");

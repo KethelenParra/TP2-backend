@@ -85,6 +85,10 @@ public class Box extends DefaultEntity{
         this.quantidadeEstoque -= quantidadeEstoque;
     }
 
+    public void aumentandoEstoque(Integer quantidadeEstoque) {
+        this.quantidadeEstoque += quantidadeEstoque;
+    }
+
     public Double getPreco() {
         return preco;
     }

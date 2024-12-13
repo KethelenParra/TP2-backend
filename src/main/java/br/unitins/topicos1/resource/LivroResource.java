@@ -12,6 +12,7 @@ import br.unitins.topicos1.model.Enum.Classificacao;
 import br.unitins.topicos1.service.ClienteService;
 import br.unitins.topicos1.service.LivroService;
 import br.unitins.topicos1.service.file.LivroFileService;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
@@ -47,7 +48,7 @@ public class LivroResource {
 
     @GET
     @Path("/{id}")
-    //@RolesAllowed({"Funcionario"})
+    @RolesAllowed({"Funcionario"})
     public Response findById(@PathParam("id") Long id){
         LOG.info("Executando o findById");
         LOG.infof("Executando o método findById. Id: %s", id.toString());
@@ -55,7 +56,6 @@ public class LivroResource {
     }
 
     @GET
-    //@RolesAllowed({"Funcionario", "Cliente"})
     public Response findAll(
         @QueryParam("page") @DefaultValue("0") int page,
         @QueryParam("pageSize") @DefaultValue("100") int pageSize
@@ -66,7 +66,6 @@ public class LivroResource {
 
     @GET
     @Path("/search/titulo/{titulo}")
-    //@RolesAllowed({"Funcionario", "Cliente"})
     public Response findByTitulo(
         @QueryParam("page") @DefaultValue("0") int page,
         @QueryParam("pageSize") @DefaultValue("100") int pageSize,
@@ -78,7 +77,6 @@ public class LivroResource {
 
     @GET
     @Path("/search/isbn/{isbn}")
-    //@RolesAllowed({"Funcionario","Cliente"})
     public Response findByIsbn(
         @QueryParam("page") @DefaultValue("0") int page,
         @QueryParam("pageSize") @DefaultValue("100") int pageSize,
@@ -90,7 +88,6 @@ public class LivroResource {
 
     @GET
     @Path("/search/descricao/{descricao}")
-    //@RolesAllowed({"Funcionario", "Cliente"})
     public Response findByDescricao(
         @QueryParam("page") @DefaultValue("0") int page,
         @QueryParam("pageSize") @DefaultValue("100") int pageSize,
@@ -102,7 +99,6 @@ public class LivroResource {
 
     @GET
     @Path("/search/autor/{autor}")
-    //@RolesAllowed({"Funcionario", "Cliente"})
     public Response findByAutor(
         @QueryParam("page") @DefaultValue("0") int page,
         @QueryParam("pageSize") @DefaultValue("100") int pageSize,
@@ -121,7 +117,6 @@ public class LivroResource {
 
     @GET
     @Path("/count/search/titulo/{nome}")
-    // @RolesAllowed({"Funcionario"})
     public Long count (@PathParam("nome") String nome) {
         LOG.infof("Contando todos os livros");
         return livroService.countByNome(nome);
@@ -129,14 +124,13 @@ public class LivroResource {
 
     @GET
     @Path("/count/search/autor/{autor}")
-    // @RolesAllowed({"Funcionario"})
     public Long countAutor (@PathParam("autor") String autor) {
         LOG.infof("Contando todos os autores");
         return livroService.countByAutor(autor);
     }
 
     @POST
-    //@RolesAllowed({"Funcionario"})
+    @RolesAllowed({"Funcionario"})
     public Response create (LivroDTO dto){
     
         LOG.info("Criando um novo livro - Executando LivroResource_create");
@@ -146,7 +140,7 @@ public class LivroResource {
 
     @PUT
     @Path("/{id}")
-    //@RolesAllowed({"Funcionario"})
+    @RolesAllowed({"Funcionario"})
     public Response update(@PathParam("id") Long id, LivroDTO dto){
       
         LOG.info("Atualizando um livro - Executando LivroResource_update");
@@ -157,7 +151,7 @@ public class LivroResource {
 
     @DELETE
     @Path("/{id}")
-    //@RolesAllowed({"Funcionario"})
+    @RolesAllowed({"Funcionario"})
     public Response delete(@PathParam("id") Long id){
         try {
             LOG.info("Deletando um livro - Executando LivroResource_delete");
@@ -171,7 +165,7 @@ public class LivroResource {
     
     @PATCH
     @Path("/image/upload")
-    //@RolesAllowed({"Funcionario"})
+    @RolesAllowed({"Funcionario"})
     @Consumes(MediaType.MULTIPART_FORM_DATA)
     public Response salvarImagem(@MultipartForm LivroImageForm form) {
         try {
@@ -186,7 +180,6 @@ public class LivroResource {
 
     @GET
     @Path("/image/download/{nomeImagem}")
-    //@RolesAllowed({"Funcionario"})
     @Produces(MediaType.APPLICATION_OCTET_STREAM)
     public Response download(@PathParam("nomeImagem") String nomeImagem) {
         ResponseBuilder response = Response.ok(fileService.download(nomeImagem));
@@ -196,6 +189,7 @@ public class LivroResource {
     
     @GET
     @Path("/search/filters")
+    @RolesAllowed({"Funcionario", "Cliente"})
     public Response findWithFilters(
             @QueryParam("autores") List<Long> autores,
             @QueryParam("editoras") List<Long> editoras,

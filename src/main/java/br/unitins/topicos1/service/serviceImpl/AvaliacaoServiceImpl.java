@@ -126,8 +126,8 @@ public class AvaliacaoServiceImpl implements AvaliacaoService{
     @Override
     public List<AvaliacaoResponseDTO> getByIdLivro(Long idLivro) {
         List<Avaliacao> avaliacoes = avaliacaoRepository.findByLivro(livroRepository.findById(idLivro));
-        if (avaliacoes == null){
-            throw new NullPointerException("Nenhuma avaliação encontrada para o livro de id " + idLivro);
+        if (avaliacoes.isEmpty()) {
+            throw new NotFoundException("Nenhuma avaliação encontrada para o livro com ID: " + idLivro);
         }
 
         return avaliacoes.stream().map(a -> AvaliacaoResponseDTO.valueOf(a)).toList();
@@ -151,5 +151,13 @@ public class AvaliacaoServiceImpl implements AvaliacaoService{
             throw new ConstraintViolationException(validations);
         }
     }
-    
+
+    public double calcularMediaEstrelas(Long idLivro) {
+        List<Avaliacao> avaliacoes = avaliacaoRepository.findByLivro(livroRepository.findById(idLivro));
+        if (avaliacoes.isEmpty()) {
+            return 0.0;
+        }
+        return avaliacoes.stream().mapToInt(a -> a.getEstrela().getId()).average().orElse(0.0);
+    }
+ 
 }

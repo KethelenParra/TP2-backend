@@ -28,18 +28,6 @@ public class Cliente extends DefaultEntity {
         this.listaDesejo = listaDesejo;
     }
 
-    // @ManyToMany(fetch = FetchType.EAGER)
-    // @JoinTable(name = "lista_desejo",
-    //             joinColumns = @JoinColumn(name = "id_cliente"),
-    //             inverseJoinColumns = @JoinColumn(name = "id_livro"))
-    // private List<Livro> listaDesejo;
-
-    // @ManyToMany(fetch = FetchType.EAGER)
-    // @JoinTable(name = "lista_desejo_box",
-    //             joinColumns = @JoinColumn(name = "id_cliente"),
-    //             inverseJoinColumns = @JoinColumn(name = "id_box"))
-    // private List<Box> listaDesejoBox;
-    
     private String cep;
     private String logradouro;
     private String complemento;
@@ -103,19 +91,4 @@ public class Cliente extends DefaultEntity {
         this.usuario = usuario;
     }
     
-    // public List<Livro> getListaDesejo() {
-    //     return listaDesejo;
-    // }
-    
-    // public void setListaDesejo(List<Livro> listaDesejo) {
-    //     this.listaDesejo = listaDesejo;
-    // }
-
-    // public List<Box> getListaDesejoBox() {
-    //     return listaDesejoBox;
-    // }
-
-    // public void setListaDesejoBox(List<Box> listaDesejoBox) {
-    //     this.listaDesejoBox = listaDesejoBox;
-    // }
 }

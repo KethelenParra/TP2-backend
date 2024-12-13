@@ -9,6 +9,7 @@ import br.unitins.topicos1.dto.EditoraDTO;
 import br.unitins.topicos1.form.EditoraImageForm;
 import br.unitins.topicos1.service.EditoraService;
 import br.unitins.topicos1.service.file.EditoraFileService;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
@@ -41,14 +42,13 @@ public class EditoraResource {
 
     @GET
     @Path("/{id}")
-    //@RolesAllowed({"Funcionario"})
+    @RolesAllowed({"Funcionario"})
     public Response findById(@PathParam("id") Long id){
         LOG.info("Buscando editora por id: - Executando EditoraResource_FindById" + id);
         return Response.ok(editoraService.findById(id)).build();
     }
 
     @GET
-    //@RolesAllowed({"Funcionario"})
     public Response findAll(
         @QueryParam("page") @DefaultValue("0") int page,
         @QueryParam("pageSize") @DefaultValue("100") int pageSize
@@ -59,7 +59,6 @@ public class EditoraResource {
 
     @GET
     @Path("/search/nome/{nome}")
-    //@RolesAllowed({"Funcionario"})
     public Response findByNome(
         @QueryParam("page") @DefaultValue("0") int page,
         @QueryParam("pageSize") @DefaultValue("100") int pageSize,
@@ -71,7 +70,7 @@ public class EditoraResource {
 
 
     @POST
-    //@RolesAllowed({"Funcionario"})
+    @RolesAllowed({"Funcionario"})
     public Response create (EditoraDTO dto){
         
         LOG.info("Editora criado com sucesso - Executando EditoraResource_create");
@@ -80,7 +79,7 @@ public class EditoraResource {
 
     @PUT
     @Path("/{id}")
-    //@RolesAllowed({"Funcionario"})
+    @RolesAllowed({"Funcionario"})
     public Response update(@PathParam("id") Long id, EditoraDTO dto){
         
         LOG.info("Editora atualizado com sucesso - Executando EditoraResource_update");
@@ -91,7 +90,7 @@ public class EditoraResource {
 
     @DELETE
     @Path("/{id}")
-    //@RolesAllowed({"Funcionario"})
+    @RolesAllowed({"Funcionario"})
     public Response delete(@PathParam("id") Long id){
         try {
             LOG.info("Editora deletado com sucesso - Executando EditoraResource_delete");
@@ -112,7 +111,6 @@ public class EditoraResource {
 
     @GET
     @Path("/count/search/{nome}")
-    // @RolesAllowed({"Funcionario"})
     public Long count (@PathParam("nome") String nome) {
         LOG.infof("Contando todos os editoras");
         return editoraService.countByNome(nome);
@@ -120,7 +118,7 @@ public class EditoraResource {
 
     @PATCH
     @Path("/image/upload")
-    //@RolesAllowed({"Funcionario"})
+    @RolesAllowed({"Funcionario"})
     @Consumes(MediaType.MULTIPART_FORM_DATA)
     public Response salvarImagem(@MultipartForm EditoraImageForm form) {
         try {
@@ -135,7 +133,6 @@ public class EditoraResource {
 
     @GET
     @Path("/image/download/{nomeImagem}")
-    //@RolesAllowed({"Funcionario"})
     @Produces(MediaType.APPLICATION_OCTET_STREAM)
     public Response download(@PathParam("nomeImagem") String nomeImagem) {
         ResponseBuilder response = Response.ok(fileService.download(nomeImagem));
