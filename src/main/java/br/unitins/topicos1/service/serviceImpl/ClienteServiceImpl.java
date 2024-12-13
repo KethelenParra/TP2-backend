@@ -111,9 +111,6 @@ public class ClienteServiceImpl implements ClienteService {
         usuario.setCpf(dto.cpf());
         usuario.setSexo(Sexo.valueOf(dto.idSexo()));
         usuario.setTelefone(TelefoneDTO.convertToTelefone(dto.telefone()));
-
-        usuarioRepository.persist(usuario);
-        clienteRepository.persist(clienteBanco);
     }
 
     @Override

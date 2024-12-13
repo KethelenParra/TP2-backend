@@ -6,6 +6,7 @@ import br.unitins.topicos1.dto.AlterarEmailDTO;
 import br.unitins.topicos1.dto.AlterarUsernameDTO;
 import br.unitins.topicos1.dto.FuncionarioDTO;
 import br.unitins.topicos1.dto.Response.AlterarSenhaDTO;
+import br.unitins.topicos1.model.Enum.Sexo;
 import br.unitins.topicos1.service.FuncionarioService;
 import jakarta.inject.Inject;
 import jakarta.validation.Valid;
@@ -71,7 +72,7 @@ public class FuncionarioResource {
     //@RolesAllowed({"Funcionario"})
     @Path("/{id}")
     public Response findById(@PathParam("id") Long id) {
-        LOG.infof("Executando o método findById. Id: %s", id.toString());
+        LOG.infof("Executando o metodo findById. Id: %s", id.toString());
         return Response.ok(funcionarioService.findById(id)).build();
     }
 
@@ -83,7 +84,7 @@ public class FuncionarioResource {
             LOG.info("Funcionario criado com sucesso");
             return Response.status(Status.CREATED).entity(funcionarioService.create(dto)).build();
         } catch (Exception e) {
-            LOG.error("Erro ao criar funcionairo", e);
+            LOG.error("Erro ao criar funcionario", e);
             return Response.status(Status.NOT_FOUND).entity("Erro ao criar funcionario.").build();
         }
     }
@@ -170,6 +171,12 @@ public class FuncionarioResource {
             LOG.error("Erro ao buscar perfil do funcionario.", e);
             return Response.status(Status.NOT_FOUND).entity("Erro ao buscar perfil do funcionario.").build();
         }
+    }
+
+    @GET
+    @Path("/sexo")
+    public Response getSexo(){
+        return Response.ok(Sexo.values()).build();
     }
 
 }

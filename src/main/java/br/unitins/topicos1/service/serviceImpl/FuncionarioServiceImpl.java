@@ -44,7 +44,6 @@ public class FuncionarioServiceImpl implements FuncionarioService {
     @Override
     @Transactional
     public FuncionarioResponseDTO create(@Valid FuncionarioDTO dto) {
-        validarCpfFuncionario(dto.cpf());
 
         Usuario usuario = new Usuario();
         usuario.setNome(dto.nome());
@@ -68,12 +67,6 @@ public class FuncionarioServiceImpl implements FuncionarioService {
         return FuncionarioResponseDTO.valueOf(funcionario);
     }
 
-    public void validarCpfFuncionario(String cpf) {
-        Usuario funcionario = usuarioRepository.findByCpfUsuario(cpf);
-        if (funcionario != null)
-            throw new ValidationException("cpf", "O  CPF: '" + cpf + "' já existe.");
-    }
-
     @Override
     @Transactional
     public void update(Long id, FuncionarioDTO dto) {
@@ -89,10 +82,8 @@ public class FuncionarioServiceImpl implements FuncionarioService {
         Usuario usuario = funcionarioBanco.getUsuario();
         usuario.setNome(dto.nome());
         usuario.setUsername(dto.username());
-        usuario.setSenha(hashService.getHashSenha(dto.senha()));
         usuario.setDataNascimento(dto.dataNascimento());
         usuario.setEmail(dto.email());
-        usuario.setCpf(dto.cpf());
         usuario.setSexo(Sexo.valueOf(dto.idSexo()));
         usuario.setTelefone(TelefoneDTO.convertToTelefone(dto.telefone()));
 
@@ -110,7 +101,6 @@ public class FuncionarioServiceImpl implements FuncionarioService {
         if (funcionario == null) {
             throw new NotFoundException("Funcionário não encontrado");
         }
-
         return FuncionarioResponseDTO.valueOf(funcionario);
     }
 

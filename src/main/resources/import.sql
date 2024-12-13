@@ -18,7 +18,6 @@ VALUES
 ('Rafael Souza', 'rafaelsouza', '1990-05-15', 'rafael.souza@gmail.com', 'TRwn0XU29Gwl2sagG00bvjrNJvLuYo+dbOBJ7R3xFpU4m/FAUc5q8OoGbVNwPF7F5713RaYkN4qyufNCDHm/mA==', 3, 1, '15975346820'),
 ('Juliana Santos', 'julianasantos', '1994-11-20', 'juliana.santos@gmail.com', 'TRwn0XU29Gwl2sagG00bvjrNJvLuYo+dbOBJ7R3xFpU4m/FAUc5q8OoGbVNwPF7F5713RaYkN4qyufNCDHm/mA==', 4, 2, '35715924680'),
 
-('Rodrigo Oliveira', 'rodrigooliveira', '1985-03-05', 'rodrigo.oliveira@gmail.com', 'TRwn0XU29Gwl2sagG00bvjrNJvLuYo+dbOBJ7R3xFpU4m/FAUc5q8OoGbVNwPF7F5713RaYkN4qyufNCDHm/mA==', 5, 1, '45698732100'),
 ('Leticia Alves', 'leticialves', '1998-09-12', 'leticia.alves@gmail.com', 'TRwn0XU29Gwl2sagG00bvjrNJvLuYo+dbOBJ7R3xFpU4m/FAUc5q8OoGbVNwPF7F5713RaYkN4qyufNCDHm/mA==', 6, 2, '85236974100'),
 ('Amanda Oliveira', 'Amanda30', '1998-07-10', 'amanda.oliveira@gmail.com', 'TRwn0XU29Gwl2sagG00bvjrNJvLuYo+dbOBJ7R3xFpU4m/FAUc5q8OoGbVNwPF7F5713RaYkN4qyufNCDHm/mA==', 7, 2, '85479632105'),
 ('Pedro Almeida', 'Pedrinho40', '2000-09-05', 'pedro.almeida@gmail.com', 'TRwn0XU29Gwl2sagG00bvjrNJvLuYo+dbOBJ7R3xFpU4m/FAUc5q8OoGbVNwPF7F5713RaYkN4qyufNCDHm/mA==', 8, 1, '14785236987'),
@@ -35,13 +34,11 @@ VALUES ('01310-100', 'Av. Paulista, 1000','Em frente ao shopping', 'Tabocão', '
 
 -- Inserir Funcionario
 INSERT INTO funcionario (cargo, salario, id_usuario) 
-VALUES ('Analista de Sistemas', 6000.00, 6), 
-       ('Desenvolvedor Full Stack', 4500.00, 7),
-       ('Analista de Suporte', 4000.00, 8),
+VALUES ('Desenvolvedor Full Stack', 4500.00, 6),
+       ('Analista de Suporte', 4000.00, 7),
+       ('Estagiário de TI', 2500.00, 8),
        ('Estagiário de TI', 2500.00, 9),
-       ('Estagiário de TI', 2500.00, 10),
-       ('Estagiária de Marketing', 2500.00, 11);
-
+       ('Estagiária de Marketing', 2500.00, 10);
 
 -- Inserir autores
 INSERT INTO autor (nome, biografia, nomeImagem) 
