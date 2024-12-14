@@ -156,7 +156,7 @@ public class ClienteServiceImpl implements ClienteService {
 
     @Override
     public long count() {
-        return usuarioRepository.count();
+        return clienteRepository.count();
     }
     
     @Override

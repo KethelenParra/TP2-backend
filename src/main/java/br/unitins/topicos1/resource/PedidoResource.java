@@ -208,7 +208,7 @@ public class PedidoResource {
         Cliente cliente = clienteRepository.findById(idCliente);
         Pedido pedido = pedidoRepository.findByClienteNaoFinalizado(cliente);
         if (pedido == null) {
-            throw new WebApplicationException("Nenhum carrinho encontrado para este cliente.", 404);
+            throw new ValidationException("404", "Nenhum carrinho encontrado para este cliente.");
         }
         return PedidoResponseDTO.valueOf(pedido);
     }
@@ -219,7 +219,7 @@ public class PedidoResource {
         Cliente cliente = clienteRepository.findById(idCliente);
         List<Pedido> pedidos = pedidoRepository.findByClienteFinalizado(cliente);
         if (pedidos.isEmpty()) {
-            throw new WebApplicationException("Nenhum pedido realizado encontrado para este cliente.", 404);
+            throw new ValidationException("404", "Nenhum pedido realizado encontrado para este cliente.");
         }
         return pedidos.stream()
                     .map(PedidoResponseDTO::valueOf)

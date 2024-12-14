@@ -122,7 +122,7 @@ public class FuncionarioServiceImpl implements FuncionarioService {
 
     @Override
     public long count() {
-        return usuarioRepository.count();
+        return funcionarioRepository.count();
     }
 
     @Override
