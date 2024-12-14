@@ -8,8 +8,15 @@ public record CadastroBasicoDTO(
     String email,
     @NotEmpty(message = "Já existe este username.")
     String username,
+    String cpf,
     String senha,
-    Integer idSexo
+    Integer idSexo,
+    String cep,
+    String logradouro,
+    String complemento,
+    String bairro,
+    String localidade,
+    String uf
 ) {
     
 }

@@ -31,6 +31,14 @@ public class CadastroBasicoServiceImpl implements CadastroBasicoService {
     @Transactional
     public CadastroBasicoResponseDTO create(@Valid CadastroBasicoDTO dto) {
         Cliente cliente = new Cliente();
+
+        cliente.setCep(dto.cep());
+        cliente.setLogradouro(dto.logradouro());
+        cliente.setComplemento(dto.complemento());
+        cliente.setBairro(dto.bairro());
+        cliente.setLocalidade(dto.localidade());
+        cliente.setUf(dto.uf());
+
         Usuario usuario = new Usuario();
         
         validarEmailCliente(dto.email());
@@ -38,8 +46,10 @@ public class CadastroBasicoServiceImpl implements CadastroBasicoService {
         usuario.setNome(dto.nome());
         usuario.setEmail(dto.email());
         usuario.setUsername(dto.username());
+        usuario.setCpf(dto.cpf());
         usuario.setSenha(hashService.getHashSenha(dto.senha()));
         usuario.setSexo(Sexo.valueOf(dto.idSexo()));
+
 
         usuarioRepository.persist(usuario);
 

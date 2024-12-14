@@ -76,7 +76,6 @@ public class ClienteResource {
     }
 
     @POST
-    @RolesAllowed({"Cliente"})
     public Response create(@Valid ClienteDTO dto) {
         try {
             LOG.info("Cliente criado com suceso");
@@ -88,8 +87,8 @@ public class ClienteResource {
     }
 
     @PUT
-    @RolesAllowed({"Cliente"})
     @Path("/{id}")
+    @RolesAllowed({"Cliente"})
     public Response update(@PathParam("id") Long id, ClienteDTO dto) {
         try {
             LOG.info("Cliente atualizado com sucesso");

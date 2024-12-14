@@ -8,7 +8,14 @@ public record CadastroBasicoResponseDTO(
         String nome,
         String email,
         String username,
-        Sexo sexo
+        String cpf,
+        Sexo sexo,
+        String cep,
+        String logradouro,
+        String complemento,
+        String bairro,
+        String localidade,
+        String uf
 ) {
 
     public static CadastroBasicoResponseDTO valueOf(Cliente cliente) {
@@ -17,7 +24,14 @@ public record CadastroBasicoResponseDTO(
             cliente.getUsuario().getNome(),
             cliente.getUsuario().getEmail(),
             cliente.getUsuario().getUsername(),
-            cliente.getUsuario().getSexo()
+            cliente.getUsuario().getCpf(),
+            cliente.getUsuario().getSexo(),
+            cliente.getCep(),
+            cliente.getLogradouro(),
+            cliente.getComplemento(),
+            cliente.getBairro(),
+            cliente.getLocalidade(),
+            cliente.getUf()           
         );
     }
 }
