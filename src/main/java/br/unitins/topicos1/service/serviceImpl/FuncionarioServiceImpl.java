@@ -101,11 +101,7 @@ public class FuncionarioServiceImpl implements FuncionarioService {
 
     @Override
     public FuncionarioResponseDTO findById(Long id) {
-        Funcionario funcionario = funcionarioRepository.findById(id);
-        if (funcionario == null) {
-            throw new NotFoundException("Funcionário não encontrado");
-        }
-        return FuncionarioResponseDTO.valueOf(funcionario);
+        return FuncionarioResponseDTO.valueOf(funcionarioRepository.findById(id));
     }
 
     @GET

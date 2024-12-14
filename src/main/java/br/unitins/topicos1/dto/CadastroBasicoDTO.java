@@ -11,6 +11,7 @@ public record CadastroBasicoDTO(
     String cpf,
     String senha,
     Integer idSexo,
+    TelefoneDTO telefone,
     String cep,
     String logradouro,
     String complemento,

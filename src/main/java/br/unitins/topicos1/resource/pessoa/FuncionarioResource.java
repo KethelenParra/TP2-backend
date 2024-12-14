@@ -90,9 +90,7 @@ public class FuncionarioResource {
     @RolesAllowed({"Funcionario"})
     @Path("/{id}")
     public Response update(@PathParam("id") Long id, FuncionarioDTO dto) {
-        try {
-            LOG.info("Funcionario atualizado com sucesso");
-            
+        try {            
             funcionarioService.update(id, dto);
             return Response.status(Status.NO_CONTENT).build();
         } catch (Exception e) {
